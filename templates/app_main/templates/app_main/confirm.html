@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block title %}Подтверждение обмена — {{ site_setup.name }}{% endblock %}
+
+{% block content %}
+
+    <h1 class="mb-4">Подтверждение обмена</h1>
+
+    {% if error %}
+        <p class="text-danger">{{ error }}</p>
+    {% else %}
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped align-middle">
+                <tbody>
+                <tr class="table-primary">
+                    <th scope="row" class="w-50">Номер заявки:</th>
+                    <td><strong>{{ order.number }}</strong></td>
+                </tr>
+                <tr>
+                    <th scope="row">Вы отдаёте:</th>
+                    <td>{{ order.left_money }} {{ order.left_chain }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Вы получаете:</th>
+                    <td>{{ order.right_money }} {{ order.right_chain }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Сумма:</th>
+                    <td>{{ order.left_count }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">К получению:</th>
+                    <td>{{ order.right_count }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Ваш адрес:</th>
+                    <td>{{ order.client_address }}</td>
+                </tr>
+                {% if order.client_memo %}
+                    <tr>
+                        <th scope="row">Memo:</th>
+                        <td>{{ order.client_memo }}</td>
+                    </tr>
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="document-box mt-4 text-center">
+            {{ site_setup.content|safe }}
+        </div>
+
+        {% if confirmed %}
+            <div class="alert alert-info text-center mt-4">
+                <strong>Связаться с оператором можно в чате на сайте или по следующим каналам:</strong>
+                <div class="d-flex justify-content-center align-items-center gap-4 mt-3">
+                    {% if site_setup.contact_telegram %}
+                        <span class="footer-link me-3"
+                              onclick="window.open('{{ site_setup.contact_telegram }}', '_blank')"
+                              style="cursor: pointer;">
+    <i class="bi bi-telegram"></i> Telegram
+  </span>
+                    {% endif %}
+                    {% if site_setup.contact_email %}
+                        <span id="email-link" class="footer-link me-3" style="cursor: pointer;">
+    <i class="bi bi-envelope-fill"></i> Email
+  </span>
+                        <script>
+                            document.getElementById("email-link").addEventListener("click", function () {
+                                window.location.href = "mailto:" + "{{ site_setup.contact_email|cut:'@' }}" + "@" + "{{ site_setup.contact_email|slice:'-10:' }}";
+                            });
+                        </script>
+                    {% endif %}
+                </div>
+            </div>
+        {% else %}
+            <form method="post">
+                {% csrf_token %}
+                <div class="text-center d-flex flex-wrap justify-content-center gap-3 mt-4">
+                    <button type="submit" name="action" value="confirm" class="btn btn-primary">Подтвердить обмен
+                    </button>
+                    <button type="submit" name="action" value="cancel" class="btn btn-outline-danger">Отменить обмен
+                    </button>
+                </div>
+            </form>
+        {% endif %}
+
+    {% endif %}
+
+{% endblock %}
+

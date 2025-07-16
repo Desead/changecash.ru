@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Главная — Обменник{% endblock %}
+
+{% block content %}
+    <div class="py-5 text-center rounded mb-4">
+        <div class="container">
+            <h1 class="display-5 fw-bold mb-3">{{ site_setup.main_title }}</h1>
+            <p class="lead">{{ site_setup.main_subtitle }}</p>
+        </div>
+    </div>
+
+    <div class="form-wrapper p-4 rounded shadow-sm bg-light border">
+
+        <form method="post" id="exchange-form">
+            {% csrf_token %}
+
+            <!-- блок выбора монет -->
+            <div class="row mb-3 align-items-end">
+                <!-- ЛЕВАЯ монета -->
+                <div class="col-md-5">
+                    <label for="leftMoneyDropdown" class="form-label">Вы отдаёте</label>
+                    <div class="dropdown">
+                        <button class="btn btn-outline-primary w-100 dropdown-toggle d-flex align-items-center justify-content-between"
+                                type="button" id="leftMoneyDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span id="leftMoneyLabel">Выберите монету</span>
+                        </button>
+                        <ul class="dropdown-menu w-100" id="leftMoneyOptions">
+                            <li><span class="dropdown-item text-muted">Список монет не загружен</span></li>
+                        </ul>
+                    </div>
+                    <input type="hidden" name="left_money" id="leftMoneyInput">
+                </div>
+
+                <div class="col-md-2 text-center">
+                    <button type="button" id="swap-button" class="btn btn-outline-secondary"><i
+                            class="bi bi-arrow-left-right swap-icon"></i></button>
+                </div>
+
+                <!-- ПРАВАЯ монета -->
+                <div class="col-md-5">
+                    <label for="rightMoneyDropdown" class="form-label">Вы получаете</label>
+                    <div class="dropdown">
+                        <button class="btn btn-outline-primary w-100 dropdown-toggle d-flex align-items-center justify-content-between"
+                                type="button" id="rightMoneyDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span id="rightMoneyLabel">Выберите монету</span>
+                        </button>
+                        <ul class="dropdown-menu w-100" id="rightMoneyOptions">
+                            <li><span class="dropdown-item text-muted">Список монет не загружен</span></li>
+                        </ul>
+                    </div>
+                    <input type="hidden" name="right_money" id="rightMoneyInput">
+                </div>
+            </div>
+
+            <!-- Суммы -->
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="id_left_amount" class="form-label">Сколько отдаёте</label>
+                    <input type="text" name="left_amount" class="form-control" id="id_left_amount" value="1">
+                    <div class="invalid-feedback" id="amount-error"></div>
+                </div>
+                <div class="col-md-6">
+                    <label for="id_right_amount" class="form-label">Вы получите (расчёт)</label>
+                    <input type="text" name="right_amount" class="form-control" id="id_right_amount" readonly>
+                </div>
+            </div>
+
+            <!-- Адрес + Memo -->
+            <div class="row mb-3">
+                <div class="col-md-9">
+                    <label for="id_client_address" class="form-label">Ваш адрес для получения средств</label>
+                    <input type="text" name="client_address" class="form-control" id="id_client_address" required>
+                </div>
+                <div class="col-md-3">
+                    <label for="id_client_memo" class="form-label">Memo/Tag (если нужно)</label>
+                    <input type="text" name="client_memo" class="form-control" id="id_client_memo">
+                </div>
+            </div>
+
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" name="agree" id="agreeRules" required>
+                <label class="form-check-label" for="agreeRules">
+                    Я согласен с
+                    <a href="{% url 'site_document' slug='terms_of_service' %}" target="_blank">Пользовательским
+                        соглашением</a>,
+                    <a href="{% url 'site_document' slug='privacy_policy' %}" target="_blank">Политикой
+                        конфиденциальности</a> и
+                    <a href="{% url 'site_document' slug='aml_kyc_policy' %}" target="_blank">Политикой AML/KYC</a>
+                </label>
+            </div>
+
+            {% if not site_setup.pause %}
+                <button type="submit" class="btn btn-primary">Начать обмен</button>
+            {% endif %}
+            <hr>
+
+            <!-- Информация об обмене -->
+            <div class="mt-4 p-4 rounded bg-white exchange-box">
+                <!-- Инструкция и Преимущества в 2 колонки -->
+                <div class="row mb-4">
+                    <!-- Краткая инструкция -->
+                    <div class="col-md-6 mb-4 mb-md-0">
+                        <h5 class="mb-3">Как обменять криптовалюту?</h5>
+                        <ol class="mb-0 ps-3">
+                            <li>Выберите монеты и введите сумму</li>
+                            <li>Укажите адрес получения</li>
+                            <li>Не забудьте про поле Memo</li>
+                            <li>Нажмите <strong>«Начать обмен»</strong></li>
+                        </ol>
+                    </div>
+
+                    <!-- Преимущества -->
+                    <div class="col-md-6">
+                        <h5 class="mb-3">Почему выбирают нас</h5>
+                        <ul class="list-unstyled mb-0">
+                            <li>✅ Быстрые переводы — от 5 минут</li>
+                            <li>🔐 Безопасность и конфиденциальность</li>
+                            <li>💬 Поддержка 24/7 — Telegram и Email</li>
+                            <li>💱 Более 30 монет и токенов</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Популярные пары — отдельный блок -->
+            <h5 class="m-4 text-center">Актуальные курсы</h5>
+            <div id="popular-rates" class="popular-grid text-muted small">
+                <!-- JS вставит данные -->
+            </div>
+
+        </form>
+    </div>
+
+    <a href="{% url 'site_document' slug='support' %}" class="btn btn-outline-secondary mt-4">Нужна помощь?</a>
+
+{% endblock %}
+
+{% block scripts %}
+    <script type="module" src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/popular-rates.js' %}"></script>
+{% endblock %}

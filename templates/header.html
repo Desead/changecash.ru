@@ -1,0 +1,45 @@
+{% load static %}
+
+<header class="bg-body border-bottom shadow-sm py-2">
+    <div class="container d-flex justify-content-between align-items-center">
+
+        <!-- Логотип + Название -->
+        <a href="/" class="d-flex align-items-center text-decoration-none">
+            {% if site_setup.logo %}
+                <img src="{{ site_setup.logo.url }}" alt="{{ site_setup.name }}" height="32" class="me-2 logo-img">
+            {% else %}
+                <img src="{% static 'images/logo.png' %}" alt="{{ site_setup.name }}" height="32" class="me-2 logo-img">
+            {% endif %}
+            <span class="fs-5 fw-bold site-title">{{ site_setup.name|default:"Обменник" }}</span>
+        </a>
+
+        <!-- Навигация -->
+        <nav class="d-none d-md-flex gap-4 align-items-center">
+            <!-- Документы с выпадающим меню -->
+            <div class="dropdown">
+        <span class="nav-link dropdown-toggle" id="docsDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false" style="cursor: pointer;">
+          Документы
+        </span>
+                <ul class="dropdown-menu" aria-labelledby="docsDropdown">
+                    <li><a class="dropdown-item" href="{% url 'site_document' slug='exchange_rules' %}">Правила
+                        обмена</a></li>
+                    <li><a class="dropdown-item" href="{% url 'site_document' slug='terms_of_service' %}">Пользовательское
+                        соглашение</a></li>
+                    <li><a class="dropdown-item" href="{% url 'site_document' slug='privacy_policy' %}">Политика
+                        конфиденциальности</a></li>
+                    <li><a class="dropdown-item" href="{% url 'site_document' slug='disclaimer' %}">Отказ от
+                        ответственности</a></li>
+                    <li><a class="dropdown-item" href="{% url 'site_document' slug='aml_kyc_policy' %}">Политика AML /
+                        KYC</a></li>
+                    <li><a class="dropdown-item" href="{% url 'site_document' slug='authorities_requests' %}">Запросы от
+                        органов</a></li>
+                </ul>
+            </div>
+
+            <a href="{% url 'site_document' slug='support' %}" class="nav-link">Поддержка</a>
+            <a href="{% url 'site_document' slug='about' %}" class="nav-link">О Компании</a>
+            <a href="{% url 'site_document' slug='faq' %}" class="nav-link">FAQ</a>
+        </nav>
+    </div>
+</header>

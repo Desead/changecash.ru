@@ -1,0 +1,84 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.p~
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Django
+*.log
+*.pot
+*.pyc
+local_settings.py
+db.sqlite3-journal
+staticfiles/
+
+# Django Migrations
+*/migrations/__pycache__/
+*/migrations/*.pyc
+*/migrations/*.pyo
+*/migrations/*.pyd
+*/migrations/*.log
+
+# Environment
+.env
+.env.*
+.venv/
+venv/
+ENV/
+env/
+*.env
+
+# VSCode / PyCharm / JetBrains
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Celery Beat & Cache
+celerybeat-schedule
+*.pid
+*.bak
+
+# Coverage and testing
+htmlcov/
+.coverage
+.tox/
+.nox/
+.pytest_cache/
+.coverage.*
+nosetests.xml
+test-results.xml
+coverage.xml
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# pytest
+.cache/
+
+# pip tools
+*.txt~
+pip-wheel-metadata/
+
+# Docker
+*.tar
+*.img
+*.bak
+docker-compose.override.yml
+
+# local settings or secrets
+secrets.json
+config/settings/local.py

@@ -1,0 +1,34 @@
+{% if site_setup.contact_email or site_setup.contact_telegram or site_setup.news_telegram or site_setup.news_vk %}
+    <div class="mb-2">Мы на связи:</div>
+{% endif %}
+
+{% if site_setup.contact_telegram %}
+    <span class="footer-link me-3" onclick="window.open('{{ site_setup.contact_telegram }}', '_blank')"
+          style="cursor: pointer;">
+    <i class="bi bi-telegram"></i> Telegram
+  </span>
+{% endif %}
+
+{% if site_setup.contact_email %}
+    <span id="email-link" class="footer-link me-3" style="cursor: pointer;">
+    <i class="bi bi-envelope-fill"></i> Email
+  </span>
+    <script>
+        document.getElementById("email-link").addEventListener("click", function () {
+            window.location.href = "mailto:" + "{{ site_setup.contact_email|cut:'@' }}" + "@" + "{{ site_setup.contact_email|slice:'-10:' }}";
+        });
+    </script>
+{% endif %}
+
+{% if site_setup.news_telegram %}
+    <span class="footer-link me-3" onclick="window.open('{{ site_setup.news_telegram }}', '_blank')"
+          style="cursor: pointer;">
+    <i class="bi bi-megaphone-fill"></i> Канал Telegram
+  </span>
+{% endif %}
+
+{% if site_setup.news_vk %}
+    <span class="footer-link" onclick="window.open('{{ site_setup.news_vk }}', '_blank')" style="cursor: pointer;">
+    <i class="bi bi-vk"></i> VK
+  </span>
+{% endif %}

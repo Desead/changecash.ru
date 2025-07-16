@@ -1,0 +1,22 @@
+<footer class="site-footer border-top mt-5 py-4">
+    <div class="container">
+        <div class="row text-muted small">
+
+            <!-- Левая колонка -->
+            <div class="col-md-6 mb-3 mb-md-0">
+                <div>&copy; {{ now|date:"Y" }} {{ site_setup.name }}. Все права защищены.</div>
+                <div class="mt-2">
+                    <a href="{% url 'site_document' slug='terms_of_service' %}" class="footer-link me-3">Документы</a>
+                    <a href="{% url 'site_document' slug='support' %}" class="footer-link me-3">Поддержка</a>
+                    <a href="{% url 'site_document' slug='about' %}" class="footer-link">О компании</a>
+                </div>
+            </div>
+
+            <!-- Правая колонка: контакты и соцсети -->
+            <div class="col-md-6 text-md-end">
+                {% include "app_main/templates/app_main/_contacts.html" %}
+            </div>
+
+        </div>
+    </div>
+</footer>
