@@ -13,13 +13,48 @@ from django.views.decorators.cache import cache_page
 from django.views.decorators.http import require_GET
 from django.views.generic import DetailView, FormView, TemplateView
 
-from .choices import MerchantName, MoneyType, OrderStatus
+from .choices import OrderStatus
 from .decorators import ratelimit_ip
 from .forms import ExchangeForm, SignUpForm
 from .models import Money, Merchant, Order, PartnerAccrual, RateMoney, SiteDocument, SiteSetup, UserProfile
 from .utils import OrderName
-from lp.whitebit import WhiteBITAPIError, WhiteBITConfigurationError, get_whitebit_deposit_details
 
+
+
+
+def resolve_exchange_money(name_short: str, chain_long: str, *, deposit: bool = False, withdraw: bool = False) -> Money:
+    qs = Money.objects.filter(
+        name_short__iexact=(name_short or '').strip(),
+        chain_long__iexact=(chain_long or '').strip(),
+    )
+
+    if deposit:
+        qs = qs.filter(deposit=True, adeposit=True)
+    if withdraw:
+        qs = qs.filter(withdraw=True, awithdraw=True)
+
+    money = qs.order_by('id').first()
+    if not money:
+        raise Money.DoesNotExist
+    return money
+
+
+
+def resolve_exchange_money(name_short: str, chain_long: str, *, deposit: bool = False, withdraw: bool = False) -> Money:
+    qs = Money.objects.filter(
+        name_short__iexact=(name_short or '').strip(),
+        chain_long__iexact=(chain_long or '').strip(),
+    )
+
+    if deposit:
+        qs = qs.filter(deposit=True, adeposit=True)
+    if withdraw:
+        qs = qs.filter(withdraw=True, awithdraw=True)
+
+    money = qs.order_by('id').first()
+    if not money:
+        raise Money.DoesNotExist
+    return money
 
 def get_rate_to_usdt(symbol: str) -> Decimal:
     symbol = (symbol or '').strip().upper()
@@ -39,6 +74,7 @@ def get_rate_to_usdt(symbol: str) -> Decimal:
         return Decimal('1') / Decimal(str(rate.rate_bid))
 
 
+
 class ExchangeHomeView(FormView):
     template_name = 'app_main/templates/app_main/home.html'
     form_class = ExchangeForm
@@ -52,37 +88,20 @@ class ExchangeHomeView(FormView):
         left_rate = get_rate_to_usdt(left_symbol)
         right_rate = get_rate_to_usdt(right_symbol)
 
-        order_kwargs = {
-            'number': OrderName.create_order_name(),
-            'user': self.request.user if self.request.user.is_authenticated else None,
-            'left_money': left_symbol,
-            'left_chain': str(cleaned['left_money'].chain_long),
-            'left_lp': str(cleaned['left_money'].merchant.name),
-            'right_money': right_symbol,
-            'right_chain': str(cleaned['right_money'].chain_long),
-            'right_lp': str(cleaned['right_money'].merchant.name),
-            'left_rate': left_rate,
-            'right_rate': right_rate,
-            'left_count': cleaned['left_amount'],
-            'right_count': cleaned.get('right_amount') or 0,
-            'client_address': cleaned['client_address'],
-            'client_memo': cleaned['client_memo'],
-        }
-
-        if cleaned['left_money'].money_type == MoneyType.CRYPTO:
-            try:
-                deposit_details = get_whitebit_deposit_details(cleaned['left_money'])
-            except (WhiteBITConfigurationError, WhiteBITAPIError) as exc:
-                form.add_error(None, str(exc))
-                return self.form_invalid(form)
-
-            order_kwargs.update({
-                'left_lp': MerchantName.WHITEBIT,
-                'exchange_address': deposit_details['address'],
-                'exchange_memo': deposit_details['memo'],
-            })
-
-        order = Order.objects.create(**order_kwargs)
+        order = Order.objects.create(
+            number=OrderName.create_order_name(),
+            user=self.request.user if self.request.user.is_authenticated else None,
+            left_money=left_symbol,
+            left_chain=str(cleaned['left_money'].chain_long),
+            right_money=right_symbol,
+            right_chain=str(cleaned['right_money'].chain_long),
+            left_rate=left_rate,
+            right_rate=right_rate,
+            left_count=cleaned['left_amount'],
+            right_count=cleaned.get('right_amount') or 0,
+            client_address=cleaned['client_address'],
+            client_memo=cleaned['client_memo'],
+        )
 
         self.request.session['order_id'] = order.id
         return redirect('exchange_confirm')
@@ -235,18 +254,6 @@ class SiteDocumentDetailView(DetailView):
             return HttpResponseRedirect(reverse('exchange_home'))
 
 
-def resolve_exchange_money(symbol: str, chain_long: str, *, deposit=False, withdraw=False):
-    qs = Money.objects.filter(
-        name_short__iexact=(symbol or "").strip(),
-        chain_long__iexact=(chain_long or "").strip(),
-    )
-    if deposit:
-        qs = qs.filter(deposit=True, adeposit=True)
-    if withdraw:
-        qs = qs.filter(withdraw=True, awithdraw=True)
-    return qs.first()
-
-
 @require_GET
 @cache_page(3)
 @ratelimit_ip(rate='10/s', block=True)
@@ -264,8 +271,8 @@ def get_rate_view(request):
     if not left_raw or not right_raw:
         return JsonResponse({'error': 'Параметры монет не заданы'}, status=400)
 
-    left_parts = left_raw.split(' ', 1)
-    right_parts = right_raw.split(' ', 1)
+    left_parts = left_raw.split()
+    right_parts = right_raw.split()
 
     if len(left_parts) != 2 or len(right_parts) != 2:
         return JsonResponse({'error': 'Некорректный формат монеты'}, status=400)
@@ -303,11 +310,8 @@ def get_rate_view(request):
 
     if amount:
         try:
-            left_money_obj = resolve_exchange_money(left_parts[0], left_parts[1], deposit=True)
-            right_money_obj = resolve_exchange_money(right_parts[0], right_parts[1], withdraw=True)
-
-            if not left_money_obj or not right_money_obj:
-                return JsonResponse({'error': 'Монета недоступна для обмена'}, status=404)
+            left_money_obj = resolve_exchange_money(left_symbol, left_chain, deposit=True)
+            right_money_obj = resolve_exchange_money(right_symbol, right_chain, withdraw=True)
             fee_swap = Decimal(SiteSetup.objects.first().fee)
             fee_trade = Decimal(Merchant.objects.first().spot_taker_fee)
         except Money.DoesNotExist:

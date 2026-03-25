@@ -14,7 +14,7 @@ class MerchantName(models.TextChoices):
     # GECKO = 'coingecko', 'coingecko.com'
     # CMK = 'coinmarketcap', 'coinmarketcap.com'
     # BYBIT = 'bybit', 'bybit.com'
-    # WHITEBIT = 'whitebit', 'whitebit.com'
+    WHITEBIT = 'whitebit', 'whitebit.com'
 
 
 class OrderType(models.TextChoices):

@@ -32,6 +32,18 @@
                     <th scope="row">К получению:</th>
                     <td>{{ order.right_count }}</td>
                 </tr>
+                {% if order.exchange_address %}
+                    <tr class="table-success">
+                        <th scope="row">Адрес обменника для перевода:</th>
+                        <td class="text-break"><strong>{{ order.exchange_address }}</strong></td>
+                    </tr>
+                {% endif %}
+                {% if order.exchange_memo %}
+                    <tr class="table-success">
+                        <th scope="row">Memo / Tag обменника:</th>
+                        <td><strong>{{ order.exchange_memo }}</strong></td>
+                    </tr>
+                {% endif %}
                 <tr>
                     <th scope="row">Ваш адрес:</th>
                     <td>{{ order.client_address }}</td>
