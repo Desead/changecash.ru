@@ -1,4 +1,5 @@
 from decimal import Decimal, InvalidOperation
+import logging
 
 from django.contrib import messages
 from django.contrib.auth import login
@@ -20,6 +21,9 @@ from .forms import ExchangeForm, SignUpForm
 from .models import Money, Merchant, Order, PartnerAccrual, RateMoney, SiteDocument, SiteSetup, UserProfile
 from .utils import OrderName
 from lp.whitebit import WhiteBITAPIError, WhiteBITConfigurationError, get_whitebit_deposit_details
+
+
+logger = logging.getLogger(__name__)
 
 
 def _get_rate_record(left_symbol: str, right_symbol: str):
@@ -264,14 +268,15 @@ class ExchangeHomeView(FormView):
             try:
                 deposit_details = get_whitebit_deposit_details(cleaned['left_money'])
             except (WhiteBITConfigurationError, WhiteBITAPIError) as exc:
-                form.add_error(None, str(exc))
-                return self.form_invalid(form)
-
-            order_kwargs.update({
-                'left_lp': MerchantName.WHITEBIT,
-                'exchange_address': deposit_details['address'],
-                'exchange_memo': deposit_details['memo'],
-            })
+                logger.warning('WhiteBIT deposit address unavailable: %s', exc)
+            except Exception:
+                logger.exception('Unexpected WhiteBIT deposit address error')
+            else:
+                order_kwargs.update({
+                    'left_lp': MerchantName.WHITEBIT,
+                    'exchange_address': deposit_details.get('address', ''),
+                    'exchange_memo': deposit_details.get('memo', ''),
+                })
 
         order = Order.objects.create(**order_kwargs)
 
