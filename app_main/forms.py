@@ -1,6 +1,12 @@
-from django import forms
-from .models import Money
 from decimal import Decimal
+
+from django import forms
+from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import UserCreationForm
+
+from .models import Money
+
+User = get_user_model()
 
 
 class ExchangeForm(forms.Form):
@@ -60,6 +66,28 @@ class ExchangeForm(forms.Form):
     def clean(self):
         cleaned_data = super().clean()
         return cleaned_data
+
+
+class SignUpForm(UserCreationForm):
+    email = forms.EmailField(required=True, label='Email')
+    referral_code = forms.CharField(required=False, widget=forms.HiddenInput())
+
+    class Meta(UserCreationForm.Meta):
+        model = User
+        fields = ('username', 'email')
+
+    def clean_email(self):
+        email = self.cleaned_data['email'].strip().lower()
+        if User.objects.filter(email__iexact=email).exists():
+            raise forms.ValidationError('Пользователь с таким email уже существует.')
+        return email
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.email = self.cleaned_data['email']
+        if commit:
+            user.save()
+        return user
 
 
 class ExchangeConfirmForm(forms.Form):

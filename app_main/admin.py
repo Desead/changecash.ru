@@ -1,5 +1,5 @@
 from django.contrib import admin
-from app_main.models import Merchant, Money, SiteSetup, RateMoney, Order, SiteDocument
+from app_main.models import Merchant, Money, SiteSetup, RateMoney, Order, SiteDocument, UserProfile
 from lp.getmoney import GetMoney
 
 admin.site.site_title = 'Настройки'
@@ -138,14 +138,26 @@ class RateMoneyAdmin(admin.ModelAdmin):
     list_display = ('money_left', 'money_right', 'rate_ask', 'rate_bid', 'updated_rate',)
 
 
+@admin.register(UserProfile)
+class UserProfileAdmin(admin.ModelAdmin):
+    save_on_top = True
+    search_fields = ('user__username', 'user__email', 'referral_code')
+    list_display = ('user', 'referral_code', 'referrer', 'partner_balance', 'partner_total_earned', 'created_at')
+    readonly_fields = ('created_at',)
+    autocomplete_fields = ('user', 'referrer')
+
+
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     save_on_top = True
-    list_display = ('number','status','time_created','formatted_left_count','left_money','left_chain','formatted_right_count','right_money','right_chain',)
+    list_display = ('number', 'user', 'status', 'time_created', 'formatted_left_count', 'left_money', 'left_chain', 'formatted_right_count', 'right_money', 'right_chain',)
+    list_filter = ('status', 'user')
+    search_fields = ('number', 'user__username', 'client_address', 'exchange_address')
+    autocomplete_fields = ('user',)
     readonly_fields = ('number', 'time_created', 'time_final')
     fieldsets = (
         ("Основная информация", {
-            'fields': ('number', 'status', ('time_created', 'time_final'),),
+            'fields': ('number', 'user', 'status', ('time_created', 'time_final'),),
             'classes': ('wide',),
         }),
         ("Монета слева", {

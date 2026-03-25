@@ -1,4 +1,6 @@
 from django.db import models
+import secrets
+import string
 from django.core.cache import cache
 from app_main.choices import MoneyType, MerchantName, OrderStatus, DocumentType
 from django.utils import timezone
@@ -7,6 +9,7 @@ from django.conf import settings
 from pathlib import Path
 from app_main.utils import OrderName
 from django.templatetags.static import static
+from django.contrib.auth import get_user_model
 from django_ckeditor_5.fields import CKEditor5Field
 
 MAX_DIGITS = 30  # общее количество цифр
@@ -19,9 +22,61 @@ def validate_image_size(image):
         raise ValidationError("Иконка слишком большая (максимум 300KB)")
 
 
+User = get_user_model()
+
+
+def generate_referral_code(length=10):
+    alphabet = string.ascii_uppercase + string.digits
+    while True:
+        code = ''.join(secrets.choice(alphabet) for _ in range(length))
+        if not UserProfile.objects.filter(referral_code=code).exists():
+            return code
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='profile',
+        verbose_name='Пользователь',
+    )
+    referral_code = models.CharField('Реферальный код', max_length=32, unique=True, blank=True)
+    referrer = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='referred_users',
+        verbose_name='Кто пригласил',
+    )
+    partner_balance = models.DecimalField('Партнёрский баланс', max_digits=MAX_DIGITS, decimal_places=DECIMAL_PLACES, default=0)
+    partner_total_earned = models.DecimalField('Всего заработано по партнёрке', max_digits=MAX_DIGITS, decimal_places=DECIMAL_PLACES, default=0)
+    created_at = models.DateTimeField('Создан', auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Профиль пользователя'
+        verbose_name_plural = '0 Профили пользователей'
+
+    def __str__(self):
+        return self.user.username
+
+    def save(self, *args, **kwargs):
+        if not self.referral_code:
+            self.referral_code = generate_referral_code()
+        super().save(*args, **kwargs)
+
+
 class Order(models.Model):
     number = models.CharField('Номер заявки', max_length=100, editable=False, unique=True)
     status = models.CharField('Статус заявки', max_length=100, choices=OrderStatus.choices, default=OrderStatus.NEW)
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='orders',
+        verbose_name='Пользователь',
+    )
 
     time_created = models.DateTimeField('Заявка создана', auto_now_add=True)
     time_final = models.DateTimeField('Закрыли заявку', default=timezone.now, editable=False)

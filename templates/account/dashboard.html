@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+    <div>
+        <h1 class="h3 mb-1">Личный кабинет</h1>
+        <div class="text-muted">Здравствуйте, {{ request.user.username }}.</div>
+    </div>
+    <form method="post" action="{% url 'logout' %}" class="m-0">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline-secondary">Выйти</button>
+    </form>
+</div>
+
+<div class="row g-3 mb-4">
+    <div class="col-md-3">
+        <div class="card h-100 shadow-sm border-0">
+            <div class="card-body">
+                <div class="text-muted small mb-1">Всего заявок</div>
+                <div class="fs-3 fw-semibold">{{ orders_total }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card h-100 shadow-sm border-0">
+            <div class="card-body">
+                <div class="text-muted small mb-1">В работе</div>
+                <div class="fs-3 fw-semibold">{{ orders_in_progress }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card h-100 shadow-sm border-0">
+            <div class="card-body">
+                <div class="text-muted small mb-1">Закрыто</div>
+                <div class="fs-3 fw-semibold">{{ orders_closed }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card h-100 shadow-sm border-0">
+            <div class="card-body">
+                <div class="text-muted small mb-1">Партнёрский доход</div>
+                <div class="fs-3 fw-semibold">{{ profile.partner_total_earned }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="card shadow-sm border-0 h-100">
+            <div class="card-body">
+                <h2 class="h5 mb-3">Партнёрная ссылка</h2>
+                <div class="text-muted small mb-2">Ваш код: <strong>{{ profile.referral_code }}</strong></div>
+                <input type="text" class="form-control" value="{{ referral_url }}" readonly>
+                {% if profile.referrer %}
+                    <div class="small text-muted mt-3">Вас пригласил пользователь: <strong>{{ profile.referrer.username }}</strong></div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card shadow-sm border-0 h-100">
+            <div class="card-body">
+                <h2 class="h5 mb-3">Партнёрный баланс</h2>
+                <div class="mb-2">Доступно: <strong>{{ profile.partner_balance }}</strong></div>
+                <div>Всего заработано: <strong>{{ profile.partner_total_earned }}</strong></div>
+                <div class="small text-muted mt-3">Начисления появятся здесь после закрытия реферальных заявок.</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card shadow-sm border-0">
+    <div class="card-body">
+        <h2 class="h5 mb-3">История обменов</h2>
+        {% if orders %}
+            <div class="table-responsive">
+                <table class="table align-middle">
+                    <thead>
+                    <tr>
+                        <th>Номер</th>
+                        <th>Дата</th>
+                        <th>Отдаёте</th>
+                        <th>Получаете</th>
+                        <th>Статус</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for order in orders %}
+                        <tr>
+                            <td><strong>{{ order.number }}</strong></td>
+                            <td>{{ order.time_created|date:'d.m.Y H:i' }}</td>
+                            <td>{{ order.left_count }} {{ order.left_money }} {{ order.left_chain }}</td>
+                            <td>{{ order.right_count }} {{ order.right_money }} {{ order.right_chain }}</td>
+                            <td>
+                                {% if order.status == 'closed' %}
+                                    <span class="badge text-bg-success">{{ order.get_status_display }}</span>
+                                {% elif order.status == 'cancelled' %}
+                                    <span class="badge text-bg-danger">{{ order.get_status_display }}</span>
+                                {% elif order.status == 'in_progress' %}
+                                    <span class="badge text-bg-warning">{{ order.get_status_display }}</span>
+                                {% else %}
+                                    <span class="badge text-bg-secondary">{{ order.get_status_display }}</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="alert alert-light border mb-0">У вас пока нет заявок. После авторизованного обмена они появятся здесь.</div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

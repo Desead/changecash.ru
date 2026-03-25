@@ -1,20 +1,22 @@
-from django.views.decorators.http import require_GET
-from django.views.decorators.cache import cache_page
-from django.shortcuts import render, get_object_or_404, redirect
-from django.urls import reverse
+from decimal import Decimal, InvalidOperation
+
 from django.contrib import messages
-from django.views import View
+from django.contrib.auth import login
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import LoginView, LogoutView
+from django.db.models import Q
 from django.http import HttpResponseRedirect, JsonResponse
-from django.views.generic import FormView, DetailView, TemplateView
-from django.urls import reverse_lazy
+from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse, reverse_lazy
+from django.views import View
+from django.views.decorators.cache import cache_page
+from django.views.decorators.http import require_GET
+from django.views.generic import DetailView, FormView, TemplateView
 
 from .choices import OrderStatus
 from .decorators import ratelimit_ip
-from .models import Money, RateMoney, Order, SiteSetup, SiteDocument, Merchant
-from .forms import ExchangeForm
-from decimal import Decimal, InvalidOperation
-from django.db.models import Q
-
+from .forms import ExchangeForm, SignUpForm
+from .models import Money, Merchant, Order, RateMoney, SiteDocument, SiteSetup, UserProfile
 from .utils import OrderName
 
 
@@ -24,11 +26,11 @@ class ExchangeHomeView(FormView):
     success_url = reverse_lazy('exchange_confirm')
 
     def form_valid(self, form):
-        # Сохраняем данные в сессию
         cleaned = form.cleaned_data
 
         order = Order.objects.create(
             number=OrderName.create_order_name(),
+            user=self.request.user if self.request.user.is_authenticated else None,
             left_money=str(cleaned['left_money'].name_short),
             left_chain=str(cleaned['left_money'].chain_long),
             right_money=str(cleaned['right_money'].name_short),
@@ -43,7 +45,7 @@ class ExchangeHomeView(FormView):
         return redirect('exchange_confirm')
 
     def form_invalid(self, form):
-        messages.error(self.request, "Пожалуйста, исправьте ошибки в форме.")
+        messages.error(self.request, 'Пожалуйста, исправьте ошибки в форме.')
         return super().form_invalid(form)
 
     def get_context_data(self, **kwargs):
@@ -52,29 +54,100 @@ class ExchangeHomeView(FormView):
         return context
 
 
+class CustomLoginView(LoginView):
+    template_name = 'account/login.html'
+    redirect_authenticated_user = True
+
+    def get_success_url(self):
+        return self.get_redirect_url() or reverse_lazy('account_dashboard')
+
+
+class CustomLogoutView(LogoutView):
+    next_page = reverse_lazy('exchange_home')
+
+
+class SignUpView(FormView):
+    template_name = 'account/register.html'
+    form_class = SignUpForm
+    success_url = reverse_lazy('account_dashboard')
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect('account_dashboard')
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_initial(self):
+        initial = super().get_initial()
+        ref_code = self.request.GET.get('ref', '').strip()
+        if ref_code:
+            initial['referral_code'] = ref_code
+        return initial
+
+    def form_valid(self, form):
+        user = form.save()
+        profile, _ = UserProfile.objects.get_or_create(user=user)
+
+        ref_code = form.cleaned_data.get('referral_code', '').strip()
+        if ref_code:
+            referrer_profile = UserProfile.objects.select_related('user').filter(
+                referral_code__iexact=ref_code
+            ).first()
+            if referrer_profile and referrer_profile.user_id != user.id:
+                profile.referrer = referrer_profile.user
+                profile.save(update_fields=['referrer'])
+
+        login(self.request, user)
+        return redirect(self.success_url)
+
+
+class UserDashboardView(LoginRequiredMixin, TemplateView):
+    template_name = 'account/dashboard.html'
+    login_url = reverse_lazy('login')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        profile, _ = UserProfile.objects.get_or_create(user=self.request.user)
+        orders_qs = self.request.user.orders.order_by('-time_created')
+
+        context.update({
+            'profile': profile,
+            'orders': orders_qs[:50],
+            'orders_total': orders_qs.count(),
+            'orders_in_progress': orders_qs.filter(status=OrderStatus.IN_PROGRESS).count(),
+            'orders_closed': orders_qs.filter(status=OrderStatus.CLOSED).count(),
+            'orders_cancelled': orders_qs.filter(status=OrderStatus.CANCELLED).count(),
+            'referral_url': self.request.build_absolute_uri(
+                f"{reverse('signup')}?ref={profile.referral_code}"
+            ),
+        })
+        return context
+
+
 class ExchangeConfirmView(View):
     def get(self, request):
-        order_id = request.session.get("order_id")
+        order_id = request.session.get('order_id')
         order = get_object_or_404(Order, id=order_id)
-        return render(request, 'app_main/templates/app_main/confirm.html', {"order": order})
+        return render(request, 'app_main/templates/app_main/confirm.html', {'order': order})
 
     def post(self, request):
-        order_id = request.session.get("order_id")
+        order_id = request.session.get('order_id')
         order = get_object_or_404(Order, id=order_id)
-        action = request.POST.get("action")
+        action = request.POST.get('action')
 
-        if action == "cancel":
+        if action == 'cancel':
             order.status = OrderStatus.CANCELLED
             order.save()
-            return redirect("exchange_home")
+            return redirect('exchange_home')
 
-        if action == "confirm":
+        if action == 'confirm':
             order.status = OrderStatus.IN_PROGRESS
             order.save()
             return render(request, 'app_main/templates/app_main/confirm.html', {
-                "order": order,
-                "confirmed": True,
+                'order': order,
+                'confirmed': True,
             })
+
+        return redirect('exchange_confirm')
 
 
 class ExchangeFinalizeView(View):
@@ -90,7 +163,6 @@ class ExchangeFinalizeView(View):
         except Exception:
             return render(request, 'errors/error.html', {'message': 'Ошибка оформления заявки'})
 
-        # Пример: создать заявку
         order = Order.objects.create(
             from_money=from_money,
             to_money=to_money,
@@ -113,35 +185,28 @@ class SiteDocumentDetailView(DetailView):
             return HttpResponseRedirect(reverse('exchange_home'))
 
 
-'''
-пример запроса
-http://127.0.0.1:8000/api/get-rate/?left=BTC%20Bitcoin&right=USDT%20TRC20&amount=0.005
-'''
-
-
 @require_GET
-@cache_page(3)  # кэш
+@cache_page(3)
 @ratelimit_ip(rate='10/s', block=True)
 def get_rate_view(request):
     if getattr(request, 'limited', False):
         return JsonResponse({
-            "error": "Слишком много запросов. Пожалуйста, подождите.",
-            "code": 429
+            'error': 'Слишком много запросов. Пожалуйста, подождите.',
+            'code': 429
         }, status=429)
 
-    # Далее — логика получения курсов
-    left_raw = request.GET.get("left", "").strip()
-    right_raw = request.GET.get("right", "").strip()
-    amount_raw = request.GET.get("amount", "").strip()
+    left_raw = request.GET.get('left', '').strip()
+    right_raw = request.GET.get('right', '').strip()
+    amount_raw = request.GET.get('amount', '').strip()
 
     if not left_raw or not right_raw:
-        return JsonResponse({"error": "Параметры монет не заданы"}, status=400)
+        return JsonResponse({'error': 'Параметры монет не заданы'}, status=400)
 
     left_parts = left_raw.split()
     right_parts = right_raw.split()
 
     if len(left_parts) != 2 or len(right_parts) != 2:
-        return JsonResponse({"error": "Некорректный формат монеты"}, status=400)
+        return JsonResponse({'error': 'Некорректный формат монеты'}, status=400)
 
     left_symbol = left_parts[0]
     right_symbol = right_parts[0]
@@ -151,82 +216,78 @@ def get_rate_view(request):
     except (InvalidOperation, ValueError):
         amount = None
 
-    # Основной блок получения курса
-    fee_trade_multy = Decimal("1")
+    fee_trade_multy = Decimal('1')
     try:
-        if left_symbol == "USDT":
+        if left_symbol == 'USDT':
             try:
-                rate = RateMoney.objects.get(money_left="USDT", money_right=right_symbol)
+                rate = RateMoney.objects.get(money_left='USDT', money_right=right_symbol)
                 rate_value = rate.rate_bid
             except RateMoney.DoesNotExist:
-                rate = RateMoney.objects.get(money_left=right_symbol, money_right="USDT")
+                rate = RateMoney.objects.get(money_left=right_symbol, money_right='USDT')
                 if rate.rate_bid == 0:
                     raise ZeroDivisionError
-                rate_value = Decimal("1") / rate.rate_bid
+                rate_value = Decimal('1') / rate.rate_bid
 
-        elif right_symbol == "USDT":
+        elif right_symbol == 'USDT':
             try:
-                rate = RateMoney.objects.get(money_left=left_symbol, money_right="USDT")
+                rate = RateMoney.objects.get(money_left=left_symbol, money_right='USDT')
                 rate_value = rate.rate_bid
             except RateMoney.DoesNotExist:
-                rate = RateMoney.objects.get(money_left="USDT", money_right=left_symbol)
+                rate = RateMoney.objects.get(money_left='USDT', money_right=left_symbol)
                 if rate.rate_bid == 0:
                     raise ZeroDivisionError
-                rate_value = Decimal("1") / rate.rate_bid
+                rate_value = Decimal('1') / rate.rate_bid
 
         else:
-            # Кросс-курс через USDT
-            fee_trade_multy = Decimal("2")
+            fee_trade_multy = Decimal('2')
             try:
-                rate_left = RateMoney.objects.get(money_left=left_symbol, money_right="USDT")
+                rate_left = RateMoney.objects.get(money_left=left_symbol, money_right='USDT')
                 left_rate = rate_left.rate_bid
             except RateMoney.DoesNotExist:
-                rate_left = RateMoney.objects.get(money_left="USDT", money_right=left_symbol)
+                rate_left = RateMoney.objects.get(money_left='USDT', money_right=left_symbol)
                 if rate_left.rate_bid == 0:
                     raise ZeroDivisionError
-                left_rate = Decimal("1") / rate_left.rate_bid
+                left_rate = Decimal('1') / rate_left.rate_bid
 
             try:
-                rate_right = RateMoney.objects.get(money_left=right_symbol, money_right="USDT")
+                rate_right = RateMoney.objects.get(money_left=right_symbol, money_right='USDT')
                 right_rate = rate_right.rate_bid
             except RateMoney.DoesNotExist:
-                rate_right = RateMoney.objects.get(money_left="USDT", money_right=right_symbol)
+                rate_right = RateMoney.objects.get(money_left='USDT', money_right=right_symbol)
                 if rate_right.rate_bid == 0:
                     raise ZeroDivisionError
-                right_rate = Decimal("1") / rate_right.rate_bid
+                right_rate = Decimal('1') / rate_right.rate_bid
 
             if left_rate == 0 or right_rate == 0:
-                return JsonResponse({"error": "Ошибка кросс-курса (0)"}, status=400)
+                return JsonResponse({'error': 'Ошибка кросс-курса (0)'}, status=400)
 
             rate_value = left_rate / right_rate
 
     except RateMoney.DoesNotExist:
-        return JsonResponse({"error": "Одна из монет не имеет курса к USDT"}, status=404)
+        return JsonResponse({'error': 'Одна из монет не имеет курса к USDT'}, status=404)
     except ZeroDivisionError:
-        return JsonResponse({"error": "Ошибка деления на 0"}, status=400)
+        return JsonResponse({'error': 'Ошибка деления на 0'}, status=400)
 
-    # Финальный ответ
     response_data = {
-        "rate": f"{rate_value:.8f}",
-        "cached": False
+        'rate': f'{rate_value:.8f}',
+        'cached': False
     }
 
     if amount:
-        # 1. Получаем комиссии
         try:
             left_money_obj = Money.objects.get(name_short=left_parts[0], chain_long=left_parts[1])
             right_money_obj = Money.objects.get(name_short=right_parts[0], chain_long=right_parts[1])
             fee_swap = Decimal(SiteSetup.objects.first().fee)
             fee_trade = Decimal(Merchant.objects.first().spot_taker_fee)
         except Money.DoesNotExist:
-            return JsonResponse({"error": "Монета не найдена в базе"}, status=404)
+            return JsonResponse({'error': 'Монета не найдена в базе'}, status=404)
         except SiteSetup.DoesNotExist:
             fee_swap = 0
         except Merchant.DoesNotExist:
             fee_trade = 0
 
-        fee_deposit = Decimal(left_money_obj.fee_deposit_fix) or Decimal("0")
-        fee_withdraw = Decimal(right_money_obj.fee_withdraw_fix) or Decimal("0")
+        fee_deposit = Decimal(left_money_obj.fee_deposit_fix) or Decimal('0')
+        fee_withdraw = Decimal(right_money_obj.fee_withdraw_fix) or Decimal('0')
 
         try:
             fee_swap = Decimal(fee_swap)
@@ -237,12 +298,11 @@ def get_rate_view(request):
         except (InvalidOperation, ValueError):
             fee_trade = 0
 
-        # 2. Рассчитываем итоговые значения
         amount_in = amount.quantize(Decimal('1.00000000'))
         amount_net = amount - fee_deposit
 
         if amount_net < 0:
-            amount_net = Decimal("0")
+            amount_net = Decimal('0')
 
         amount_out_raw = amount_net * rate_value
         amount_out = amount_out_raw * (100 - fee_trade * fee_trade_multy) / 100
@@ -250,20 +310,19 @@ def get_rate_view(request):
         amount_out = amount_out - fee_withdraw
 
         if amount_out < 0:
-            amount_out = Decimal("0")
+            amount_out = Decimal('0')
 
         response_data.update({
-            "amount_in": str(amount_in),
-            "amount_out": str(amount_out.quantize(Decimal('1.00000000'))),
-            "fee_deposit": str(fee_deposit),
-            "fee_withdraw": str(fee_withdraw),
-
-            "min_deposit": str(left_money_obj.min_deposit),
-            "min_withdraw": str(right_money_obj.min_withdraw),
-            "fee_deposit_per": str(left_money_obj.fee_deposit_per or 0),
-            "fee_withdraw_per": str(right_money_obj.fee_withdraw_per or 0),
-            "confirm_deposit": left_money_obj.confirm_deposit,
-            "confirm_withdraw": right_money_obj.confirm_withdraw,
+            'amount_in': str(amount_in),
+            'amount_out': str(amount_out.quantize(Decimal('1.00000000'))),
+            'fee_deposit': str(fee_deposit),
+            'fee_withdraw': str(fee_withdraw),
+            'min_deposit': str(left_money_obj.min_deposit),
+            'min_withdraw': str(right_money_obj.min_withdraw),
+            'fee_deposit_per': str(left_money_obj.fee_deposit_per or 0),
+            'fee_withdraw_per': str(right_money_obj.fee_withdraw_per or 0),
+            'confirm_deposit': left_money_obj.confirm_deposit,
+            'confirm_withdraw': right_money_obj.confirm_withdraw,
         })
 
     return JsonResponse(response_data)
@@ -306,24 +365,24 @@ def popular_rates_view(request):
 
 @require_GET
 def get_limits_view(request):
-    left_id = request.GET.get("left_id")
-    right_id = request.GET.get("right_id")
+    left_id = request.GET.get('left_id')
+    right_id = request.GET.get('right_id')
 
     if not left_id or not right_id:
-        return JsonResponse({"error": "Не переданы ID монет"}, status=400)
+        return JsonResponse({'error': 'Не переданы ID монет'}, status=400)
 
     try:
         left_money = Money.objects.get(id=left_id)
         right_money = Money.objects.get(id=right_id)
     except Money.DoesNotExist:
-        return JsonResponse({"error": "Монета не найдена"}, status=404)
+        return JsonResponse({'error': 'Монета не найдена'}, status=404)
 
     min_left = left_money.min_deposit + left_money.fee_deposit_fix
     min_right = right_money.min_withdraw + right_money.fee_withdraw_fix
 
     return JsonResponse({
-        "min_left": str(min_left),
-        "left_code": f"{left_money.name_short} {left_money.chain_short}",
-        "min_right": str(min_right),
-        "right_code": f"{right_money.name_short} {right_money.chain_short}",
+        'min_left': str(min_left),
+        'left_code': f'{left_money.name_short} {left_money.chain_short}',
+        'min_right': str(min_right),
+        'right_code': f'{right_money.name_short} {right_money.chain_short}',
     })
