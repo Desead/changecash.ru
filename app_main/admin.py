@@ -64,8 +64,9 @@ class Moneyadmin(admin.ModelAdmin):
     list_filter = ('money_type', 'merchant', 'adeposit', 'awithdraw', 'deposit', 'withdraw')
     actions = ('delete_money', 'deposit_money_yes', 'deposit_money_no', 'withdraw_money_yes', 'withdraw_money_no', 'all_yes', 'all_no',)
     autocomplete_fields = ("merchant",)
-    list_display = ('name_short', 'chain_long', 'money_type', 'merchant', 'adeposit', 'awithdraw', 'deposit', 'withdraw', 'min_deposit', 'min_withdraw',)
-    list_editable = ('deposit', 'withdraw',)
+    list_display = ('name_short', 'chain_long', 'money_type', 'merchant', 'adeposit', 'awithdraw', 'deposit', 'withdraw', 'min_withdraw',
+                    'reserv')
+    list_editable = ('deposit', 'withdraw', 'reserv',)
 
     @admin.action(description='Быстрое удаление монет')
     def delete_money(self, request, queryset):
@@ -153,7 +154,7 @@ class SiteSetupAdmin(admin.ModelAdmin):
         }),
         ("Текст для подтверждения заявки", {
             'classes': ('collapse',),
-            'fields': ('content', )
+            'fields': ('content',)
         }),
     )
 
@@ -174,12 +175,11 @@ class UserProfileAdmin(admin.ModelAdmin):
     autocomplete_fields = ('user', 'referrer')
 
 
-
-
 @admin.register(PartnerAccrual)
 class PartnerAccrualAdmin(admin.ModelAdmin):
     save_on_top = True
-    list_display = ('created_at', 'partner_user', 'referred_user', 'order', 'source_amount', 'source_currency', 'source_amount_usdt', 'percent', 'reward_amount')
+    list_display = ('created_at', 'partner_user', 'referred_user', 'order', 'source_amount', 'source_currency', 'source_amount_usdt', 'percent',
+                    'reward_amount')
     search_fields = ('partner_user__username', 'referred_user__username', 'order__number')
     autocomplete_fields = ('partner_user', 'referred_user', 'order')
     readonly_fields = ('created_at',)
@@ -188,7 +188,8 @@ class PartnerAccrualAdmin(admin.ModelAdmin):
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     save_on_top = True
-    list_display = ('number', 'user', 'status', 'time_created', 'formatted_left_count', 'left_money', 'left_chain', 'formatted_right_count', 'right_money', 'right_chain',)
+    list_display = ('number', 'user', 'status', 'time_created', 'formatted_left_count', 'left_money', 'left_chain', 'formatted_right_count', 'right_money',
+                    'right_chain',)
     list_filter = ('status', 'user')
     search_fields = ('number', 'user__username', 'client_address', 'exchange_address')
     autocomplete_fields = ('user',)
@@ -203,7 +204,7 @@ class OrderAdmin(admin.ModelAdmin):
             'classes': ('collapse',),
         }),
         ("Монета справа", {
-            'fields': ('right_money', 'right_chain', 'right_lp',  'right_count'),
+            'fields': ('right_money', 'right_chain', 'right_lp', 'right_count'),
             'classes': ('collapse',),
         }),
         ("Данные клиента", {
@@ -227,12 +228,15 @@ class OrderAdmin(admin.ModelAdmin):
             'classes': ('collapse',),
         }),
     )
+
     def formatted_left_count(self, obj):
         return self._format_decimal(obj.left_count)
+
     formatted_left_count.short_description = 'Получаем'
 
     def formatted_right_count(self, obj):
         return self._format_decimal(obj.right_count)
+
     formatted_right_count.short_description = 'Отдаём'
 
     def _format_decimal(self, value):
@@ -244,6 +248,7 @@ class OrderAdmin(admin.ModelAdmin):
         elif len(s.split('.')[-1]) == 1:
             s += '0'
         return s
+
 
 @admin.register(SiteDocument)
 class SiteDocumentAdmin(admin.ModelAdmin):

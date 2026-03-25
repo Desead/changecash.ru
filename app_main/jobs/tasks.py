@@ -4,7 +4,7 @@ def update_crypto_prices():
     from app_main.choices import MerchantName
     from app_main.models import RateMoney, Merchant
 
-    print(f"Updating Crypto Prices")
+    print(f"Updating Rapira Prices")
 
     try:
         url = "https://api.rapira.net/open/market/rates"

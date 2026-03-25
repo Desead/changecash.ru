@@ -123,6 +123,45 @@ def _collect_xml_money(*, for_deposit: bool = False, for_withdraw: bool = False)
     return result
 
 
+def _build_xml_rate_pair(left_money_obj: Money, right_money_obj: Money) -> tuple[Decimal, Decimal, Decimal, Decimal]:
+    left_symbol = (left_money_obj.name_short or '').strip().upper()
+    right_symbol = (right_money_obj.name_short or '').strip().upper()
+
+    left_rate = get_rate_to_usdt(left_symbol)
+    right_rate = get_rate_to_usdt(right_symbol)
+    if left_rate <= 0 or right_rate <= 0:
+        raise ZeroDivisionError
+
+    return right_rate, left_rate, left_rate, right_rate
+
+
+def _build_xml_min_amount(
+    left_money_obj: Money,
+    right_money_obj: Money,
+    nominal_in: Decimal,
+    amount_out: Decimal,
+    left_rate_usdt: Decimal,
+) -> Decimal:
+    candidates: list[Decimal] = []
+
+    for raw_value in (left_money_obj.min_deposit, left_money_obj.min_trade):
+        value = Decimal(str(raw_value or 0))
+        if value > 0:
+            candidates.append(value)
+
+    min_trade_usdt = Decimal(str(left_money_obj.min_trade_usdt or 0))
+    if min_trade_usdt > 0 and left_rate_usdt > 0:
+        candidates.append(min_trade_usdt / left_rate_usdt)
+
+    right_min_withdraw = Decimal(str(right_money_obj.min_withdraw or 0))
+    if right_min_withdraw > 0 and amount_out > 0:
+        candidates.append(right_min_withdraw * nominal_in / amount_out)
+
+    if not candidates:
+        return nominal_in if nominal_in > 0 else Decimal('1')
+    return max(candidates)
+
+
 def build_xml_export_bytes() -> bytes:
     root = ET.Element('rates')
 
@@ -134,38 +173,27 @@ def build_xml_export_bytes() -> bytes:
     withdraw_money = _collect_xml_money(for_withdraw=True)
 
     for from_code, left_money_obj in deposit_money.items():
-        nominal_in = Decimal(str(left_money_obj.nominal or 1))
-        if nominal_in <= 0:
-            nominal_in = Decimal('1')
-
         for to_code, right_money_obj in withdraw_money.items():
             if from_code == to_code:
                 continue
 
             try:
-                calc = _calculate_exchange_amounts(left_money_obj, right_money_obj, nominal_in)
+                nominal_in, amount_out, left_rate_usdt, _right_rate_usdt = _build_xml_rate_pair(left_money_obj, right_money_obj)
             except (RateMoney.DoesNotExist, ZeroDivisionError, InvalidOperation):
                 continue
 
-            amount_out = Decimal(str(calc['amount_out'] or 0))
-            if amount_out <= 0:
+            if nominal_in <= 0 or amount_out <= 0:
                 continue
 
             reserve = Decimal(str(right_money_obj.reserv or 0))
-            if reserve <= 0:
-                continue
-
-            min_amount = Decimal(str(left_money_obj.min_trade or 0))
-            if min_amount <= 0:
-                min_amount = Decimal(str(left_money_obj.min_deposit or 0))
-            if min_amount <= 0:
-                min_amount = nominal_in
-
+            min_amount = _build_xml_min_amount(
+                left_money_obj=left_money_obj,
+                right_money_obj=right_money_obj,
+                nominal_in=nominal_in,
+                amount_out=amount_out,
+                left_rate_usdt=left_rate_usdt,
+            )
             max_amount = Decimal(str(left_money_obj.max_trade or 0))
-            if max_amount <= 0:
-                out_per_unit = amount_out / nominal_in if nominal_in else Decimal('0')
-                if out_per_unit > 0:
-                    max_amount = reserve / out_per_unit
 
             if max_amount > 0 and min_amount > max_amount:
                 continue
@@ -175,7 +203,8 @@ def build_xml_export_bytes() -> bytes:
             ET.SubElement(item, 'to').text = to_code
             ET.SubElement(item, 'in').text = _decimal_to_xml(nominal_in)
             ET.SubElement(item, 'out').text = _decimal_to_xml(amount_out)
-            ET.SubElement(item, 'amount').text = _decimal_to_xml(reserve)
+            if reserve > 0:
+                ET.SubElement(item, 'amount').text = _decimal_to_xml(reserve)
             ET.SubElement(item, 'minamount').text = _decimal_to_xml(min_amount)
             ET.SubElement(item, 'maxamount').text = _decimal_to_xml(max_amount)
 
