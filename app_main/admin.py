@@ -16,12 +16,39 @@ class MerchantAdmin(admin.ModelAdmin):
 
     @admin.action(description='Загрузить все монеты')
     def get_merchant_money(self, request, queryset):
+        total_created = 0
+        total_updated = 0
+
         for obj in queryset:
             all_money = GetMoney(obj).get_money()
 
-            if all_money:
-                instances = [Money(**data) for data in all_money]
-                Money.objects.bulk_create(instances)
+            if not isinstance(all_money, list):
+                self.message_user(request, f"Ошибка загрузки монет для {obj}: {all_money}")
+                continue
+
+            for data in all_money:
+                lookup = {
+                    'merchant': data['merchant'],
+                    'money_type': data['money_type'],
+                    'name_short': data['name_short'],
+                    'chain_long': data.get('chain_long'),
+                }
+                defaults = data.copy()
+                defaults.pop('merchant', None)
+                defaults.pop('money_type', None)
+                defaults.pop('name_short', None)
+                defaults.pop('chain_long', None)
+
+                _, created = Money.objects.update_or_create(
+                    **lookup,
+                    defaults=defaults,
+                )
+                if created:
+                    total_created += 1
+                else:
+                    total_updated += 1
+
+        self.message_user(request, f"Загрузка монет завершена: создано {total_created}, обновлено {total_updated}")
 
     @admin.action(description='Быстрое удаление мерчантов')
     def delete_merchant(self, request, queryset):

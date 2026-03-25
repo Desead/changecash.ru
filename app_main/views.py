@@ -21,6 +21,16 @@ from .utils import OrderName
 from lp.whitebit import WhiteBITAPIError, WhiteBITConfigurationError, get_whitebit_deposit_details
 
 
+def _get_rate_record(left_symbol: str, right_symbol: str):
+    qs = RateMoney.objects.filter(money_left=left_symbol, money_right=right_symbol).select_related('name')
+    if not qs.exists():
+        raise RateMoney.DoesNotExist
+
+    default_rate = qs.filter(name__default_price=True).first()
+    return default_rate or qs.order_by('id').first()
+
+
+
 def get_rate_to_usdt(symbol: str) -> Decimal:
     symbol = (symbol or '').strip().upper()
     if not symbol:
@@ -30,10 +40,10 @@ def get_rate_to_usdt(symbol: str) -> Decimal:
         return Decimal('1')
 
     try:
-        rate = RateMoney.objects.get(money_left=symbol, money_right='USDT')
+        rate = _get_rate_record(symbol, 'USDT')
         return Decimal(str(rate.rate_bid or 0))
     except RateMoney.DoesNotExist:
-        rate = RateMoney.objects.get(money_left='USDT', money_right=symbol)
+        rate = _get_rate_record('USDT', symbol)
         if Decimal(str(rate.rate_bid or 0)) == 0:
             raise ZeroDivisionError
         return Decimal('1') / Decimal(str(rate.rate_bid))
@@ -202,25 +212,8 @@ class ExchangeConfirmView(View):
 
 class ExchangeFinalizeView(View):
     def post(self, request):
-        from_id = request.POST.get('from_money_id')
-        to_id = request.POST.get('to_money_id')
-        amount = request.POST.get('amount')
-
-        try:
-            amount = Decimal(amount)
-            from_money = Money.objects.get(id=from_id)
-            to_money = Money.objects.get(id=to_id)
-        except Exception:
-            return render(request, 'errors/error.html', {'message': 'Ошибка оформления заявки'})
-
-        order = Order.objects.create(
-            from_money=from_money,
-            to_money=to_money,
-            amount_from=amount,
-            status='new'
-        )
-
-        return HttpResponseRedirect(reverse('exchange_success', args=[order.id]))
+        messages.warning(request, 'Маршрут finalize устарел. Используйте стандартную форму обмена на главной странице.')
+        return redirect('exchange_home')
 
 
 class SiteDocumentDetailView(DetailView):
@@ -310,8 +303,6 @@ def get_rate_view(request):
                 return JsonResponse({'error': 'Монета недоступна для обмена'}, status=404)
             fee_swap = Decimal(SiteSetup.objects.first().fee)
             fee_trade = Decimal(Merchant.objects.first().spot_taker_fee)
-        except Money.DoesNotExist:
-            return JsonResponse({'error': 'Монета не найдена в базе'}, status=404)
         except SiteSetup.DoesNotExist:
             fee_swap = 0
         except Merchant.DoesNotExist:
