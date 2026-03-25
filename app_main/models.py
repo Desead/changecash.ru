@@ -57,7 +57,7 @@ class UserProfile(models.Model):
 
     class Meta:
         verbose_name = 'Профиль пользователя'
-        verbose_name_plural = '0 Профили пользователей'
+        verbose_name_plural = '7. Профили пользователей'
 
     def __str__(self):
         return self.user.username
@@ -117,7 +117,7 @@ class PartnerAccrual(models.Model):
 
     class Meta:
         verbose_name = 'Партнёрское начисление'
-        verbose_name_plural = '0 Партнёрские начисления'
+        verbose_name_plural = '2. Партнёрские начисления'
         ordering = ('-created_at',)
 
     def __str__(self):
@@ -167,7 +167,7 @@ class Order(models.Model):
 
     class Meta:
         verbose_name = 'Заявка на обмен'
-        verbose_name_plural = '1 Заявки на обмен'
+        verbose_name_plural = '1. Заявки на обмен'
 
     def __str__(self):
         return self.number
@@ -261,7 +261,7 @@ class RateMoney(models.Model):
 
     class Meta:
         verbose_name = 'Курс монеты'
-        verbose_name_plural = '2 Курсы монеты'
+        verbose_name_plural = '4. Курсы монет'
 
     def __str__(self):
         return f"{self.name} : {self.money_left}: {self.money_right}: {self.rate_bid}"
@@ -311,7 +311,7 @@ class Money(models.Model):
 
     class Meta:
         verbose_name = 'Все монеты, валюты'
-        verbose_name_plural = '3 Все монеты, валюты'
+        verbose_name_plural = '3. Все монеты, валюты'
 
     def __str__(self):
         return f"{self.name_short}/{self.name_long} - {self.chain_short}/{self.chain_long} : {self.merchant.name}"
@@ -369,7 +369,7 @@ class Merchant(models.Model):
 
     class Meta:
         verbose_name = 'Биржа, Мерчант'
-        verbose_name_plural = '4 Биржы, Мерчанты'
+        verbose_name_plural = '5 Биржы, Мерчанты'
 
     def __str__(self):
         return self.name
@@ -417,7 +417,7 @@ class SiteSetup(models.Model):
 
     class Meta:
         verbose_name = 'Настройки обменника'
-        verbose_name_plural = '5 Настройки обменника'
+        verbose_name_plural = '6. Настройки обменника'
 
     def __str__(self):
         if self.name == '': return 'Обменник без имени'
@@ -453,7 +453,7 @@ class SiteDocument(models.Model):
 
     class Meta:
         verbose_name = "Документ"
-        verbose_name_plural = "6 Документы"
+        verbose_name_plural = "8. Документы"
 
     def __str__(self):
         return self.doc_type
