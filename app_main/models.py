@@ -1,4 +1,6 @@
-from django.db import models
+from decimal import Decimal
+
+from django.db import models, transaction
 import secrets
 import string
 from django.core.cache import cache
@@ -66,6 +68,62 @@ class UserProfile(models.Model):
         super().save(*args, **kwargs)
 
 
+class PartnerAccrual(models.Model):
+    partner_user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='partner_accruals',
+        verbose_name='Партнёр',
+    )
+    referred_user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='referral_order_accruals',
+        verbose_name='Приглашённый пользователь',
+    )
+    order = models.OneToOneField(
+        'Order',
+        on_delete=models.CASCADE,
+        related_name='partner_accrual',
+        verbose_name='Заявка',
+    )
+    source_amount = models.DecimalField(
+        'Входящая сумма',
+        max_digits=MAX_DIGITS,
+        decimal_places=DECIMAL_PLACES,
+        default=0,
+    )
+    source_currency = models.CharField('Входящая монета', max_length=100, default='')
+    source_chain = models.CharField('Входящая сеть', max_length=100, default='', blank=True)
+    source_amount_usdt = models.DecimalField(
+        'Входящая сумма в USDT',
+        max_digits=MAX_DIGITS,
+        decimal_places=DECIMAL_PLACES,
+        default=0,
+    )
+    percent = models.DecimalField(
+        'Партнёрский процент',
+        max_digits=10,
+        decimal_places=4,
+        default=0,
+    )
+    reward_amount = models.DecimalField(
+        'Начислено партнёру',
+        max_digits=MAX_DIGITS,
+        decimal_places=DECIMAL_PLACES,
+        default=0,
+    )
+    created_at = models.DateTimeField('Начислено', auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Партнёрское начисление'
+        verbose_name_plural = '0 Партнёрские начисления'
+        ordering = ('-created_at',)
+
+    def __str__(self):
+        return f"{self.partner_user} ← {self.reward_amount} USDT / {self.order.number}"
+
+
 class Order(models.Model):
     number = models.CharField('Номер заявки', max_length=100, editable=False, unique=True)
     status = models.CharField('Статус заявки', max_length=100, choices=OrderStatus.choices, default=OrderStatus.NEW)
@@ -115,6 +173,10 @@ class Order(models.Model):
         return self.number
 
     def save(self, *args, **kwargs):
+        previous_status = None
+        if self.pk:
+            previous_status = Order.objects.filter(pk=self.pk).values_list('status', flat=True).first()
+
         if not self.number:  # создаём уникальный номер заявки
             while True:
                 # todo возможно ли здесь потенциально вечный цикл ?
@@ -123,6 +185,68 @@ class Order(models.Model):
                     self.number = number
                     break
         super().save(*args, **kwargs)
+
+        if self.status == OrderStatus.CLOSED and previous_status != OrderStatus.CLOSED:
+            self.create_partner_accrual()
+
+    def get_partner_percent(self):
+        config = SiteSetup.load()
+        if not config:
+            return Decimal('0')
+        return Decimal(str(config.partner_percent or 0))
+
+    def get_partner_reward_amount(self):
+        percent = self.get_partner_percent()
+        if percent <= 0:
+            return Decimal('0')
+
+        left_count = Decimal(str(self.left_count or 0))
+        left_rate = Decimal(str(self.left_rate or 0))
+        return left_count * left_rate * percent / Decimal('100')
+
+    def create_partner_accrual(self):
+        if not self.user_id:
+            return None
+
+        profile, _ = UserProfile.objects.get_or_create(user=self.user)
+        if not profile.referrer_id:
+            return None
+
+        if hasattr(self, 'partner_accrual'):
+            return self.partner_accrual
+
+        percent = self.get_partner_percent()
+        if percent <= 0:
+            return None
+
+        source_amount = Decimal(str(self.left_count or 0))
+        source_amount_usdt = Decimal(str(self.left_count or 0)) * Decimal(str(self.left_rate or 0))
+        reward_amount = self.get_partner_reward_amount()
+
+        if reward_amount <= 0:
+            return None
+
+        partner_profile, _ = UserProfile.objects.get_or_create(user=profile.referrer)
+
+        with transaction.atomic():
+            accrual, created = PartnerAccrual.objects.get_or_create(
+                order=self,
+                defaults={
+                    'partner_user': profile.referrer,
+                    'referred_user': self.user,
+                    'source_amount': source_amount,
+                    'source_currency': self.left_money,
+                    'source_chain': self.left_chain or '',
+                    'source_amount_usdt': source_amount_usdt,
+                    'percent': percent,
+                    'reward_amount': reward_amount,
+                }
+            )
+            if created:
+                partner_profile.partner_balance = Decimal(str(partner_profile.partner_balance or 0)) + reward_amount
+                partner_profile.partner_total_earned = Decimal(str(partner_profile.partner_total_earned or 0)) + reward_amount
+                partner_profile.save(update_fields=['partner_balance', 'partner_total_earned'])
+            return accrual
 
 
 class RateMoney(models.Model):
@@ -287,6 +411,7 @@ class SiteSetup(models.Model):
 
     xml_link = models.CharField('XML', max_length=100, default='xml_export/', help_text='Адрес для файла экспорта курсов в xml')
     fee = models.FloatField('Комиссия обменника, в %', default='1.00')
+    partner_percent = models.DecimalField('Партнёрский процент, %', max_digits=10, decimal_places=4, default=1)
     content = CKEditor5Field('Текст', config_name="default",
                              default='Благодарим за выбор нашего сервиса! Для завершения обмена просьба написать оператору и договориться на время посещения офиса')
 

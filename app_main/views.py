@@ -16,8 +16,27 @@ from django.views.generic import DetailView, FormView, TemplateView
 from .choices import OrderStatus
 from .decorators import ratelimit_ip
 from .forms import ExchangeForm, SignUpForm
-from .models import Money, Merchant, Order, RateMoney, SiteDocument, SiteSetup, UserProfile
+from .models import Money, Merchant, Order, PartnerAccrual, RateMoney, SiteDocument, SiteSetup, UserProfile
 from .utils import OrderName
+
+
+def get_rate_to_usdt(symbol: str) -> Decimal:
+    symbol = (symbol or '').strip().upper()
+    if not symbol:
+        raise RateMoney.DoesNotExist
+
+    if symbol == 'USDT':
+        return Decimal('1')
+
+    try:
+        rate = RateMoney.objects.get(money_left=symbol, money_right='USDT')
+        return Decimal(str(rate.rate_bid or 0))
+    except RateMoney.DoesNotExist:
+        rate = RateMoney.objects.get(money_left='USDT', money_right=symbol)
+        if Decimal(str(rate.rate_bid or 0)) == 0:
+            raise ZeroDivisionError
+        return Decimal('1') / Decimal(str(rate.rate_bid))
+
 
 
 class ExchangeHomeView(FormView):
@@ -28,13 +47,20 @@ class ExchangeHomeView(FormView):
     def form_valid(self, form):
         cleaned = form.cleaned_data
 
+        left_symbol = str(cleaned['left_money'].name_short)
+        right_symbol = str(cleaned['right_money'].name_short)
+        left_rate = get_rate_to_usdt(left_symbol)
+        right_rate = get_rate_to_usdt(right_symbol)
+
         order = Order.objects.create(
             number=OrderName.create_order_name(),
             user=self.request.user if self.request.user.is_authenticated else None,
-            left_money=str(cleaned['left_money'].name_short),
+            left_money=left_symbol,
             left_chain=str(cleaned['left_money'].chain_long),
-            right_money=str(cleaned['right_money'].name_short),
+            right_money=right_symbol,
             right_chain=str(cleaned['right_money'].chain_long),
+            left_rate=left_rate,
+            right_rate=right_rate,
             left_count=cleaned['left_amount'],
             right_count=cleaned.get('right_amount') or 0,
             client_address=cleaned['client_address'],
@@ -109,6 +135,10 @@ class UserDashboardView(LoginRequiredMixin, TemplateView):
         profile, _ = UserProfile.objects.get_or_create(user=self.request.user)
         orders_qs = self.request.user.orders.order_by('-time_created')
 
+        partner_accruals_qs = PartnerAccrual.objects.filter(
+            partner_user=self.request.user
+        ).select_related('referred_user', 'order')
+
         context.update({
             'profile': profile,
             'orders': orders_qs[:50],
@@ -119,6 +149,9 @@ class UserDashboardView(LoginRequiredMixin, TemplateView):
             'referral_url': self.request.build_absolute_uri(
                 f"{reverse('signup')}?ref={profile.referral_code}"
             ),
+            'partner_accruals': partner_accruals_qs[:50],
+            'partner_referrals_count': UserProfile.objects.filter(referrer=self.request.user).count(),
+            'partner_accruals_total': partner_accruals_qs.count(),
         })
         return context
 
@@ -218,50 +251,16 @@ def get_rate_view(request):
 
     fee_trade_multy = Decimal('1')
     try:
-        if left_symbol == 'USDT':
-            try:
-                rate = RateMoney.objects.get(money_left='USDT', money_right=right_symbol)
-                rate_value = rate.rate_bid
-            except RateMoney.DoesNotExist:
-                rate = RateMoney.objects.get(money_left=right_symbol, money_right='USDT')
-                if rate.rate_bid == 0:
-                    raise ZeroDivisionError
-                rate_value = Decimal('1') / rate.rate_bid
+        left_rate = get_rate_to_usdt(left_symbol)
+        right_rate = get_rate_to_usdt(right_symbol)
 
-        elif right_symbol == 'USDT':
-            try:
-                rate = RateMoney.objects.get(money_left=left_symbol, money_right='USDT')
-                rate_value = rate.rate_bid
-            except RateMoney.DoesNotExist:
-                rate = RateMoney.objects.get(money_left='USDT', money_right=left_symbol)
-                if rate.rate_bid == 0:
-                    raise ZeroDivisionError
-                rate_value = Decimal('1') / rate.rate_bid
+        if left_rate == 0 or right_rate == 0:
+            return JsonResponse({'error': 'Ошибка кросс-курса (0)'}, status=400)
 
-        else:
+        if left_symbol != 'USDT' and right_symbol != 'USDT':
             fee_trade_multy = Decimal('2')
-            try:
-                rate_left = RateMoney.objects.get(money_left=left_symbol, money_right='USDT')
-                left_rate = rate_left.rate_bid
-            except RateMoney.DoesNotExist:
-                rate_left = RateMoney.objects.get(money_left='USDT', money_right=left_symbol)
-                if rate_left.rate_bid == 0:
-                    raise ZeroDivisionError
-                left_rate = Decimal('1') / rate_left.rate_bid
 
-            try:
-                rate_right = RateMoney.objects.get(money_left=right_symbol, money_right='USDT')
-                right_rate = rate_right.rate_bid
-            except RateMoney.DoesNotExist:
-                rate_right = RateMoney.objects.get(money_left='USDT', money_right=right_symbol)
-                if rate_right.rate_bid == 0:
-                    raise ZeroDivisionError
-                right_rate = Decimal('1') / rate_right.rate_bid
-
-            if left_rate == 0 or right_rate == 0:
-                return JsonResponse({'error': 'Ошибка кросс-курса (0)'}, status=400)
-
-            rate_value = left_rate / right_rate
+        rate_value = left_rate / right_rate
 
     except RateMoney.DoesNotExist:
         return JsonResponse({'error': 'Одна из монет не имеет курса к USDT'}, status=404)

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from app_main.models import Merchant, Money, SiteSetup, RateMoney, Order, SiteDocument, UserProfile
+from app_main.models import Merchant, Money, SiteSetup, RateMoney, Order, PartnerAccrual, SiteDocument, UserProfile
 from lp.getmoney import GetMoney
 
 admin.site.site_title = 'Настройки'
@@ -110,7 +110,7 @@ class SiteSetupAdmin(admin.ModelAdmin):
     filter_horizontal = ['popular_rates']
     fieldsets = (
         ("Общие настройки", {
-            'fields': ('name', 'pause', 'logo', 'fee', 'stablecoin_list', 'xml_link',)
+            'fields': ('name', 'pause', 'logo', 'fee', 'partner_percent', 'stablecoin_list', 'xml_link',)
         }),
         ("SEO", {
             'classes': ('collapse',),
@@ -145,6 +145,17 @@ class UserProfileAdmin(admin.ModelAdmin):
     list_display = ('user', 'referral_code', 'referrer', 'partner_balance', 'partner_total_earned', 'created_at')
     readonly_fields = ('created_at',)
     autocomplete_fields = ('user', 'referrer')
+
+
+
+
+@admin.register(PartnerAccrual)
+class PartnerAccrualAdmin(admin.ModelAdmin):
+    save_on_top = True
+    list_display = ('created_at', 'partner_user', 'referred_user', 'order', 'source_amount', 'source_currency', 'source_amount_usdt', 'percent', 'reward_amount')
+    search_fields = ('partner_user__username', 'referred_user__username', 'order__number')
+    autocomplete_fields = ('partner_user', 'referred_user', 'order')
+    readonly_fields = ('created_at',)
 
 
 @admin.register(Order)

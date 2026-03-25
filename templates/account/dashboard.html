@@ -41,7 +41,7 @@
         <div class="card h-100 shadow-sm border-0">
             <div class="card-body">
                 <div class="text-muted small mb-1">Партнёрский доход</div>
-                <div class="fs-3 fw-semibold">{{ profile.partner_total_earned }}</div>
+                <div class="fs-3 fw-semibold">{{ profile.partner_total_earned }} USDT</div>
             </div>
         </div>
     </div>
@@ -63,12 +63,52 @@
     <div class="col-lg-6">
         <div class="card shadow-sm border-0 h-100">
             <div class="card-body">
-                <h2 class="h5 mb-3">Партнёрный баланс</h2>
-                <div class="mb-2">Доступно: <strong>{{ profile.partner_balance }}</strong></div>
-                <div>Всего заработано: <strong>{{ profile.partner_total_earned }}</strong></div>
-                <div class="small text-muted mt-3">Начисления появятся здесь после закрытия реферальных заявок.</div>
+                <h2 class="h5 mb-3">Партнёрная статистика</h2>
+                <div class="mb-2">Приглашено пользователей: <strong>{{ partner_referrals_count }}</strong></div>
+                <div class="mb-2">Всего начислений: <strong>{{ partner_accruals_total }}</strong></div>
+                <div class="mb-2">Доступно: <strong>{{ profile.partner_balance }} USDT</strong></div>
+                <div>Всего заработано: <strong>{{ profile.partner_total_earned }} USDT</strong></div>
+                <div class="small text-muted mt-3">Начисление создаётся один раз при переводе заявки приглашённого пользователя в статус «Закрыта».</div>
             </div>
         </div>
+    </div>
+</div>
+
+<div class="card shadow-sm border-0 mb-4">
+    <div class="card-body">
+        <h2 class="h5 mb-3">Партнёрные начисления</h2>
+        {% if partner_accruals %}
+            <div class="table-responsive">
+                <table class="table align-middle">
+                    <thead>
+                    <tr>
+                        <th>Дата</th>
+                        <th>Заявка</th>
+                        <th>Пользователь</th>
+                        <th>Входящая сумма</th>
+                        <th>База в USDT</th>
+                        <th>%</th>
+                        <th>Начислено</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for accrual in partner_accruals %}
+                        <tr>
+                            <td>{{ accrual.created_at|date:'d.m.Y H:i' }}</td>
+                            <td><strong>{{ accrual.order.number }}</strong></td>
+                            <td>{{ accrual.referred_user.username }}</td>
+                            <td>{{ accrual.source_amount }} {{ accrual.source_currency }}{% if accrual.source_chain %} {{ accrual.source_chain }}{% endif %}</td>
+                            <td>{{ accrual.source_amount_usdt }}</td>
+                            <td>{{ accrual.percent }}</td>
+                            <td><strong>{{ accrual.reward_amount }} USDT</strong></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="alert alert-light border mb-0">Пока начислений нет. Они появятся здесь после закрытия реферальных заявок.</div>
+        {% endif %}
     </div>
 </div>
 
