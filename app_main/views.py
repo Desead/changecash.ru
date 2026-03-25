@@ -5,12 +5,13 @@ from django.contrib.auth import login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.db.models import Q
-from django.http import HttpResponseRedirect, JsonResponse
+from django.http import Http404, HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse, reverse_lazy
 from django.views import View
 from django.views.decorators.cache import cache_page
 from django.views.decorators.http import require_GET
+from xml.etree import ElementTree as ET
 from django.views.generic import DetailView, FormView, TemplateView
 
 from .choices import MerchantName, MoneyType, OrderStatus
@@ -28,6 +29,157 @@ def _get_rate_record(left_symbol: str, right_symbol: str):
 
     default_rate = qs.filter(name__default_price=True).first()
     return default_rate or qs.order_by('id').first()
+
+
+def _normalize_relative_path(value: str, default: str = 'xml_export/') -> str:
+    normalized = (value or default).strip().strip('/')
+    if not normalized:
+        normalized = default.strip('/')
+    return f'{normalized}/'
+
+
+def _get_xml_export_relative_path() -> str:
+    site_setup = SiteSetup.objects.first()
+    return _normalize_relative_path(getattr(site_setup, 'xml_link', 'xml_export/'))
+
+
+def _get_default_fee_merchant():
+    return Merchant.objects.filter(default_price=True).first() or Merchant.objects.first()
+
+
+def _decimal_to_xml(value: Decimal | int | float | str) -> str:
+    decimal_value = Decimal(str(value or 0))
+    normalized = format(decimal_value.normalize(), 'f')
+    if '.' in normalized:
+        normalized = normalized.rstrip('0').rstrip('.')
+    return normalized or '0'
+
+
+def _calculate_exchange_amounts(left_money_obj: Money, right_money_obj: Money, amount: Decimal) -> dict:
+    fee_trade_multy = Decimal('1')
+    left_symbol = (left_money_obj.name_short or '').strip().upper()
+    right_symbol = (right_money_obj.name_short or '').strip().upper()
+
+    left_rate = get_rate_to_usdt(left_symbol)
+    right_rate = get_rate_to_usdt(right_symbol)
+
+    if left_rate == 0 or right_rate == 0:
+        raise ZeroDivisionError
+
+    if left_symbol != 'USDT' and right_symbol != 'USDT':
+        fee_trade_multy = Decimal('2')
+
+    rate_value = left_rate / right_rate
+
+    site_setup = SiteSetup.objects.first()
+    fee_swap = Decimal(str(getattr(site_setup, 'fee', 0) or 0))
+
+    fee_merchant = _get_default_fee_merchant()
+    fee_trade = Decimal(str(getattr(fee_merchant, 'spot_taker_fee', 0) or 0))
+
+    fee_deposit = Decimal(str(left_money_obj.fee_deposit_fix or 0))
+    fee_withdraw = Decimal(str(right_money_obj.fee_withdraw_fix or 0))
+
+    amount_in = Decimal(str(amount or 0))
+    amount_net = amount_in - fee_deposit
+    if amount_net < 0:
+        amount_net = Decimal('0')
+
+    amount_out_raw = amount_net * rate_value
+    amount_out = amount_out_raw * (Decimal('100') - fee_trade * fee_trade_multy) / Decimal('100')
+    amount_out = amount_out * (Decimal('100') - fee_swap) / Decimal('100')
+    amount_out = amount_out - fee_withdraw
+
+    if amount_out < 0:
+        amount_out = Decimal('0')
+
+    return {
+        'rate_value': rate_value,
+        'amount_in': amount_in,
+        'amount_out': amount_out,
+        'fee_deposit': fee_deposit,
+        'fee_withdraw': fee_withdraw,
+        'fee_trade': fee_trade,
+        'fee_swap': fee_swap,
+        'fee_trade_multiplier': fee_trade_multy,
+    }
+
+
+def _collect_xml_money(*, for_deposit: bool = False, for_withdraw: bool = False) -> dict[str, Money]:
+    qs = Money.objects.select_related('merchant').exclude(api_format__isnull=True).exclude(api_format='')
+    if for_deposit:
+        qs = qs.filter(deposit=True, adeposit=True)
+    if for_withdraw:
+        qs = qs.filter(withdraw=True, awithdraw=True)
+
+    qs = qs.order_by('-merchant__default_price', 'merchant_id', 'id')
+
+    result: dict[str, Money] = {}
+    for money in qs:
+        code = (money.api_format or '').strip()
+        if not code:
+            continue
+        result.setdefault(code, money)
+    return result
+
+
+def build_xml_export_bytes() -> bytes:
+    root = ET.Element('rates')
+
+    site_setup = SiteSetup.objects.first()
+    if site_setup and site_setup.pause:
+        return ET.tostring(root, encoding='utf-8', xml_declaration=True)
+
+    deposit_money = _collect_xml_money(for_deposit=True)
+    withdraw_money = _collect_xml_money(for_withdraw=True)
+
+    for from_code, left_money_obj in deposit_money.items():
+        nominal_in = Decimal(str(left_money_obj.nominal or 1))
+        if nominal_in <= 0:
+            nominal_in = Decimal('1')
+
+        for to_code, right_money_obj in withdraw_money.items():
+            if from_code == to_code:
+                continue
+
+            try:
+                calc = _calculate_exchange_amounts(left_money_obj, right_money_obj, nominal_in)
+            except (RateMoney.DoesNotExist, ZeroDivisionError, InvalidOperation):
+                continue
+
+            amount_out = Decimal(str(calc['amount_out'] or 0))
+            if amount_out <= 0:
+                continue
+
+            reserve = Decimal(str(right_money_obj.reserv or 0))
+            if reserve <= 0:
+                continue
+
+            min_amount = Decimal(str(left_money_obj.min_trade or 0))
+            if min_amount <= 0:
+                min_amount = Decimal(str(left_money_obj.min_deposit or 0))
+            if min_amount <= 0:
+                min_amount = nominal_in
+
+            max_amount = Decimal(str(left_money_obj.max_trade or 0))
+            if max_amount <= 0:
+                out_per_unit = amount_out / nominal_in if nominal_in else Decimal('0')
+                if out_per_unit > 0:
+                    max_amount = reserve / out_per_unit
+
+            if max_amount > 0 and min_amount > max_amount:
+                continue
+
+            item = ET.SubElement(root, 'item')
+            ET.SubElement(item, 'from').text = from_code
+            ET.SubElement(item, 'to').text = to_code
+            ET.SubElement(item, 'in').text = _decimal_to_xml(nominal_in)
+            ET.SubElement(item, 'out').text = _decimal_to_xml(amount_out)
+            ET.SubElement(item, 'amount').text = _decimal_to_xml(reserve)
+            ET.SubElement(item, 'minamount').text = _decimal_to_xml(min_amount)
+            ET.SubElement(item, 'maxamount').text = _decimal_to_xml(max_amount)
+
+    return ET.tostring(root, encoding='utf-8', xml_declaration=True)
 
 
 
@@ -222,10 +374,27 @@ class SiteDocumentDetailView(DetailView):
     context_object_name = 'document'
 
     def get_object(self):
-        try:
-            return SiteDocument.objects.get(slug=self.kwargs['slug'])
-        except SiteDocument.DoesNotExist:
-            return HttpResponseRedirect(reverse('exchange_home'))
+        return get_object_or_404(SiteDocument, slug=self.kwargs['slug'])
+
+
+class DynamicPageDispatchView(View):
+    def get(self, request, page_path: str):
+        normalized_page_path = _normalize_relative_path(page_path)
+        if normalized_page_path == _get_xml_export_relative_path():
+            return xml_export_view(request)
+
+        page_slug = page_path.strip('/')
+        if '/' in page_slug:
+            raise Http404('Страница не найдена')
+
+        document = get_object_or_404(SiteDocument, slug=page_slug)
+        return render(request, 'app_main/templates/app_main/document_detail.html', {'document': document})
+
+
+@require_GET
+@cache_page(60)
+def xml_export_view(request):
+    return HttpResponse(build_xml_export_bytes(), content_type='application/xml; charset=utf-8')
 
 
 def resolve_exchange_money(symbol: str, chain_long: str, *, deposit=False, withdraw=False):
@@ -271,74 +440,30 @@ def get_rate_view(request):
     except (InvalidOperation, ValueError):
         amount = None
 
-    fee_trade_multy = Decimal('1')
     try:
-        left_rate = get_rate_to_usdt(left_symbol)
-        right_rate = get_rate_to_usdt(right_symbol)
+        left_money_obj = resolve_exchange_money(left_parts[0], left_parts[1], deposit=True)
+        right_money_obj = resolve_exchange_money(right_parts[0], right_parts[1], withdraw=True)
 
-        if left_rate == 0 or right_rate == 0:
-            return JsonResponse({'error': 'Ошибка кросс-курса (0)'}, status=400)
+        if not left_money_obj or not right_money_obj:
+            return JsonResponse({'error': 'Монета недоступна для обмена'}, status=404)
 
-        if left_symbol != 'USDT' and right_symbol != 'USDT':
-            fee_trade_multy = Decimal('2')
-
-        rate_value = left_rate / right_rate
-
+        calc = _calculate_exchange_amounts(left_money_obj, right_money_obj, amount or Decimal('1'))
     except RateMoney.DoesNotExist:
         return JsonResponse({'error': 'Одна из монет не имеет курса к USDT'}, status=404)
     except ZeroDivisionError:
         return JsonResponse({'error': 'Ошибка деления на 0'}, status=400)
 
     response_data = {
-        'rate': f'{rate_value:.8f}',
+        'rate': f"{calc['rate_value']:.8f}",
         'cached': False
     }
 
-    if amount:
-        try:
-            left_money_obj = resolve_exchange_money(left_parts[0], left_parts[1], deposit=True)
-            right_money_obj = resolve_exchange_money(right_parts[0], right_parts[1], withdraw=True)
-
-            if not left_money_obj or not right_money_obj:
-                return JsonResponse({'error': 'Монета недоступна для обмена'}, status=404)
-            fee_swap = Decimal(SiteSetup.objects.first().fee)
-            fee_trade = Decimal(Merchant.objects.first().spot_taker_fee)
-        except SiteSetup.DoesNotExist:
-            fee_swap = 0
-        except Merchant.DoesNotExist:
-            fee_trade = 0
-
-        fee_deposit = Decimal(left_money_obj.fee_deposit_fix) or Decimal('0')
-        fee_withdraw = Decimal(right_money_obj.fee_withdraw_fix) or Decimal('0')
-
-        try:
-            fee_swap = Decimal(fee_swap)
-        except (InvalidOperation, ValueError):
-            fee_swap = 0
-        try:
-            fee_trade = Decimal(fee_trade)
-        except (InvalidOperation, ValueError):
-            fee_trade = 0
-
-        amount_in = amount.quantize(Decimal('1.00000000'))
-        amount_net = amount - fee_deposit
-
-        if amount_net < 0:
-            amount_net = Decimal('0')
-
-        amount_out_raw = amount_net * rate_value
-        amount_out = amount_out_raw * (100 - fee_trade * fee_trade_multy) / 100
-        amount_out = amount_out * (100 - fee_swap) / 100
-        amount_out = amount_out - fee_withdraw
-
-        if amount_out < 0:
-            amount_out = Decimal('0')
-
+    if amount is not None:
         response_data.update({
-            'amount_in': str(amount_in),
-            'amount_out': str(amount_out.quantize(Decimal('1.00000000'))),
-            'fee_deposit': str(fee_deposit),
-            'fee_withdraw': str(fee_withdraw),
+            'amount_in': str(calc['amount_in'].quantize(Decimal('1.00000000'))),
+            'amount_out': str(calc['amount_out'].quantize(Decimal('1.00000000'))),
+            'fee_deposit': str(calc['fee_deposit']),
+            'fee_withdraw': str(calc['fee_withdraw']),
             'min_deposit': str(left_money_obj.min_deposit),
             'min_withdraw': str(right_money_obj.min_withdraw),
             'fee_deposit_per': str(left_money_obj.fee_deposit_per or 0),

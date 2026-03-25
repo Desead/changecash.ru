@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.conf.urls.static import static
-from django.urls import path
+from django.urls import path, re_path
 from django.views.generic import TemplateView
 
 from .views import (
@@ -10,6 +10,7 @@ from .views import (
     ExchangeFinalizeView,
     ExchangeHomeView,
     SignUpView,
+    DynamicPageDispatchView,
     SiteDocumentDetailView,
     UserDashboardView,
     get_coins,
@@ -34,6 +35,7 @@ urlpatterns = [
     path('api/get-limits/', get_limits_view, name='get_limits'),
     path('api/coins/', get_coins, name='get_coins'),
 
+    re_path(r'^(?P<page_path>.+)/$', DynamicPageDispatchView.as_view(), name='dynamic_page'),
     path('<slug:slug>/', SiteDocumentDetailView.as_view(), name='site_document'),
 ]
 if settings.DEBUG:
