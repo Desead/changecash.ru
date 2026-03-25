@@ -1,10 +1,52 @@
 import requests
+from django.db.models import Q
+
+
+def sync_auto_trade_flags_by_rates():
+    from app_main.choices import MerchantName, MoneyType
+    from app_main.models import Money, RateMoney
+
+    tradable_symbols = {"USDT"}
+
+    pairs = RateMoney.objects.filter(
+        Q(money_left="USDT") | Q(money_right="USDT")
+    ).values_list("money_left", "money_right")
+
+    for left_symbol, right_symbol in pairs:
+        left_symbol = (left_symbol or "").upper()
+        right_symbol = (right_symbol or "").upper()
+
+        if left_symbol == "USDT" and right_symbol:
+            tradable_symbols.add(right_symbol)
+        if right_symbol == "USDT" and left_symbol:
+            tradable_symbols.add(left_symbol)
+
+    crypto_qs = Money.objects.filter(money_type=MoneyType.CRYPTO)
+
+    # WhiteBIT монеты — внутренние, всегда скрыты с фронта.
+    crypto_qs.filter(merchant__name=MerchantName.WHITEBIT).update(
+        adeposit=False,
+        awithdraw=False,
+    )
+
+    non_whitebit_qs = crypto_qs.exclude(merchant__name=MerchantName.WHITEBIT)
+
+    non_whitebit_qs.filter(name_short__in=tradable_symbols).update(
+        adeposit=True,
+        awithdraw=True,
+    )
+    non_whitebit_qs.exclude(name_short__in=tradable_symbols).update(
+        adeposit=False,
+        awithdraw=False,
+    )
+
+
 
 def update_crypto_prices():
     from app_main.choices import MerchantName
     from app_main.models import RateMoney, Merchant
 
-    print(f"Updating Rapira Prices")
+    print("Updating Rapira Prices")
 
     try:
         url = "https://api.rapira.net/open/market/rates"
@@ -21,7 +63,8 @@ def update_crypto_prices():
         stable_coin = 'USDT'
 
         for i in data['data']:
-            if stable_coin not in i['symbol']: continue
+            if stable_coin not in i['symbol']:
+                continue
 
             RateMoney.objects.update_or_create(
                 name=merchant,
@@ -33,3 +76,5 @@ def update_crypto_prices():
                     'rate_bid': i['bidPrice'],
                 }
             )
+
+        sync_auto_trade_flags_by_rates()
