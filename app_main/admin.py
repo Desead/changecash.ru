@@ -132,6 +132,18 @@ class Moneyadmin(admin.ModelAdmin):
     )
 
 
+
+
+@admin.register(City)
+class CityAdmin(admin.ModelAdmin):
+    save_on_top = True
+    search_fields = ('name', 'code')
+    list_display = ('name', 'code', 'is_active')
+    list_filter = ('is_active', )
+    list_editable = ('is_active',)
+    ordering = ('-is_active','name',)
+
+
 @admin.register(SiteSetup)
 class SiteSetupAdmin(admin.ModelAdmin):
     save_on_top = True
@@ -248,16 +260,6 @@ class OrderAdmin(admin.ModelAdmin):
         elif len(s.split('.')[-1]) == 1:
             s += '0'
         return s
-
-
-@admin.register(City)
-class CityAdmin(admin.ModelAdmin):
-    save_on_top = True
-    list_display = ('name', 'code', 'is_active',)
-    list_filter = ('is_active',)
-    search_fields = ('name', )
-    list_editable = ('is_active',)
-    ordering = ('-is_active','name',)
 
 
 @admin.register(SiteDocument)

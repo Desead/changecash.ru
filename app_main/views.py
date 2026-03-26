@@ -18,7 +18,7 @@ from django.views.generic import DetailView, FormView, TemplateView
 from .choices import MerchantName, MoneyType, OrderStatus
 from .decorators import ratelimit_ip
 from .forms import ExchangeForm, SignUpForm
-from .models import Money, Merchant, Order, PartnerAccrual, RateMoney, SiteDocument, SiteSetup, UserProfile
+from .models import City, Money, Merchant, Order, PartnerAccrual, RateMoney, SiteDocument, SiteSetup, UserProfile
 from .utils import OrderName
 from lp.whitebit import WhiteBITAPIError, WhiteBITConfigurationError, get_whitebit_deposit_details
 
@@ -127,6 +127,16 @@ def _collect_xml_money(*, for_deposit: bool = False, for_withdraw: bool = False)
     return result
 
 
+
+
+def _get_active_city_codes() -> list[str]:
+    return list(
+        City.objects.filter(is_active=True)
+        .order_by('rank', 'name', 'code')
+        .values_list('code', flat=True)
+    )
+
+
 def _build_xml_rate_pair(left_money_obj: Money, right_money_obj: Money) -> tuple[Decimal, Decimal, Decimal, Decimal]:
     left_symbol = (left_money_obj.name_short or '').strip().upper()
     right_symbol = (right_money_obj.name_short or '').strip().upper()
@@ -175,10 +185,17 @@ def build_xml_export_bytes() -> bytes:
 
     deposit_money = _collect_xml_money(for_deposit=True)
     withdraw_money = _collect_xml_money(for_withdraw=True)
+    active_city_codes = _get_active_city_codes()
 
     for from_code, left_money_obj in deposit_money.items():
         for to_code, right_money_obj in withdraw_money.items():
             if from_code == to_code:
+                continue
+
+            left_is_cash = left_money_obj.money_type == MoneyType.CASH
+            right_is_cash = right_money_obj.money_type == MoneyType.CASH
+            needs_city = left_is_cash or right_is_cash
+            if needs_city and not active_city_codes:
                 continue
 
             try:
@@ -211,6 +228,8 @@ def build_xml_export_bytes() -> bytes:
                 ET.SubElement(item, 'amount').text = _decimal_to_xml(reserve)
             ET.SubElement(item, 'minamount').text = _decimal_to_xml(min_amount)
             ET.SubElement(item, 'maxamount').text = _decimal_to_xml(max_amount)
+            if needs_city:
+                ET.SubElement(item, 'city').text = ','.join(active_city_codes)
 
     return ET.tostring(root, encoding='utf-8', xml_declaration=True)
 
