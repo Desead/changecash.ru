@@ -254,10 +254,10 @@ class OrderAdmin(admin.ModelAdmin):
 class CityAdmin(admin.ModelAdmin):
     save_on_top = True
     list_display = ('name', 'code', 'is_active',)
-    list_filter = ('is_active', 'country_id')
-    search_fields = ('name', 'code', 'bestchange_id')
+    list_filter = ('is_active',)
+    search_fields = ('name', )
     list_editable = ('is_active',)
-    ordering = ('name',)
+    ordering = ('-is_active','name',)
 
 
 @admin.register(SiteDocument)

@@ -1,0 +1,6614 @@
+[
+  {
+    "model": "app_main.city",
+    "pk": 260,
+    "fields": {
+      "bestchange_id": 260,
+      "name": "Аделаида",
+      "code": "ADLD",
+      "country_id": 1,
+      "rank": 478,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 258,
+    "fields": {
+      "bestchange_id": 258,
+      "name": "Брисбен",
+      "code": "BRSB",
+      "country_id": 1,
+      "rank": 432,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 259,
+    "fields": {
+      "bestchange_id": 259,
+      "name": "Голд-Кост",
+      "code": "GCST",
+      "country_id": 1,
+      "rank": 477,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 257,
+    "fields": {
+      "bestchange_id": 257,
+      "name": "Мельбурн",
+      "code": "MLBR",
+      "country_id": 1,
+      "rank": 279,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 256,
+    "fields": {
+      "bestchange_id": 256,
+      "name": "Сидней",
+      "code": "SDN",
+      "country_id": 1,
+      "rank": 271,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 340,
+    "fields": {
+      "bestchange_id": 340,
+      "name": "Куала-Лумпур",
+      "code": "KLLMP",
+      "country_id": 2,
+      "rank": 176,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 404,
+    "fields": {
+      "bestchange_id": 404,
+      "name": "Ансан",
+      "code": "NSN",
+      "country_id": 3,
+      "rank": 318,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 403,
+    "fields": {
+      "bestchange_id": 403,
+      "name": "Инчхон",
+      "code": "NCHN",
+      "country_id": 3,
+      "rank": 317,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 269,
+    "fields": {
+      "bestchange_id": 269,
+      "name": "Сеул",
+      "code": "SEOUL",
+      "country_id": 3,
+      "rank": 154,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 58,
+    "fields": {
+      "bestchange_id": 58,
+      "name": "Пекин",
+      "code": "BEIJ",
+      "country_id": 4,
+      "rank": 247,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 416,
+    "fields": {
+      "bestchange_id": 416,
+      "name": "Чанчунь",
+      "code": "CHNGC",
+      "country_id": 4,
+      "rank": 407,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 412,
+    "fields": {
+      "bestchange_id": 412,
+      "name": "Чэнду",
+      "code": "CHNGD",
+      "country_id": 4,
+      "rank": 425,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 410,
+    "fields": {
+      "bestchange_id": 410,
+      "name": "Чунцин",
+      "code": "CHNGQ",
+      "country_id": 4,
+      "rank": 449,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 59,
+    "fields": {
+      "bestchange_id": 59,
+      "name": "Гуанчжоу",
+      "code": "GUAN",
+      "country_id": 4,
+      "rank": 165,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 414,
+    "fields": {
+      "bestchange_id": 414,
+      "name": "Харбин",
+      "code": "HRBN",
+      "country_id": 4,
+      "rank": 389,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 78,
+    "fields": {
+      "bestchange_id": 78,
+      "name": "Гонконг",
+      "code": "HGKG",
+      "country_id": 4,
+      "rank": 207,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 402,
+    "fields": {
+      "bestchange_id": 402,
+      "name": "Макао",
+      "code": "MACAU",
+      "country_id": 4,
+      "rank": 348,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 415,
+    "fields": {
+      "bestchange_id": 415,
+      "name": "Нанкин",
+      "code": "NNJN",
+      "country_id": 4,
+      "rank": 520,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 411,
+    "fields": {
+      "bestchange_id": 411,
+      "name": "Шанхай",
+      "code": "SHNGH",
+      "country_id": 4,
+      "rank": 274,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 301,
+    "fields": {
+      "bestchange_id": 301,
+      "name": "Шэньчжэнь",
+      "code": "SHNZN",
+      "country_id": 4,
+      "rank": 272,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 413,
+    "fields": {
+      "bestchange_id": 413,
+      "name": "Тяньцзинь",
+      "code": "TNJN",
+      "country_id": 4,
+      "rank": 519,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 453,
+    "fields": {
+      "bestchange_id": 453,
+      "name": "Иу",
+      "code": "YIW",
+      "country_id": 4,
+      "rank": 332,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 423,
+    "fields": {
+      "bestchange_id": 423,
+      "name": "Киото",
+      "code": "KYT",
+      "country_id": 5,
+      "rank": 426,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 424,
+    "fields": {
+      "bestchange_id": 424,
+      "name": "Осака",
+      "code": "OSK",
+      "country_id": 5,
+      "rank": 264,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 306,
+    "fields": {
+      "bestchange_id": 306,
+      "name": "Токио",
+      "code": "TKO",
+      "country_id": 5,
+      "rank": 121,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 421,
+    "fields": {
+      "bestchange_id": 421,
+      "name": "Тояма",
+      "code": "TYM",
+      "country_id": 5,
+      "rank": 311,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 422,
+    "fields": {
+      "bestchange_id": 422,
+      "name": "Иокогама",
+      "code": "YKHM",
+      "country_id": 5,
+      "rank": 521,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 407,
+    "fields": {
+      "bestchange_id": 407,
+      "name": "Бангалор",
+      "code": "BNGLR",
+      "country_id": 6,
+      "rank": 518,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 409,
+    "fields": {
+      "bestchange_id": 409,
+      "name": "Калькутта",
+      "code": "CLCTT",
+      "country_id": 6,
+      "rank": 310,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 408,
+    "fields": {
+      "bestchange_id": 408,
+      "name": "Ченнаи",
+      "code": "CHNN",
+      "country_id": 6,
+      "rank": 448,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 406,
+    "fields": {
+      "bestchange_id": 406,
+      "name": "Дели",
+      "code": "DLH",
+      "country_id": 6,
+      "rank": 267,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 517,
+    "fields": {
+      "bestchange_id": 517,
+      "name": "Хайдарабад",
+      "code": "HYDRB",
+      "country_id": 6,
+      "rank": 462,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 405,
+    "fields": {
+      "bestchange_id": 405,
+      "name": "Мумбай",
+      "code": "MMB",
+      "country_id": 6,
+      "rank": 260,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 251,
+    "fields": {
+      "bestchange_id": 251,
+      "name": "Бангкок",
+      "code": "BNGK",
+      "country_id": 9,
+      "rank": 72,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 254,
+    "fields": {
+      "bestchange_id": 254,
+      "name": "Чанг",
+      "code": "CHNG",
+      "country_id": 9,
+      "rank": 335,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 255,
+    "fields": {
+      "bestchange_id": 255,
+      "name": "Краби",
+      "code": "KRB",
+      "country_id": 9,
+      "rank": 284,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 250,
+    "fields": {
+      "bestchange_id": 250,
+      "name": "Паттайя",
+      "code": "PTTY",
+      "country_id": 9,
+      "rank": 67,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 253,
+    "fields": {
+      "bestchange_id": 253,
+      "name": "Пханган",
+      "code": "PHNG",
+      "country_id": 9,
+      "rank": 288,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 248,
+    "fields": {
+      "bestchange_id": 248,
+      "name": "Пхукет",
+      "code": "PHUK",
+      "country_id": 9,
+      "rank": 32,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 252,
+    "fields": {
+      "bestchange_id": 252,
+      "name": "Самуй",
+      "code": "SAMUI",
+      "country_id": 9,
+      "rank": 213,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 432,
+    "fields": {
+      "bestchange_id": 432,
+      "name": "Дананг",
+      "code": "DNNG",
+      "country_id": 11,
+      "rank": 140,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 436,
+    "fields": {
+      "bestchange_id": 436,
+      "name": "Хайфон",
+      "code": "HIPHN",
+      "country_id": 11,
+      "rank": 522,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 434,
+    "fields": {
+      "bestchange_id": 434,
+      "name": "Ханой",
+      "code": "HNI",
+      "country_id": 11,
+      "rank": 228,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 435,
+    "fields": {
+      "bestchange_id": 435,
+      "name": "Хошимин",
+      "code": "HCHMN",
+      "country_id": 11,
+      "rank": 190,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 438,
+    "fields": {
+      "bestchange_id": 438,
+      "name": "Муйне",
+      "code": "MUIN",
+      "country_id": 11,
+      "rank": 338,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 433,
+    "fields": {
+      "bestchange_id": 433,
+      "name": "Нячанг",
+      "code": "NTRNG",
+      "country_id": 11,
+      "rank": 80,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 439,
+    "fields": {
+      "bestchange_id": 439,
+      "name": "Фукуок",
+      "code": "PHQC",
+      "country_id": 11,
+      "rank": 162,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 496,
+    "fields": {
+      "bestchange_id": 496,
+      "name": "Антиб",
+      "code": "NTBS",
+      "country_id": 12,
+      "rank": 532,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 228,
+    "fields": {
+      "bestchange_id": 228,
+      "name": "Канны",
+      "code": "CANN",
+      "country_id": 12,
+      "rank": 294,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 230,
+    "fields": {
+      "bestchange_id": 230,
+      "name": "Лион",
+      "code": "LYON",
+      "country_id": 12,
+      "rank": 344,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 229,
+    "fields": {
+      "bestchange_id": 229,
+      "name": "Марсель",
+      "code": "MARS",
+      "country_id": 12,
+      "rank": 353,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 509,
+    "fields": {
+      "bestchange_id": 509,
+      "name": "Монпелье",
+      "code": "MNTPL",
+      "country_id": 12,
+      "rank": 458,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 145,
+    "fields": {
+      "bestchange_id": 145,
+      "name": "Ницца",
+      "code": "NICE",
+      "country_id": 12,
+      "rank": 199,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 510,
+    "fields": {
+      "bestchange_id": 510,
+      "name": "Ним",
+      "code": "NMS",
+      "country_id": 12,
+      "rank": 459,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 90,
+    "fields": {
+      "bestchange_id": 90,
+      "name": "Париж",
+      "code": "PARIS",
+      "country_id": 12,
+      "rank": 83,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 508,
+    "fields": {
+      "bestchange_id": 508,
+      "name": "Сен-Тропе",
+      "code": "SNTRP",
+      "country_id": 12,
+      "rank": 457,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 233,
+    "fields": {
+      "bestchange_id": 233,
+      "name": "Катания",
+      "code": "CATAN",
+      "country_id": 13,
+      "rank": 354,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 358,
+    "fields": {
+      "bestchange_id": 358,
+      "name": "Флоренция",
+      "code": "FLRNC",
+      "country_id": 13,
+      "rank": 286,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 88,
+    "fields": {
+      "bestchange_id": 88,
+      "name": "Милан",
+      "code": "MILAN",
+      "country_id": 13,
+      "rank": 117,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 232,
+    "fields": {
+      "bestchange_id": 232,
+      "name": "Неаполь",
+      "code": "NPLS",
+      "country_id": 13,
+      "rank": 313,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 234,
+    "fields": {
+      "bestchange_id": 234,
+      "name": "Палермо",
+      "code": "PLRM",
+      "country_id": 13,
+      "rank": 417,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 357,
+    "fields": {
+      "bestchange_id": 357,
+      "name": "Парма",
+      "code": "PRM",
+      "country_id": 13,
+      "rank": 445,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 231,
+    "fields": {
+      "bestchange_id": 231,
+      "name": "Римини",
+      "code": "RMN",
+      "country_id": 13,
+      "rank": 384,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 146,
+    "fields": {
+      "bestchange_id": 146,
+      "name": "Рим",
+      "code": "ROME",
+      "country_id": 13,
+      "rank": 100,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 300,
+    "fields": {
+      "bestchange_id": 300,
+      "name": "Абу-Даби",
+      "code": "ABDB",
+      "country_id": 14,
+      "rank": 48,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 56,
+    "fields": {
+      "bestchange_id": 56,
+      "name": "Дубай",
+      "code": "DUBAI",
+      "country_id": 14,
+      "rank": 6,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 419,
+    "fields": {
+      "bestchange_id": 419,
+      "name": "Рас-эль-Хайма",
+      "code": "RSLKH",
+      "country_id": 14,
+      "rank": 268,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 418,
+    "fields": {
+      "bestchange_id": 418,
+      "name": "Шарджа",
+      "code": "SHRJH",
+      "country_id": 14,
+      "rank": 49,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 92,
+    "fields": {
+      "bestchange_id": 92,
+      "name": "Стокгольм",
+      "code": "STOCK",
+      "country_id": 15,
+      "rank": 246,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 125,
+    "fields": {
+      "bestchange_id": 125,
+      "name": "Актобе",
+      "code": "AKT",
+      "country_id": 16,
+      "rank": 238,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 123,
+    "fields": {
+      "bestchange_id": 123,
+      "name": "Алма-Ата",
+      "code": "ALM",
+      "country_id": 16,
+      "rank": 33,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 19,
+    "fields": {
+      "bestchange_id": 19,
+      "name": "Астана",
+      "code": "ASTN",
+      "country_id": 16,
+      "rank": 44,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 41,
+    "fields": {
+      "bestchange_id": 41,
+      "name": "Экибастуз",
+      "code": "EKIB",
+      "country_id": 16,
+      "rank": 351,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 126,
+    "fields": {
+      "bestchange_id": 126,
+      "name": "Караганда",
+      "code": "KRGN",
+      "country_id": 16,
+      "rank": 208,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 541,
+    "fields": {
+      "bestchange_id": 541,
+      "name": "Кокшетау",
+      "code": "KKSHT",
+      "country_id": 16,
+      "rank": 543,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 5,
+    "fields": {
+      "bestchange_id": 5,
+      "name": "Костанай",
+      "code": "KST",
+      "country_id": 16,
+      "rank": 204,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 543,
+    "fields": {
+      "bestchange_id": 543,
+      "name": "Павлодар",
+      "code": "PVLDR",
+      "country_id": 16,
+      "rank": 545,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 538,
+    "fields": {
+      "bestchange_id": 538,
+      "name": "Петропавловск",
+      "code": "PTRPL",
+      "country_id": 16,
+      "rank": 541,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 124,
+    "fields": {
+      "bestchange_id": 124,
+      "name": "Шымкент",
+      "code": "SHYM",
+      "country_id": 16,
+      "rank": 166,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 484,
+    "fields": {
+      "bestchange_id": 484,
+      "name": "Брага",
+      "code": "BRG",
+      "country_id": 17,
+      "rank": 453,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 346,
+    "fields": {
+      "bestchange_id": 346,
+      "name": "Кашкайш",
+      "code": "CSCS",
+      "country_id": 17,
+      "rank": 367,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 292,
+    "fields": {
+      "bestchange_id": 292,
+      "name": "Фару",
+      "code": "FARO",
+      "country_id": 17,
+      "rank": 433,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 205,
+    "fields": {
+      "bestchange_id": 205,
+      "name": "Фуншал",
+      "code": "FNCH",
+      "country_id": 17,
+      "rank": 476,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 204,
+    "fields": {
+      "bestchange_id": 204,
+      "name": "Лиссабон",
+      "code": "LISB",
+      "country_id": 17,
+      "rank": 137,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 203,
+    "fields": {
+      "bestchange_id": 203,
+      "name": "Порту",
+      "code": "PRT",
+      "country_id": 17,
+      "rank": 210,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 177,
+    "fields": {
+      "bestchange_id": 177,
+      "name": "Афины",
+      "code": "ATH",
+      "country_id": 18,
+      "rank": 167,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 504,
+    "fields": {
+      "bestchange_id": 504,
+      "name": "Родос",
+      "code": "RHO",
+      "country_id": 18,
+      "rank": 410,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 282,
+    "fields": {
+      "bestchange_id": 282,
+      "name": "Салоники",
+      "code": "THSSL",
+      "country_id": 18,
+      "rank": 239,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 286,
+    "fields": {
+      "bestchange_id": 286,
+      "name": "Джедда",
+      "code": "JDDH",
+      "country_id": 19,
+      "rank": 316,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 500,
+    "fields": {
+      "bestchange_id": 500,
+      "name": "Мекка",
+      "code": "MKK",
+      "country_id": 19,
+      "rank": 533,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 499,
+    "fields": {
+      "bestchange_id": 499,
+      "name": "Медина",
+      "code": "MED",
+      "country_id": 19,
+      "rank": 455,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 498,
+    "fields": {
+      "bestchange_id": 498,
+      "name": "Эр-Рияд",
+      "code": "RUH",
+      "country_id": 19,
+      "rank": 376,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 172,
+    "fields": {
+      "bestchange_id": 172,
+      "name": "Адлер",
+      "code": "ADLER",
+      "country_id": 20,
+      "rank": 142,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 446,
+    "fields": {
+      "bestchange_id": 446,
+      "name": "Альметьевск",
+      "code": "LMTVS",
+      "country_id": 20,
+      "rank": 349,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 99,
+    "fields": {
+      "bestchange_id": 99,
+      "name": "Анапа",
+      "code": "ANAPA",
+      "country_id": 20,
+      "rank": 136,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 100,
+    "fields": {
+      "bestchange_id": 100,
+      "name": "Архангельск",
+      "code": "ARKH",
+      "country_id": 20,
+      "rank": 129,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 469,
+    "fields": {
+      "bestchange_id": 469,
+      "name": "Архыз",
+      "code": "RKHZ",
+      "country_id": 20,
+      "rank": 306,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 468,
+    "fields": {
+      "bestchange_id": 468,
+      "name": "Армавир",
+      "code": "RMVR",
+      "country_id": 20,
+      "rank": 222,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 531,
+    "fields": {
+      "bestchange_id": 531,
+      "name": "Асбест",
+      "code": "SBST",
+      "country_id": 20,
+      "rank": 392,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 101,
+    "fields": {
+      "bestchange_id": 101,
+      "name": "Астрахань",
+      "code": "ASTRA",
+      "country_id": 20,
+      "rank": 99,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 494,
+    "fields": {
+      "bestchange_id": 494,
+      "name": "Балашиха",
+      "code": "BLSHK",
+      "country_id": 20,
+      "rank": 237,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 270,
+    "fields": {
+      "bestchange_id": 270,
+      "name": "Барнаул",
+      "code": "BRNL",
+      "country_id": 20,
+      "rank": 25,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 163,
+    "fields": {
+      "bestchange_id": 163,
+      "name": "Белгород",
+      "code": "BLGR",
+      "country_id": 20,
+      "rank": 76,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 529,
+    "fields": {
+      "bestchange_id": 529,
+      "name": "Берёзовский",
+      "code": "BRZVS",
+      "country_id": 20,
+      "rank": 463,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 457,
+    "fields": {
+      "bestchange_id": 457,
+      "name": "Бийск",
+      "code": "BYSK",
+      "country_id": 20,
+      "rank": 161,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 447,
+    "fields": {
+      "bestchange_id": 447,
+      "name": "Благовещенск",
+      "code": "BLGVS",
+      "country_id": 20,
+      "rank": 70,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 30,
+    "fields": {
+      "bestchange_id": 30,
+      "name": "Брянск",
+      "code": "BRN",
+      "country_id": 20,
+      "rank": 92,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 10,
+    "fields": {
+      "bestchange_id": 10,
+      "name": "Чебоксары",
+      "code": "CHEB",
+      "country_id": 20,
+      "rank": 42,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 18,
+    "fields": {
+      "bestchange_id": 18,
+      "name": "Челябинск",
+      "code": "CHEL",
+      "country_id": 20,
+      "rank": 14,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 117,
+    "fields": {
+      "bestchange_id": 117,
+      "name": "Череповец",
+      "code": "CHRP",
+      "country_id": 20,
+      "rank": 131,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 459,
+    "fields": {
+      "bestchange_id": 459,
+      "name": "Черкесск",
+      "code": "CHRKS",
+      "country_id": 20,
+      "rank": 218,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 470,
+    "fields": {
+      "bestchange_id": 470,
+      "name": "Домбай",
+      "code": "DMBY",
+      "country_id": 20,
+      "rank": 375,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 492,
+    "fields": {
+      "bestchange_id": 492,
+      "name": "Дубна",
+      "code": "DBN",
+      "country_id": 20,
+      "rank": 333,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 461,
+    "fields": {
+      "bestchange_id": 461,
+      "name": "Элиста",
+      "code": "LST",
+      "country_id": 20,
+      "rank": 258,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 135,
+    "fields": {
+      "bestchange_id": 135,
+      "name": "Геленджик",
+      "code": "GLND",
+      "country_id": 20,
+      "rank": 177,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 456,
+    "fields": {
+      "bestchange_id": 456,
+      "name": "Горно-Алтайск",
+      "code": "GRNLT",
+      "country_id": 20,
+      "rank": 235,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 467,
+    "fields": {
+      "bestchange_id": 467,
+      "name": "Горячеводский",
+      "code": "GRYCH",
+      "country_id": 20,
+      "rank": 292,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 128,
+    "fields": {
+      "bestchange_id": 128,
+      "name": "Грозный",
+      "code": "GRZ",
+      "country_id": 20,
+      "rank": 107,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 548,
+    "fields": {
+      "bestchange_id": 548,
+      "name": "Ирбит",
+      "code": "IRBIT",
+      "country_id": 20,
+      "rank": 549,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 31,
+    "fields": {
+      "bestchange_id": 31,
+      "name": "Иркутск",
+      "code": "IRK",
+      "country_id": 20,
+      "rank": 21,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 542,
+    "fields": {
+      "bestchange_id": 542,
+      "name": "Ишим",
+      "code": "SHM",
+      "country_id": 20,
+      "rank": 544,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 539,
+    "fields": {
+      "bestchange_id": 539,
+      "name": "Исилькуль",
+      "code": "SKL",
+      "country_id": 20,
+      "rank": 542,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 455,
+    "fields": {
+      "bestchange_id": 455,
+      "name": "Иваново",
+      "code": "VNV",
+      "country_id": 20,
+      "rank": 86,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 45,
+    "fields": {
+      "bestchange_id": 45,
+      "name": "Ижевск",
+      "code": "IZHV",
+      "country_id": 20,
+      "rank": 38,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 544,
+    "fields": {
+      "bestchange_id": 544,
+      "name": "Калачинск",
+      "code": "KLCHN",
+      "country_id": 20,
+      "rank": 546,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 104,
+    "fields": {
+      "bestchange_id": 104,
+      "name": "Калининград",
+      "code": "KLNG",
+      "country_id": 20,
+      "rank": 22,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 105,
+    "fields": {
+      "bestchange_id": 105,
+      "name": "Калуга",
+      "code": "KLG",
+      "country_id": 20,
+      "rank": 97,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 524,
+    "fields": {
+      "bestchange_id": 524,
+      "name": "Каменск-Уральский",
+      "code": "KMNRL",
+      "country_id": 20,
+      "rank": 364,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 549,
+    "fields": {
+      "bestchange_id": 549,
+      "name": "Камышлов",
+      "code": "KMSHL",
+      "country_id": 20,
+      "rank": 550,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 12,
+    "fields": {
+      "bestchange_id": 12,
+      "name": "Казань",
+      "code": "KZN",
+      "country_id": 20,
+      "rank": 10,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 22,
+    "fields": {
+      "bestchange_id": 22,
+      "name": "Кемерово",
+      "code": "KEM",
+      "country_id": 20,
+      "rank": 52,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 171,
+    "fields": {
+      "bestchange_id": 171,
+      "name": "Хабаровск",
+      "code": "KHAB",
+      "country_id": 20,
+      "rank": 35,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 520,
+    "fields": {
+      "bestchange_id": 520,
+      "name": "Ханты-Мансийск",
+      "code": "KHNTM",
+      "country_id": 20,
+      "rank": 283,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 493,
+    "fields": {
+      "bestchange_id": 493,
+      "name": "Химки",
+      "code": "KHMK",
+      "country_id": 20,
+      "rank": 219,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 106,
+    "fields": {
+      "bestchange_id": 106,
+      "name": "Киров",
+      "code": "KIROV",
+      "country_id": 20,
+      "rank": 57,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 464,
+    "fields": {
+      "bestchange_id": 464,
+      "name": "Кисловодск",
+      "code": "KSLVD",
+      "country_id": 20,
+      "rank": 236,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 522,
+    "fields": {
+      "bestchange_id": 522,
+      "name": "Когалым",
+      "code": "KGLM",
+      "country_id": 20,
+      "rank": 378,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 107,
+    "fields": {
+      "bestchange_id": 107,
+      "name": "Кострома",
+      "code": "KOST",
+      "country_id": 20,
+      "rank": 104,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 440,
+    "fields": {
+      "bestchange_id": 440,
+      "name": "Красная Поляна",
+      "code": "KRSNP",
+      "country_id": 20,
+      "rank": 242,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 53,
+    "fields": {
+      "bestchange_id": 53,
+      "name": "Краснодар",
+      "code": "KRASN",
+      "country_id": 20,
+      "rank": 3,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 532,
+    "fields": {
+      "bestchange_id": 532,
+      "name": "Краснотурьинск",
+      "code": "KRSNT",
+      "country_id": 20,
+      "rank": 464,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 23,
+    "fields": {
+      "bestchange_id": 23,
+      "name": "Красноярск",
+      "code": "KRSK",
+      "country_id": 20,
+      "rank": 18,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 444,
+    "fields": {
+      "bestchange_id": 444,
+      "name": "Курган",
+      "code": "KRG",
+      "country_id": 20,
+      "rank": 135,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 13,
+    "fields": {
+      "bestchange_id": 13,
+      "name": "Курск",
+      "code": "KURSK",
+      "country_id": 20,
+      "rank": 118,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 534,
+    "fields": {
+      "bestchange_id": 534,
+      "name": "Лесной",
+      "code": "LSNY",
+      "country_id": 20,
+      "rank": 393,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 108,
+    "fields": {
+      "bestchange_id": 108,
+      "name": "Липецк",
+      "code": "LPT",
+      "country_id": 20,
+      "rank": 51,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 109,
+    "fields": {
+      "bestchange_id": 109,
+      "name": "Магнитогорск",
+      "code": "MGNT",
+      "country_id": 20,
+      "rank": 71,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 138,
+    "fields": {
+      "bestchange_id": 138,
+      "name": "Махачкала",
+      "code": "MHKL",
+      "country_id": 20,
+      "rank": 108,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 454,
+    "fields": {
+      "bestchange_id": 454,
+      "name": "Минеральные Воды",
+      "code": "MNRVD",
+      "country_id": 20,
+      "rank": 253,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 1,
+    "fields": {
+      "bestchange_id": 1,
+      "name": "Москва",
+      "code": "MSK",
+      "country_id": 20,
+      "rank": 1,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 161,
+    "fields": {
+      "bestchange_id": 161,
+      "name": "Мурманск",
+      "code": "MRMK",
+      "country_id": 20,
+      "rank": 60,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 44,
+    "fields": {
+      "bestchange_id": 44,
+      "name": "Набережные Челны",
+      "code": "NABCH",
+      "country_id": 20,
+      "rank": 50,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 449,
+    "fields": {
+      "bestchange_id": 449,
+      "name": "Находка",
+      "code": "NKHDK",
+      "country_id": 20,
+      "rank": 180,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 460,
+    "fields": {
+      "bestchange_id": 460,
+      "name": "Нальчик",
+      "code": "NLCHK",
+      "country_id": 20,
+      "rank": 200,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 519,
+    "fields": {
+      "bestchange_id": 519,
+      "name": "Нефтеюганск",
+      "code": "NFTYG",
+      "country_id": 20,
+      "rank": 412,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 466,
+    "fields": {
+      "bestchange_id": 466,
+      "name": "Невинномысск",
+      "code": "NVNNM",
+      "country_id": 20,
+      "rank": 282,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 445,
+    "fields": {
+      "bestchange_id": 445,
+      "name": "Нижнекамск",
+      "code": "NZKMS",
+      "country_id": 20,
+      "rank": 214,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 429,
+    "fields": {
+      "bestchange_id": 429,
+      "name": "Нижневартовск",
+      "code": "NZHNV",
+      "country_id": 20,
+      "rank": 202,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 14,
+    "fields": {
+      "bestchange_id": 14,
+      "name": "Нижний Новгород",
+      "code": "NNOV",
+      "country_id": 20,
+      "rank": 16,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 442,
+    "fields": {
+      "bestchange_id": 442,
+      "name": "Нижний Тагил",
+      "code": "NZNTG",
+      "country_id": 20,
+      "rank": 77,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 73,
+    "fields": {
+      "bestchange_id": 73,
+      "name": "Новокузнецк",
+      "code": "NVKZN",
+      "country_id": 20,
+      "rank": 55,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 98,
+    "fields": {
+      "bestchange_id": 98,
+      "name": "Новороссийск",
+      "code": "NOVOR",
+      "country_id": 20,
+      "rank": 28,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 17,
+    "fields": {
+      "bestchange_id": 17,
+      "name": "Новосибирск",
+      "code": "NSK",
+      "country_id": 20,
+      "rank": 4,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 528,
+    "fields": {
+      "bestchange_id": 528,
+      "name": "Новоуральск",
+      "code": "NVRLS",
+      "country_id": 20,
+      "rank": 430,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 521,
+    "fields": {
+      "bestchange_id": 521,
+      "name": "Ноябрьск",
+      "code": "NYBRS",
+      "country_id": 20,
+      "rank": 334,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 495,
+    "fields": {
+      "bestchange_id": 495,
+      "name": "Одинцово",
+      "code": "DNTSV",
+      "country_id": 20,
+      "rank": 152,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 16,
+    "fields": {
+      "bestchange_id": 16,
+      "name": "Омск",
+      "code": "OMSK",
+      "country_id": 20,
+      "rank": 24,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 110,
+    "fields": {
+      "bestchange_id": 110,
+      "name": "Оренбург",
+      "code": "OREN",
+      "country_id": 20,
+      "rank": 53,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 136,
+    "fields": {
+      "bestchange_id": 136,
+      "name": "Орел",
+      "code": "ORYOL",
+      "country_id": 20,
+      "rank": 116,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 111,
+    "fields": {
+      "bestchange_id": 111,
+      "name": "Пенза",
+      "code": "PENZA",
+      "country_id": 20,
+      "rank": 75,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 34,
+    "fields": {
+      "bestchange_id": 34,
+      "name": "Пермь",
+      "code": "PERM",
+      "country_id": 20,
+      "rank": 23,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 525,
+    "fields": {
+      "bestchange_id": 525,
+      "name": "Первоуральск",
+      "code": "PRVRL",
+      "country_id": 20,
+      "rank": 391,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 537,
+    "fields": {
+      "bestchange_id": 537,
+      "name": "Петропавловск-Камчат",
+      "code": "PTRKM",
+      "country_id": 20,
+      "rank": 540,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 202,
+    "fields": {
+      "bestchange_id": 202,
+      "name": "Петрозаводск",
+      "code": "PTRS",
+      "country_id": 20,
+      "rank": 155,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 533,
+    "fields": {
+      "bestchange_id": 533,
+      "name": "Полевской",
+      "code": "PLVSK",
+      "country_id": 20,
+      "rank": 538,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 42,
+    "fields": {
+      "bestchange_id": 42,
+      "name": "Пятигорск",
+      "code": "PTGR",
+      "country_id": 20,
+      "rank": 59,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 523,
+    "fields": {
+      "bestchange_id": 523,
+      "name": "Пыть-Ях",
+      "code": "PTYKH",
+      "country_id": 20,
+      "rank": 536,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 530,
+    "fields": {
+      "bestchange_id": 530,
+      "name": "Ревда",
+      "code": "RVD",
+      "country_id": 20,
+      "rank": 537,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 173,
+    "fields": {
+      "bestchange_id": 173,
+      "name": "Ростов",
+      "code": "RSTV",
+      "country_id": 20,
+      "rank": 187,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 29,
+    "fields": {
+      "bestchange_id": 29,
+      "name": "Ростов-на-Дону",
+      "code": "RSND",
+      "country_id": 20,
+      "rank": 9,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 137,
+    "fields": {
+      "bestchange_id": 137,
+      "name": "Рязань",
+      "code": "RZN",
+      "country_id": 20,
+      "rank": 47,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 518,
+    "fields": {
+      "bestchange_id": 518,
+      "name": "Рыбинск",
+      "code": "RBNSK",
+      "country_id": 20,
+      "rank": 341,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 2,
+    "fields": {
+      "bestchange_id": 2,
+      "name": "Санкт-Петербург",
+      "code": "SPB",
+      "country_id": 20,
+      "rank": 2,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 298,
+    "fields": {
+      "bestchange_id": 298,
+      "name": "Салават",
+      "code": "SLVT",
+      "country_id": 20,
+      "rank": 357,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 6,
+    "fields": {
+      "bestchange_id": 6,
+      "name": "Самара",
+      "code": "SMR",
+      "country_id": 20,
+      "rank": 12,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 112,
+    "fields": {
+      "bestchange_id": 112,
+      "name": "Саранск",
+      "code": "SRN",
+      "country_id": 20,
+      "rank": 157,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 113,
+    "fields": {
+      "bestchange_id": 113,
+      "name": "Саратов",
+      "code": "SRT",
+      "country_id": 20,
+      "rank": 26,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 540,
+    "fields": {
+      "bestchange_id": 540,
+      "name": "Сергиев Посад",
+      "code": "SRGPS",
+      "country_id": 20,
+      "rank": 394,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 526,
+    "fields": {
+      "bestchange_id": 526,
+      "name": "Серов",
+      "code": "SRV",
+      "country_id": 20,
+      "rank": 379,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 169,
+    "fields": {
+      "bestchange_id": 169,
+      "name": "Севастополь",
+      "code": "SVSTP",
+      "country_id": 20,
+      "rank": 54,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 184,
+    "fields": {
+      "bestchange_id": 184,
+      "name": "Северодвинск",
+      "code": "SVRD",
+      "country_id": 20,
+      "rank": 248,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 25,
+    "fields": {
+      "bestchange_id": 25,
+      "name": "Симферополь",
+      "code": "SIMF",
+      "country_id": 20,
+      "rank": 17,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 441,
+    "fields": {
+      "bestchange_id": 441,
+      "name": "Сириус",
+      "code": "SRS",
+      "country_id": 20,
+      "rank": 331,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 420,
+    "fields": {
+      "bestchange_id": 420,
+      "name": "Смоленск",
+      "code": "SMLNK",
+      "country_id": 20,
+      "rank": 133,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 15,
+    "fields": {
+      "bestchange_id": 15,
+      "name": "Сочи",
+      "code": "SOCHI",
+      "country_id": 20,
+      "rank": 13,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 164,
+    "fields": {
+      "bestchange_id": 164,
+      "name": "Старый Оскол",
+      "code": "STOS",
+      "country_id": 20,
+      "rank": 174,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 7,
+    "fields": {
+      "bestchange_id": 7,
+      "name": "Ставрополь",
+      "code": "STAV",
+      "country_id": 20,
+      "rank": 43,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 299,
+    "fields": {
+      "bestchange_id": 299,
+      "name": "Стерлитамак",
+      "code": "STRLT",
+      "country_id": 20,
+      "rank": 149,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 472,
+    "fields": {
+      "bestchange_id": 472,
+      "name": "Судак",
+      "code": "SDK",
+      "country_id": 20,
+      "rank": 427,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 157,
+    "fields": {
+      "bestchange_id": 157,
+      "name": "Сургут",
+      "code": "SGT",
+      "country_id": 20,
+      "rank": 61,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 263,
+    "fields": {
+      "bestchange_id": 263,
+      "name": "Сыктывкар",
+      "code": "SKTK",
+      "country_id": 20,
+      "rank": 189,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 20,
+    "fields": {
+      "bestchange_id": 20,
+      "name": "Таганрог",
+      "code": "TGN",
+      "country_id": 20,
+      "rank": 120,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 114,
+    "fields": {
+      "bestchange_id": 114,
+      "name": "Тамбов",
+      "code": "TAMB",
+      "country_id": 20,
+      "rank": 103,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 536,
+    "fields": {
+      "bestchange_id": 536,
+      "name": "Тара",
+      "code": "TARA",
+      "country_id": 20,
+      "rank": 539,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 546,
+    "fields": {
+      "bestchange_id": 546,
+      "name": "Тавда",
+      "code": "TVD",
+      "country_id": 20,
+      "rank": 547,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 545,
+    "fields": {
+      "bestchange_id": 545,
+      "name": "Тобольск",
+      "code": "TBLSK",
+      "country_id": 20,
+      "rank": 380,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 264,
+    "fields": {
+      "bestchange_id": 264,
+      "name": "Тольятти",
+      "code": "TLTT",
+      "country_id": 20,
+      "rank": 37,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 276,
+    "fields": {
+      "bestchange_id": 276,
+      "name": "Томск",
+      "code": "TMSK",
+      "country_id": 20,
+      "rank": 29,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 46,
+    "fields": {
+      "bestchange_id": 46,
+      "name": "Тула",
+      "code": "TULA",
+      "country_id": 20,
+      "rank": 36,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 115,
+    "fields": {
+      "bestchange_id": 115,
+      "name": "Тверь",
+      "code": "TVER",
+      "country_id": 20,
+      "rank": 56,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 119,
+    "fields": {
+      "bestchange_id": 119,
+      "name": "Тюмень",
+      "code": "TYUM",
+      "country_id": 20,
+      "rank": 19,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 116,
+    "fields": {
+      "bestchange_id": 116,
+      "name": "Уфа",
+      "code": "UFA",
+      "country_id": 20,
+      "rank": 15,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 458,
+    "fields": {
+      "bestchange_id": 458,
+      "name": "Улан-Удэ",
+      "code": "ULNUD",
+      "country_id": 20,
+      "rank": 109,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 262,
+    "fields": {
+      "bestchange_id": 262,
+      "name": "Ульяновск",
+      "code": "ULYA",
+      "country_id": 20,
+      "rank": 41,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 547,
+    "fields": {
+      "bestchange_id": 547,
+      "name": "Урай",
+      "code": "URAY",
+      "country_id": 20,
+      "rank": 548,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 448,
+    "fields": {
+      "bestchange_id": 448,
+      "name": "Уссурийск",
+      "code": "USSRY",
+      "country_id": 20,
+      "rank": 273,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 527,
+    "fields": {
+      "bestchange_id": 527,
+      "name": "Верхняя Пышма",
+      "code": "VRPSH",
+      "country_id": 20,
+      "rank": 368,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 535,
+    "fields": {
+      "bestchange_id": 535,
+      "name": "Верхняя Салда",
+      "code": "VRSLD",
+      "country_id": 20,
+      "rank": 465,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 462,
+    "fields": {
+      "bestchange_id": 462,
+      "name": "Владикавказ",
+      "code": "VLDKV",
+      "country_id": 20,
+      "rank": 172,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 176,
+    "fields": {
+      "bestchange_id": 176,
+      "name": "Владимир",
+      "code": "VLAD",
+      "country_id": 20,
+      "rank": 95,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 127,
+    "fields": {
+      "bestchange_id": 127,
+      "name": "Владивосток",
+      "code": "VVO",
+      "country_id": 20,
+      "rank": 31,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 24,
+    "fields": {
+      "bestchange_id": 24,
+      "name": "Волгоград",
+      "code": "VLGD",
+      "country_id": 20,
+      "rank": 30,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 497,
+    "fields": {
+      "bestchange_id": 497,
+      "name": "Вологда",
+      "code": "VLGDA",
+      "country_id": 20,
+      "rank": 125,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 102,
+    "fields": {
+      "bestchange_id": 102,
+      "name": "Воронеж",
+      "code": "VORON",
+      "country_id": 20,
+      "rank": 20,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 473,
+    "fields": {
+      "bestchange_id": 473,
+      "name": "Якутск",
+      "code": "YKT",
+      "country_id": 20,
+      "rank": 68,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 471,
+    "fields": {
+      "bestchange_id": 471,
+      "name": "Ялта",
+      "code": "YLT",
+      "country_id": 20,
+      "rank": 182,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 118,
+    "fields": {
+      "bestchange_id": 118,
+      "name": "Ярославль",
+      "code": "YARS",
+      "country_id": 20,
+      "rank": 27,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 8,
+    "fields": {
+      "bestchange_id": 8,
+      "name": "Екатеринбург",
+      "code": "EKB",
+      "country_id": 20,
+      "rank": 8,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 242,
+    "fields": {
+      "bestchange_id": 242,
+      "name": "Елец",
+      "code": "YLTS",
+      "country_id": 20,
+      "rank": 323,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 463,
+    "fields": {
+      "bestchange_id": 463,
+      "name": "Ессентуки",
+      "code": "SSNTK",
+      "country_id": 20,
+      "rank": 221,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 103,
+    "fields": {
+      "bestchange_id": 103,
+      "name": "Йошкар-Ола",
+      "code": "YOLA",
+      "country_id": 20,
+      "rank": 91,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 443,
+    "fields": {
+      "bestchange_id": 443,
+      "name": "Южно-Сахалинск",
+      "code": "YZHNS",
+      "country_id": 20,
+      "rank": 58,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 465,
+    "fields": {
+      "bestchange_id": 465,
+      "name": "Железноводск",
+      "code": "ZHLZN",
+      "country_id": 20,
+      "rank": 300,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 245,
+    "fields": {
+      "bestchange_id": 245,
+      "name": "Бирмингем",
+      "code": "BRMN",
+      "country_id": 21,
+      "rank": 324,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 243,
+    "fields": {
+      "bestchange_id": 243,
+      "name": "Ливерпуль",
+      "code": "LVRP",
+      "country_id": 21,
+      "rank": 370,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 75,
+    "fields": {
+      "bestchange_id": 75,
+      "name": "Лондон",
+      "code": "LNDN",
+      "country_id": 21,
+      "rank": 96,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 244,
+    "fields": {
+      "bestchange_id": 244,
+      "name": "Манчестер",
+      "code": "MNCH",
+      "country_id": 21,
+      "rank": 345,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 140,
+    "fields": {
+      "bestchange_id": 140,
+      "name": "Копенгаген",
+      "code": "CPNH",
+      "country_id": 22,
+      "rank": 275,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 513,
+    "fields": {
+      "bestchange_id": 513,
+      "name": "Атланта",
+      "code": "TLNT",
+      "country_id": 23,
+      "rank": 363,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 356,
+    "fields": {
+      "bestchange_id": 356,
+      "name": "Бостон",
+      "code": "BSTN",
+      "country_id": 23,
+      "rank": 327,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 150,
+    "fields": {
+      "bestchange_id": 150,
+      "name": "Чикаго",
+      "code": "CHCG",
+      "country_id": 23,
+      "rank": 89,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 514,
+    "fields": {
+      "bestchange_id": 514,
+      "name": "Даллас",
+      "code": "DLLS",
+      "country_id": 23,
+      "rank": 411,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 516,
+    "fields": {
+      "bestchange_id": 516,
+      "name": "Форт-Майерс",
+      "code": "FRTMY",
+      "country_id": 23,
+      "rank": 461,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 417,
+    "fields": {
+      "bestchange_id": 417,
+      "name": "Хьюстон",
+      "code": "HUSTN",
+      "country_id": 23,
+      "rank": 329,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 247,
+    "fields": {
+      "bestchange_id": 247,
+      "name": "Лас-Вегас",
+      "code": "LASV",
+      "country_id": 23,
+      "rank": 315,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 76,
+    "fields": {
+      "bestchange_id": 76,
+      "name": "Лос-Анджелес",
+      "code": "LOSAN",
+      "country_id": 23,
+      "rank": 102,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 151,
+    "fields": {
+      "bestchange_id": 151,
+      "name": "Майами",
+      "code": "MIAMI",
+      "country_id": 23,
+      "rank": 128,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 81,
+    "fields": {
+      "bestchange_id": 81,
+      "name": "Нью-Йорк",
+      "code": "NYC",
+      "country_id": 23,
+      "rank": 82,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 152,
+    "fields": {
+      "bestchange_id": 152,
+      "name": "Орландо",
+      "code": "ORLND",
+      "country_id": 23,
+      "rank": 307,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 246,
+    "fields": {
+      "bestchange_id": 246,
+      "name": "Филадельфия",
+      "code": "PHILD",
+      "country_id": 23,
+      "rank": 355,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 515,
+    "fields": {
+      "bestchange_id": 515,
+      "name": "Сакраменто",
+      "code": "SCRMN",
+      "country_id": 23,
+      "rank": 301,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 366,
+    "fields": {
+      "bestchange_id": 366,
+      "name": "Сан-Франциско",
+      "code": "SNFRN",
+      "country_id": 23,
+      "rank": 290,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 239,
+    "fields": {
+      "bestchange_id": 239,
+      "name": "Сиэтл",
+      "code": "SEAT",
+      "country_id": 23,
+      "rank": 256,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 437,
+    "fields": {
+      "bestchange_id": 437,
+      "name": "Вашингтон",
+      "code": "WSHNG",
+      "country_id": 23,
+      "rank": 281,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 238,
+    "fields": {
+      "bestchange_id": 238,
+      "name": "Калгари",
+      "code": "CLGR",
+      "country_id": 24,
+      "rank": 314,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 343,
+    "fields": {
+      "bestchange_id": 343,
+      "name": "Эдмонтон",
+      "code": "EDMNT",
+      "country_id": 24,
+      "rank": 280,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 474,
+    "fields": {
+      "bestchange_id": 474,
+      "name": "Галифакс",
+      "code": "HLFX",
+      "country_id": 24,
+      "rank": 524,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 478,
+    "fields": {
+      "bestchange_id": 478,
+      "name": "Келоуна",
+      "code": "KLWN",
+      "country_id": 24,
+      "rank": 526,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 480,
+    "fields": {
+      "bestchange_id": 480,
+      "name": "Летбридж",
+      "code": "LTBRG",
+      "country_id": 24,
+      "rank": 528,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 236,
+    "fields": {
+      "bestchange_id": 236,
+      "name": "Монреаль",
+      "code": "MNTR",
+      "country_id": 24,
+      "rank": 308,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 345,
+    "fields": {
+      "bestchange_id": 345,
+      "name": "Оттава",
+      "code": "OTTW",
+      "country_id": 24,
+      "rank": 366,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 237,
+    "fields": {
+      "bestchange_id": 237,
+      "name": "Квебек",
+      "code": "QUEB",
+      "country_id": 24,
+      "rank": 399,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 479,
+    "fields": {
+      "bestchange_id": 479,
+      "name": "Ред-Дир",
+      "code": "RDDR",
+      "country_id": 24,
+      "rank": 527,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 475,
+    "fields": {
+      "bestchange_id": 475,
+      "name": "Реджайна",
+      "code": "RGN",
+      "country_id": 24,
+      "rank": 451,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 476,
+    "fields": {
+      "bestchange_id": 476,
+      "name": "Саскатун",
+      "code": "SSKTN",
+      "country_id": 24,
+      "rank": 525,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 235,
+    "fields": {
+      "bestchange_id": 235,
+      "name": "Торонто",
+      "code": "TRNT",
+      "country_id": 24,
+      "rank": 194,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 344,
+    "fields": {
+      "bestchange_id": 344,
+      "name": "Ванкувер",
+      "code": "VNCVR",
+      "country_id": 24,
+      "rank": 241,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 477,
+    "fields": {
+      "bestchange_id": 477,
+      "name": "Виннипег",
+      "code": "WNNPG",
+      "country_id": 24,
+      "rank": 428,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 156,
+    "fields": {
+      "bestchange_id": 156,
+      "name": "Мехико",
+      "code": "CDMX",
+      "country_id": 25,
+      "rank": 265,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 86,
+    "fields": {
+      "bestchange_id": 86,
+      "name": "Берлин",
+      "code": "BER",
+      "country_id": 29,
+      "rank": 62,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 354,
+    "fields": {
+      "bestchange_id": 354,
+      "name": "Бремен",
+      "code": "BREMN",
+      "country_id": 29,
+      "rank": 262,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 222,
+    "fields": {
+      "bestchange_id": 222,
+      "name": "Кельн",
+      "code": "CLGN",
+      "country_id": 29,
+      "rank": 156,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 224,
+    "fields": {
+      "bestchange_id": 224,
+      "name": "Дортмунд",
+      "code": "DRTM",
+      "country_id": 29,
+      "rank": 164,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 84,
+    "fields": {
+      "bestchange_id": 84,
+      "name": "Дрезден",
+      "code": "DRES",
+      "country_id": 29,
+      "rank": 287,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 223,
+    "fields": {
+      "bestchange_id": 223,
+      "name": "Дюссельдорф",
+      "code": "DUSS",
+      "country_id": 29,
+      "rank": 139,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 352,
+    "fields": {
+      "bestchange_id": 352,
+      "name": "Эссен",
+      "code": "ESSN",
+      "country_id": 29,
+      "rank": 251,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 87,
+    "fields": {
+      "bestchange_id": 87,
+      "name": "Франкфурт-на-Майне",
+      "code": "FRAN",
+      "country_id": 29,
+      "rank": 111,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 141,
+    "fields": {
+      "bestchange_id": 141,
+      "name": "Гамбург",
+      "code": "HAMB",
+      "country_id": 29,
+      "rank": 150,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 342,
+    "fields": {
+      "bestchange_id": 342,
+      "name": "Ганновер",
+      "code": "HNVR",
+      "country_id": 29,
+      "rank": 192,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 142,
+    "fields": {
+      "bestchange_id": 142,
+      "name": "Лейпциг",
+      "code": "LZIG",
+      "country_id": 29,
+      "rank": 233,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 85,
+    "fields": {
+      "bestchange_id": 85,
+      "name": "Мюнхен",
+      "code": "MUN",
+      "country_id": 29,
+      "rank": 130,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 355,
+    "fields": {
+      "bestchange_id": 355,
+      "name": "Нюрнберг",
+      "code": "NRMBR",
+      "country_id": 29,
+      "rank": 197,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 353,
+    "fields": {
+      "bestchange_id": 353,
+      "name": "Штутгарт",
+      "code": "STTGR",
+      "country_id": 29,
+      "rank": 183,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 97,
+    "fields": {
+      "bestchange_id": 97,
+      "name": "Исфахан",
+      "code": "ISFHN",
+      "country_id": 30,
+      "rank": 470,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 175,
+    "fields": {
+      "bestchange_id": 175,
+      "name": "Нордуз",
+      "code": "NRDZ",
+      "country_id": 30,
+      "rank": 473,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 57,
+    "fields": {
+      "bestchange_id": 57,
+      "name": "Тегеран",
+      "code": "TEHR",
+      "country_id": 30,
+      "rank": 468,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 89,
+    "fields": {
+      "bestchange_id": 89,
+      "name": "Амстердам",
+      "code": "AMST",
+      "country_id": 33,
+      "rank": 122,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 511,
+    "fields": {
+      "bestchange_id": 511,
+      "name": "Гарлем",
+      "code": "HRLM",
+      "country_id": 33,
+      "rank": 460,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 506,
+    "fields": {
+      "bestchange_id": 506,
+      "name": "Гаага",
+      "code": "HAG",
+      "country_id": 33,
+      "rank": 456,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 507,
+    "fields": {
+      "bestchange_id": 507,
+      "name": "Маастрихт",
+      "code": "MST",
+      "country_id": 33,
+      "rank": 390,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 144,
+    "fields": {
+      "bestchange_id": 144,
+      "name": "Роттердам",
+      "code": "RTRD",
+      "country_id": 33,
+      "rank": 291,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 261,
+    "fields": {
+      "bestchange_id": 261,
+      "name": "Утрехт",
+      "code": "UTR",
+      "country_id": 33,
+      "rank": 325,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 451,
+    "fields": {
+      "bestchange_id": 451,
+      "name": "Бат-Ям",
+      "code": "BTYM",
+      "country_id": 34,
+      "rank": 450,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 377,
+    "fields": {
+      "bestchange_id": 377,
+      "name": "Хайфа",
+      "code": "HFA",
+      "country_id": 34,
+      "rank": 217,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 452,
+    "fields": {
+      "bestchange_id": 452,
+      "name": "Нетания",
+      "code": "NTNY",
+      "country_id": 34,
+      "rank": 350,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 450,
+    "fields": {
+      "bestchange_id": 450,
+      "name": "Ришон-ле-Цион",
+      "code": "ESHNL",
+      "country_id": 34,
+      "rank": 523,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 188,
+    "fields": {
+      "bestchange_id": 188,
+      "name": "Тель-Авив",
+      "code": "TLAV",
+      "country_id": 34,
+      "rank": 98,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 227,
+    "fields": {
+      "bestchange_id": 227,
+      "name": "Аликанте",
+      "code": "ALIC",
+      "country_id": 35,
+      "rank": 105,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 91,
+    "fields": {
+      "bestchange_id": 91,
+      "name": "Барселона",
+      "code": "BARC",
+      "country_id": 35,
+      "rank": 79,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 351,
+    "fields": {
+      "bestchange_id": 351,
+      "name": "Бенидорм",
+      "code": "BNDRM",
+      "country_id": 35,
+      "rank": 201,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 303,
+    "fields": {
+      "bestchange_id": 303,
+      "name": "Ибица",
+      "code": "IBZ",
+      "country_id": 35,
+      "rank": 403,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 148,
+    "fields": {
+      "bestchange_id": 148,
+      "name": "Мадрид",
+      "code": "MADR",
+      "country_id": 35,
+      "rank": 88,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 149,
+    "fields": {
+      "bestchange_id": 149,
+      "name": "Малага",
+      "code": "MLG",
+      "country_id": 35,
+      "rank": 209,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 304,
+    "fields": {
+      "bestchange_id": 304,
+      "name": "Майорка",
+      "code": "MLLRC",
+      "country_id": 35,
+      "rank": 373,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 218,
+    "fields": {
+      "bestchange_id": 218,
+      "name": "Марбелья",
+      "code": "MRBL",
+      "country_id": 35,
+      "rank": 159,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 241,
+    "fields": {
+      "bestchange_id": 241,
+      "name": "Мурсия",
+      "code": "MRC",
+      "country_id": 35,
+      "rank": 369,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 226,
+    "fields": {
+      "bestchange_id": 226,
+      "name": "Севилья",
+      "code": "SVL",
+      "country_id": 35,
+      "rank": 245,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 305,
+    "fields": {
+      "bestchange_id": 305,
+      "name": "Тенерифе",
+      "code": "TNRF",
+      "country_id": 35,
+      "rank": 266,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 491,
+    "fields": {
+      "bestchange_id": 491,
+      "name": "Торревьеха",
+      "code": "TRRVJ",
+      "country_id": 35,
+      "rank": 269,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 147,
+    "fields": {
+      "bestchange_id": 147,
+      "name": "Валенсия",
+      "code": "VALEN",
+      "country_id": 35,
+      "rank": 94,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 240,
+    "fields": {
+      "bestchange_id": 240,
+      "name": "Сарагоса",
+      "code": "ZRGZ",
+      "country_id": 35,
+      "rank": 385,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 214,
+    "fields": {
+      "bestchange_id": 214,
+      "name": "Буэнос-Айрес",
+      "code": "BSAS",
+      "country_id": 40,
+      "rank": 226,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 288,
+    "fields": {
+      "bestchange_id": 288,
+      "name": "Сингапур",
+      "code": "SNGPR",
+      "country_id": 42,
+      "rank": 240,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 249,
+    "fields": {
+      "bestchange_id": 249,
+      "name": "Бали",
+      "code": "BALI",
+      "country_id": 45,
+      "rank": 93,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 209,
+    "fields": {
+      "bestchange_id": 209,
+      "name": "Дублин",
+      "code": "DUBL",
+      "country_id": 55,
+      "rank": 81,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 143,
+    "fields": {
+      "bestchange_id": 143,
+      "name": "Антверпен",
+      "code": "ANTW",
+      "country_id": 56,
+      "rank": 322,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 502,
+    "fields": {
+      "bestchange_id": 502,
+      "name": "Брюгге",
+      "code": "BRUGS",
+      "country_id": 56,
+      "rank": 534,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 94,
+    "fields": {
+      "bestchange_id": 94,
+      "name": "Брюссель",
+      "code": "BRUS",
+      "country_id": 56,
+      "rank": 196,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 501,
+    "fields": {
+      "bestchange_id": 501,
+      "name": "Гент",
+      "code": "GNE",
+      "country_id": 56,
+      "rank": 377,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 295,
+    "fields": {
+      "bestchange_id": 295,
+      "name": "Бразилиа",
+      "code": "BRSL",
+      "country_id": 58,
+      "rank": 356,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 297,
+    "fields": {
+      "bestchange_id": 297,
+      "name": "Форталеза",
+      "code": "FRTLZ",
+      "country_id": 58,
+      "rank": 435,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 294,
+    "fields": {
+      "bestchange_id": 294,
+      "name": "Рио-де-Жанейро",
+      "code": "RDJNR",
+      "country_id": 58,
+      "rank": 337,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 296,
+    "fields": {
+      "bestchange_id": 296,
+      "name": "Сальвадор",
+      "code": "SLDR",
+      "country_id": 58,
+      "rank": 434,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 293,
+    "fields": {
+      "bestchange_id": 293,
+      "name": "Сан-Паулу",
+      "code": "SPL",
+      "country_id": 58,
+      "rank": 298,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 428,
+    "fields": {
+      "bestchange_id": 428,
+      "name": "Базель",
+      "code": "BSL",
+      "country_id": 59,
+      "rank": 312,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 427,
+    "fields": {
+      "bestchange_id": 427,
+      "name": "Берн",
+      "code": "BERNE",
+      "country_id": 59,
+      "rank": 361,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 219,
+    "fields": {
+      "bestchange_id": 219,
+      "name": "Женева",
+      "code": "GNV",
+      "country_id": 59,
+      "rank": 198,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 368,
+    "fields": {
+      "bestchange_id": 368,
+      "name": "Лозанна",
+      "code": "LSNN",
+      "country_id": 59,
+      "rank": 328,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 426,
+    "fields": {
+      "bestchange_id": 426,
+      "name": "Люцерн",
+      "code": "LCRN",
+      "country_id": 59,
+      "rank": 319,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 367,
+    "fields": {
+      "bestchange_id": 367,
+      "name": "Лугано",
+      "code": "LGN",
+      "country_id": 59,
+      "rank": 360,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 425,
+    "fields": {
+      "bestchange_id": 425,
+      "name": "Монтрё",
+      "code": "MNTRX",
+      "country_id": 59,
+      "rank": 330,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 220,
+    "fields": {
+      "bestchange_id": 220,
+      "name": "Цюрих",
+      "code": "ZRCH",
+      "country_id": 59,
+      "rank": 184,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 400,
+    "fields": {
+      "bestchange_id": 400,
+      "name": "Кейптаун",
+      "code": "CPTWN",
+      "country_id": 60,
+      "rank": 347,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 401,
+    "fields": {
+      "bestchange_id": 401,
+      "name": "Дурбан",
+      "code": "DRBN",
+      "country_id": 60,
+      "rank": 517,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 329,
+    "fields": {
+      "bestchange_id": 329,
+      "name": "Йоханнесбург",
+      "code": "JHNSB",
+      "country_id": 60,
+      "rank": 299,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 284,
+    "fields": {
+      "bestchange_id": 284,
+      "name": "Александрия",
+      "code": "LXNDR",
+      "country_id": 61,
+      "rank": 402,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 283,
+    "fields": {
+      "bestchange_id": 283,
+      "name": "Каир",
+      "code": "CAR",
+      "country_id": 61,
+      "rank": 215,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 512,
+    "fields": {
+      "bestchange_id": 512,
+      "name": "Гиза",
+      "code": "GIZ",
+      "country_id": 61,
+      "rank": 340,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 430,
+    "fields": {
+      "bestchange_id": 430,
+      "name": "Хургада",
+      "code": "HRGHD",
+      "country_id": 61,
+      "rank": 203,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 431,
+    "fields": {
+      "bestchange_id": 431,
+      "name": "Шарм-эш-Шейх",
+      "code": "SRMLS",
+      "country_id": 61,
+      "rank": 168,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 319,
+    "fields": {
+      "bestchange_id": 319,
+      "name": "Абуджа",
+      "code": "ABJ",
+      "country_id": 62,
+      "rank": 438,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 320,
+    "fields": {
+      "bestchange_id": 320,
+      "name": "Кано",
+      "code": "KANO",
+      "country_id": 62,
+      "rank": 484,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 318,
+    "fields": {
+      "bestchange_id": 318,
+      "name": "Лагос",
+      "code": "LGS",
+      "country_id": 62,
+      "rank": 419,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 380,
+    "fields": {
+      "bestchange_id": 380,
+      "name": "Онне",
+      "code": "ONN",
+      "country_id": 62,
+      "rank": 502,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 335,
+    "fields": {
+      "bestchange_id": 335,
+      "name": "Дар-эс-Салам",
+      "code": "DRSSL",
+      "country_id": 63,
+      "rank": 422,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 322,
+    "fields": {
+      "bestchange_id": 322,
+      "name": "Дакар",
+      "code": "DKR",
+      "country_id": 65,
+      "rank": 420,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 310,
+    "fields": {
+      "bestchange_id": 310,
+      "name": "Аккра",
+      "code": "CCR",
+      "country_id": 66,
+      "rank": 480,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 311,
+    "fields": {
+      "bestchange_id": 311,
+      "name": "Кумаси",
+      "code": "KMS",
+      "country_id": 66,
+      "rank": 481,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 378,
+    "fields": {
+      "bestchange_id": 378,
+      "name": "Секонди-Такоради",
+      "code": "SKNDT",
+      "country_id": 66,
+      "rank": 500,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 312,
+    "fields": {
+      "bestchange_id": 312,
+      "name": "Тема",
+      "code": "TEMA",
+      "country_id": 66,
+      "rank": 482,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 388,
+    "fields": {
+      "bestchange_id": 388,
+      "name": "Хартум",
+      "code": "KHRTM",
+      "country_id": 67,
+      "rank": 508,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 315,
+    "fields": {
+      "bestchange_id": 315,
+      "name": "Дуала",
+      "code": "DLA",
+      "country_id": 68,
+      "rank": 386,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 314,
+    "fields": {
+      "bestchange_id": 314,
+      "name": "Яунде",
+      "code": "YND",
+      "country_id": 68,
+      "rank": 418,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 392,
+    "fields": {
+      "bestchange_id": 392,
+      "name": "Лобиту",
+      "code": "LBT",
+      "country_id": 70,
+      "rank": 509,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 307,
+    "fields": {
+      "bestchange_id": 307,
+      "name": "Луанда",
+      "code": "LND",
+      "country_id": 70,
+      "rank": 436,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 393,
+    "fields": {
+      "bestchange_id": 393,
+      "name": "Мосамедиш",
+      "code": "MSMDS",
+      "country_id": 70,
+      "rank": 510,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 394,
+    "fields": {
+      "bestchange_id": 394,
+      "name": "Сойо",
+      "code": "SOYO",
+      "country_id": 70,
+      "rank": 511,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 331,
+    "fields": {
+      "bestchange_id": 331,
+      "name": "Момбаса",
+      "code": "MMBS",
+      "country_id": 71,
+      "rank": 421,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 330,
+    "fields": {
+      "bestchange_id": 330,
+      "name": "Найроби",
+      "code": "NRB",
+      "country_id": 71,
+      "rank": 487,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 328,
+    "fields": {
+      "bestchange_id": 328,
+      "name": "Либревиль",
+      "code": "LBRVL",
+      "country_id": 72,
+      "rank": 441,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 397,
+    "fields": {
+      "bestchange_id": 397,
+      "name": "Порт-Жантиль",
+      "code": "PRTGN",
+      "country_id": 72,
+      "rank": 514,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 337,
+    "fields": {
+      "bestchange_id": 337,
+      "name": "Бамако",
+      "code": "BMK",
+      "country_id": 73,
+      "rank": 444,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 325,
+    "fields": {
+      "bestchange_id": 325,
+      "name": "Котону",
+      "code": "CTN",
+      "country_id": 74,
+      "rank": 486,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 370,
+    "fields": {
+      "bestchange_id": 370,
+      "name": "Тоамасина",
+      "code": "TMSN",
+      "country_id": 75,
+      "rank": 493,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 384,
+    "fields": {
+      "bestchange_id": 384,
+      "name": "Хомс",
+      "code": "KHMS",
+      "country_id": 78,
+      "rank": 505,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 385,
+    "fields": {
+      "bestchange_id": 385,
+      "name": "Бенгази",
+      "code": "BNGHZ",
+      "country_id": 78,
+      "rank": 506,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 386,
+    "fields": {
+      "bestchange_id": 386,
+      "name": "Мисурата",
+      "code": "MSRT",
+      "country_id": 78,
+      "rank": 507,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 134,
+    "fields": {
+      "bestchange_id": 134,
+      "name": "Триполи",
+      "code": "TRIP",
+      "country_id": 78,
+      "rank": 472,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 333,
+    "fields": {
+      "bestchange_id": 333,
+      "name": "Кигали",
+      "code": "KGL",
+      "country_id": 80,
+      "rank": 442,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 374,
+    "fields": {
+      "bestchange_id": 374,
+      "name": "Бейра",
+      "code": "BIR",
+      "country_id": 81,
+      "rank": 497,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 375,
+    "fields": {
+      "bestchange_id": 375,
+      "name": "Мапуту",
+      "code": "MPT",
+      "country_id": 81,
+      "rank": 498,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 376,
+    "fields": {
+      "bestchange_id": 376,
+      "name": "Накала",
+      "code": "NCL",
+      "country_id": 81,
+      "rank": 499,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 309,
+    "fields": {
+      "bestchange_id": 309,
+      "name": "Банжул",
+      "code": "BNJL",
+      "country_id": 82,
+      "rank": 437,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 316,
+    "fields": {
+      "bestchange_id": 316,
+      "name": "Браззавиль",
+      "code": "BRZVL",
+      "country_id": 85,
+      "rank": 483,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 317,
+    "fields": {
+      "bestchange_id": 317,
+      "name": "Киншаса",
+      "code": "KNSHS",
+      "country_id": 85,
+      "rank": 387,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 398,
+    "fields": {
+      "bestchange_id": 398,
+      "name": "Пуэнт-Нуар",
+      "code": "PNTNR",
+      "country_id": 85,
+      "rank": 515,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 336,
+    "fields": {
+      "bestchange_id": 336,
+      "name": "Кампала",
+      "code": "KMPL",
+      "country_id": 86,
+      "rank": 423,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 339,
+    "fields": {
+      "bestchange_id": 339,
+      "name": "Бобо-Диуласо",
+      "code": "BBDLS",
+      "country_id": 87,
+      "rank": 490,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 338,
+    "fields": {
+      "bestchange_id": 338,
+      "name": "Уагадугу",
+      "code": "UGDG",
+      "country_id": 87,
+      "rank": 489,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 334,
+    "fields": {
+      "bestchange_id": 334,
+      "name": "Фритаун",
+      "code": "FRTWN",
+      "country_id": 88,
+      "rank": 443,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 321,
+    "fields": {
+      "bestchange_id": 321,
+      "name": "Могадишо",
+      "code": "MGDSH",
+      "country_id": 89,
+      "rank": 439,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 324,
+    "fields": {
+      "bestchange_id": 324,
+      "name": "Хараре",
+      "code": "HRR",
+      "country_id": 90,
+      "rank": 404,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 326,
+    "fields": {
+      "bestchange_id": 326,
+      "name": "Ниамей",
+      "code": "NMY",
+      "country_id": 92,
+      "rank": 440,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 323,
+    "fields": {
+      "bestchange_id": 323,
+      "name": "Ломе",
+      "code": "LOME",
+      "country_id": 95,
+      "rank": 485,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 313,
+    "fields": {
+      "bestchange_id": 313,
+      "name": "Конакри",
+      "code": "CNKR",
+      "country_id": 96,
+      "rank": 374,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 332,
+    "fields": {
+      "bestchange_id": 332,
+      "name": "Монровия",
+      "code": "MNRV",
+      "country_id": 97,
+      "rank": 488,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 391,
+    "fields": {
+      "bestchange_id": 391,
+      "name": "Касабланка",
+      "code": "CSBLN",
+      "country_id": 99,
+      "rank": 346,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 389,
+    "fields": {
+      "bestchange_id": 389,
+      "name": "Надор",
+      "code": "NDR",
+      "country_id": 99,
+      "rank": 446,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 387,
+    "fields": {
+      "bestchange_id": 387,
+      "name": "Рабат",
+      "code": "RBT",
+      "country_id": 99,
+      "rank": 406,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 390,
+    "fields": {
+      "bestchange_id": 390,
+      "name": "Танжер",
+      "code": "TNGR",
+      "country_id": 99,
+      "rank": 447,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 383,
+    "fields": {
+      "bestchange_id": 383,
+      "name": "Алжир",
+      "code": "LGR",
+      "country_id": 100,
+      "rank": 305,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 381,
+    "fields": {
+      "bestchange_id": 381,
+      "name": "Нуадибу",
+      "code": "NDB",
+      "country_id": 101,
+      "rank": 503,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 382,
+    "fields": {
+      "bestchange_id": 382,
+      "name": "Нуакшот",
+      "code": "NKCHT",
+      "country_id": 101,
+      "rank": 504,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 399,
+    "fields": {
+      "bestchange_id": 399,
+      "name": "Уолфиш-Бей",
+      "code": "WLSB",
+      "country_id": 102,
+      "rank": 516,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 369,
+    "fields": {
+      "bestchange_id": 369,
+      "name": "Джибути",
+      "code": "DJBT",
+      "country_id": 103,
+      "rank": 492,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 395,
+    "fields": {
+      "bestchange_id": 395,
+      "name": "Бата",
+      "code": "BATA",
+      "country_id": 107,
+      "rank": 512,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 396,
+    "fields": {
+      "bestchange_id": 396,
+      "name": "Малабо",
+      "code": "MLB",
+      "country_id": 107,
+      "rank": 513,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 132,
+    "fields": {
+      "bestchange_id": 132,
+      "name": "Джерба",
+      "code": "DJRB",
+      "country_id": 108,
+      "rank": 471,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 133,
+    "fields": {
+      "bestchange_id": 133,
+      "name": "Тунис",
+      "code": "TUNIS",
+      "country_id": 108,
+      "rank": 321,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 199,
+    "fields": {
+      "bestchange_id": 199,
+      "name": "Аланья",
+      "code": "ALAN",
+      "country_id": 109,
+      "rank": 115,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 168,
+    "fields": {
+      "bestchange_id": 168,
+      "name": "Анкара",
+      "code": "ANKR",
+      "country_id": 109,
+      "rank": 230,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 167,
+    "fields": {
+      "bestchange_id": 167,
+      "name": "Анталья",
+      "code": "ANTL",
+      "country_id": 109,
+      "rank": 7,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 201,
+    "fields": {
+      "bestchange_id": 201,
+      "name": "Белек",
+      "code": "BLK",
+      "country_id": 109,
+      "rank": 343,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 302,
+    "fields": {
+      "bestchange_id": 302,
+      "name": "Бодрум",
+      "code": "BDRM",
+      "country_id": 109,
+      "rank": 69,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 190,
+    "fields": {
+      "bestchange_id": 190,
+      "name": "Бурса",
+      "code": "BURS",
+      "country_id": 109,
+      "rank": 296,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 207,
+    "fields": {
+      "bestchange_id": 207,
+      "name": "Газипаша",
+      "code": "GZP",
+      "country_id": 109,
+      "rank": 383,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 54,
+    "fields": {
+      "bestchange_id": 54,
+      "name": "Стамбул",
+      "code": "STAM",
+      "country_id": 109,
+      "rank": 5,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 189,
+    "fields": {
+      "bestchange_id": 189,
+      "name": "Измир",
+      "code": "IZMR",
+      "country_id": 109,
+      "rank": 277,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 200,
+    "fields": {
+      "bestchange_id": 200,
+      "name": "Кемер",
+      "code": "KMR",
+      "country_id": 109,
+      "rank": 304,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 208,
+    "fields": {
+      "bestchange_id": 208,
+      "name": "Мерсин",
+      "code": "MRS",
+      "country_id": 109,
+      "rank": 66,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 268,
+    "fields": {
+      "bestchange_id": 268,
+      "name": "Самсун",
+      "code": "SMSN",
+      "country_id": 109,
+      "rank": 249,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 551,
+    "fields": {
+      "bestchange_id": 551,
+      "name": "Белосток",
+      "code": "BLSTK",
+      "country_id": 110,
+      "rank": 395,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 550,
+    "fields": {
+      "bestchange_id": 550,
+      "name": "Быдгощ",
+      "code": "BDGSZ",
+      "country_id": 110,
+      "rank": 551,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 193,
+    "fields": {
+      "bestchange_id": 193,
+      "name": "Гданьск",
+      "code": "GDN",
+      "country_id": 110,
+      "rank": 193,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 194,
+    "fields": {
+      "bestchange_id": 194,
+      "name": "Краков",
+      "code": "KRKW",
+      "country_id": 110,
+      "rank": 134,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 216,
+    "fields": {
+      "bestchange_id": 216,
+      "name": "Лодзь",
+      "code": "LODZ",
+      "country_id": 110,
+      "rank": 234,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 363,
+    "fields": {
+      "bestchange_id": 363,
+      "name": "Люблин",
+      "code": "LBLN",
+      "country_id": 110,
+      "rank": 295,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 341,
+    "fields": {
+      "bestchange_id": 341,
+      "name": "Познань",
+      "code": "PZNN",
+      "country_id": 110,
+      "rank": 212,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 215,
+    "fields": {
+      "bestchange_id": 215,
+      "name": "Пшемысль",
+      "code": "PRZ",
+      "country_id": 110,
+      "rank": 398,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 361,
+    "fields": {
+      "bestchange_id": 361,
+      "name": "Жешув",
+      "code": "RZSZW",
+      "country_id": 110,
+      "rank": 359,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 362,
+    "fields": {
+      "bestchange_id": 362,
+      "name": "Щецин",
+      "code": "SZCZC",
+      "country_id": 110,
+      "rank": 225,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 95,
+    "fields": {
+      "bestchange_id": 95,
+      "name": "Варшава",
+      "code": "WARS",
+      "country_id": 110,
+      "rank": 39,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 192,
+    "fields": {
+      "bestchange_id": 192,
+      "name": "Вроцлав",
+      "code": "WRCL",
+      "country_id": 110,
+      "rank": 143,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 48,
+    "fields": {
+      "bestchange_id": 48,
+      "name": "Рига",
+      "code": "RIGA",
+      "country_id": 111,
+      "rank": 90,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 11,
+    "fields": {
+      "bestchange_id": 11,
+      "name": "Антрацит",
+      "code": "ANTR",
+      "country_id": 112,
+      "rank": 467,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 197,
+    "fields": {
+      "bestchange_id": 197,
+      "name": "Бердянск",
+      "code": "BRDNK",
+      "country_id": 112,
+      "rank": 475,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 72,
+    "fields": {
+      "bestchange_id": 72,
+      "name": "Черкассы",
+      "code": "CHERK",
+      "country_id": 112,
+      "rank": 127,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 159,
+    "fields": {
+      "bestchange_id": 159,
+      "name": "Чернигов",
+      "code": "CHRN",
+      "country_id": 112,
+      "rank": 169,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 50,
+    "fields": {
+      "bestchange_id": 50,
+      "name": "Черновцы",
+      "code": "CHERN",
+      "country_id": 112,
+      "rank": 148,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 33,
+    "fields": {
+      "bestchange_id": 33,
+      "name": "Днепр",
+      "code": "DNPR",
+      "country_id": 112,
+      "rank": 106,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 35,
+    "fields": {
+      "bestchange_id": 35,
+      "name": "Донецк",
+      "code": "DNT",
+      "country_id": 112,
+      "rank": 40,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 27,
+    "fields": {
+      "bestchange_id": 27,
+      "name": "Хмельницкий",
+      "code": "HMLN",
+      "country_id": 112,
+      "rank": 206,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 62,
+    "fields": {
+      "bestchange_id": 62,
+      "name": "Ивано-Франковск",
+      "code": "IVFR",
+      "country_id": 112,
+      "rank": 132,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 552,
+    "fields": {
+      "bestchange_id": 552,
+      "name": "Каменец-Подольский",
+      "code": "KMNPD",
+      "country_id": 112,
+      "rank": 381,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 364,
+    "fields": {
+      "bestchange_id": 364,
+      "name": "Каменское",
+      "code": "KMNSK",
+      "country_id": 112,
+      "rank": 227,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 21,
+    "fields": {
+      "bestchange_id": 21,
+      "name": "Харьков",
+      "code": "HRK",
+      "country_id": 112,
+      "rank": 73,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 71,
+    "fields": {
+      "bestchange_id": 71,
+      "name": "Херсон",
+      "code": "KHERS",
+      "country_id": 112,
+      "rank": 431,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 196,
+    "fields": {
+      "bestchange_id": 196,
+      "name": "Ковель",
+      "code": "KVL",
+      "country_id": 112,
+      "rank": 303,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 64,
+    "fields": {
+      "bestchange_id": 64,
+      "name": "Краматорск",
+      "code": "KRAM",
+      "country_id": 112,
+      "rank": 302,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 47,
+    "fields": {
+      "bestchange_id": 47,
+      "name": "Кременчуг",
+      "code": "KRMN",
+      "country_id": 112,
+      "rank": 175,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 28,
+    "fields": {
+      "bestchange_id": 28,
+      "name": "Кривой Рог",
+      "code": "KRVR",
+      "country_id": 112,
+      "rank": 186,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 63,
+    "fields": {
+      "bestchange_id": 63,
+      "name": "Кропивницкий",
+      "code": "KROP",
+      "country_id": 112,
+      "rank": 211,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 3,
+    "fields": {
+      "bestchange_id": 3,
+      "name": "Киев",
+      "code": "KIEV",
+      "country_id": 112,
+      "rank": 11,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 120,
+    "fields": {
+      "bestchange_id": 120,
+      "name": "Луганск",
+      "code": "LUH",
+      "country_id": 112,
+      "rank": 252,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 65,
+    "fields": {
+      "bestchange_id": 65,
+      "name": "Луцк",
+      "code": "LUTSK",
+      "country_id": 112,
+      "rank": 173,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 26,
+    "fields": {
+      "bestchange_id": 26,
+      "name": "Львов",
+      "code": "LVOV",
+      "country_id": 112,
+      "rank": 101,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 32,
+    "fields": {
+      "bestchange_id": 32,
+      "name": "Мариуполь",
+      "code": "MRPL",
+      "country_id": 112,
+      "rank": 138,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 66,
+    "fields": {
+      "bestchange_id": 66,
+      "name": "Мелитополь",
+      "code": "MELIT",
+      "country_id": 112,
+      "rank": 469,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 185,
+    "fields": {
+      "bestchange_id": 185,
+      "name": "Мукачево",
+      "code": "MKCH",
+      "country_id": 112,
+      "rank": 144,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 40,
+    "fields": {
+      "bestchange_id": 40,
+      "name": "Николаев",
+      "code": "MYKL",
+      "country_id": 112,
+      "rank": 146,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 38,
+    "fields": {
+      "bestchange_id": 38,
+      "name": "Одесса",
+      "code": "ODS",
+      "country_id": 112,
+      "rank": 63,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 49,
+    "fields": {
+      "bestchange_id": 49,
+      "name": "Полтава",
+      "code": "POLT",
+      "country_id": 112,
+      "rank": 170,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 67,
+    "fields": {
+      "bestchange_id": 67,
+      "name": "Ровно",
+      "code": "RIVNE",
+      "country_id": 112,
+      "rank": 185,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 365,
+    "fields": {
+      "bestchange_id": 365,
+      "name": "Самбор",
+      "code": "SMBR",
+      "country_id": 112,
+      "rank": 491,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 553,
+    "fields": {
+      "bestchange_id": 553,
+      "name": "Шептицкий",
+      "code": "SHPTS",
+      "country_id": 112,
+      "rank": 466,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 186,
+    "fields": {
+      "bestchange_id": 186,
+      "name": "Северодонецк",
+      "code": "SVDN",
+      "country_id": 112,
+      "rank": 474,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 183,
+    "fields": {
+      "bestchange_id": 183,
+      "name": "Славянск",
+      "code": "SLV",
+      "country_id": 112,
+      "rank": 352,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 68,
+    "fields": {
+      "bestchange_id": 68,
+      "name": "Сумы",
+      "code": "SUMY",
+      "country_id": 112,
+      "rank": 223,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 69,
+    "fields": {
+      "bestchange_id": 69,
+      "name": "Тернополь",
+      "code": "TERNO",
+      "country_id": 112,
+      "rank": 181,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 554,
+    "fields": {
+      "bestchange_id": 554,
+      "name": "Тячев",
+      "code": "TCHV",
+      "country_id": 112,
+      "rank": 320,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 70,
+    "fields": {
+      "bestchange_id": 70,
+      "name": "Ужгород",
+      "code": "UZHH",
+      "country_id": 112,
+      "rank": 158,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 60,
+    "fields": {
+      "bestchange_id": 60,
+      "name": "Винница",
+      "code": "VINN",
+      "country_id": 112,
+      "rank": 113,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 39,
+    "fields": {
+      "bestchange_id": 39,
+      "name": "Запорожье",
+      "code": "ZAP",
+      "country_id": 112,
+      "rank": 126,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 61,
+    "fields": {
+      "bestchange_id": 61,
+      "name": "Житомир",
+      "code": "ZHYTO",
+      "country_id": 112,
+      "rank": 160,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 166,
+    "fields": {
+      "bestchange_id": 166,
+      "name": "Брест",
+      "code": "BREST",
+      "country_id": 113,
+      "rank": 216,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 74,
+    "fields": {
+      "bestchange_id": 74,
+      "name": "Гомель",
+      "code": "GOMEL",
+      "country_id": 113,
+      "rank": 205,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 165,
+    "fields": {
+      "bestchange_id": 165,
+      "name": "Гродно",
+      "code": "GRDN",
+      "country_id": 113,
+      "rank": 244,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 4,
+    "fields": {
+      "bestchange_id": 4,
+      "name": "Минск",
+      "code": "MINSK",
+      "country_id": 113,
+      "rank": 45,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 121,
+    "fields": {
+      "bestchange_id": 121,
+      "name": "Могилев",
+      "code": "MGL",
+      "country_id": 113,
+      "rank": 261,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 122,
+    "fields": {
+      "bestchange_id": 122,
+      "name": "Витебск",
+      "code": "VTB",
+      "country_id": 113,
+      "rank": 259,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 359,
+    "fields": {
+      "bestchange_id": 359,
+      "name": "Брно",
+      "code": "BRNO",
+      "country_id": 114,
+      "rank": 263,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 360,
+    "fields": {
+      "bestchange_id": 360,
+      "name": "Карловы-Вары",
+      "code": "KRLVR",
+      "country_id": 114,
+      "rank": 424,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 83,
+    "fields": {
+      "bestchange_id": 83,
+      "name": "Прага",
+      "code": "PRAG",
+      "country_id": 114,
+      "rank": 78,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 266,
+    "fields": {
+      "bestchange_id": 266,
+      "name": "Фамагуста (Северный",
+      "code": "FMGS",
+      "country_id": 117,
+      "rank": 255,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 265,
+    "fields": {
+      "bestchange_id": 265,
+      "name": "Кириния (Северный Ки",
+      "code": "KRN",
+      "country_id": 117,
+      "rank": 224,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 131,
+    "fields": {
+      "bestchange_id": 131,
+      "name": "Ларнака",
+      "code": "LARN",
+      "country_id": 117,
+      "rank": 229,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 130,
+    "fields": {
+      "bestchange_id": 130,
+      "name": "Лимасол",
+      "code": "LIMAS",
+      "country_id": 117,
+      "rank": 119,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 275,
+    "fields": {
+      "bestchange_id": 275,
+      "name": "Никосия",
+      "code": "NCS",
+      "country_id": 117,
+      "rank": 114,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 267,
+    "fields": {
+      "bestchange_id": 267,
+      "name": "Никосия (Северный Ки",
+      "code": "NCSN",
+      "country_id": 117,
+      "rank": 371,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 129,
+    "fields": {
+      "bestchange_id": 129,
+      "name": "Пафос",
+      "code": "PAPH",
+      "country_id": 117,
+      "rank": 232,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 178,
+    "fields": {
+      "bestchange_id": 178,
+      "name": "Будапешт",
+      "code": "BUD",
+      "country_id": 118,
+      "rank": 188,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 180,
+    "fields": {
+      "bestchange_id": 180,
+      "name": "Братислава",
+      "code": "BRAT",
+      "country_id": 119,
+      "rank": 124,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 182,
+    "fields": {
+      "bestchange_id": 182,
+      "name": "Кошице",
+      "code": "KSC",
+      "country_id": 119,
+      "rank": 276,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 271,
+    "fields": {
+      "bestchange_id": 271,
+      "name": "Белград",
+      "code": "BEOG",
+      "country_id": 120,
+      "rank": 87,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 273,
+    "fields": {
+      "bestchange_id": 273,
+      "name": "Ниш",
+      "code": "NISH",
+      "country_id": 120,
+      "rank": 400,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 272,
+    "fields": {
+      "bestchange_id": 272,
+      "name": "Нови-Сад",
+      "code": "NVSD",
+      "country_id": 120,
+      "rank": 151,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 350,
+    "fields": {
+      "bestchange_id": 350,
+      "name": "Бургас",
+      "code": "BRGS",
+      "country_id": 121,
+      "rank": 179,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 191,
+    "fields": {
+      "bestchange_id": 191,
+      "name": "София",
+      "code": "SFA",
+      "country_id": 121,
+      "rank": 147,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 198,
+    "fields": {
+      "bestchange_id": 198,
+      "name": "Варна",
+      "code": "VARN",
+      "country_id": 121,
+      "rank": 153,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 195,
+    "fields": {
+      "bestchange_id": 195,
+      "name": "Бухарест",
+      "code": "BHRT",
+      "country_id": 123,
+      "rank": 145,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 217,
+    "fields": {
+      "bestchange_id": 217,
+      "name": "Констанца",
+      "code": "CONST",
+      "country_id": 123,
+      "rank": 231,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 158,
+    "fields": {
+      "bestchange_id": 158,
+      "name": "Батуми",
+      "code": "BTM",
+      "country_id": 124,
+      "rank": 64,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 206,
+    "fields": {
+      "bestchange_id": 206,
+      "name": "Рустави",
+      "code": "RST",
+      "country_id": 124,
+      "rank": 293,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 52,
+    "fields": {
+      "bestchange_id": 52,
+      "name": "Тбилиси",
+      "code": "TBIL",
+      "country_id": 124,
+      "rank": 34,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 93,
+    "fields": {
+      "bestchange_id": 93,
+      "name": "Осло",
+      "code": "OSLO",
+      "country_id": 125,
+      "rank": 254,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 174,
+    "fields": {
+      "bestchange_id": 174,
+      "name": "Агарак",
+      "code": "AGRK",
+      "country_id": 126,
+      "rank": 396,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 80,
+    "fields": {
+      "bestchange_id": 80,
+      "name": "Степанакерт",
+      "code": "STPNK",
+      "country_id": 126,
+      "rank": 413,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 9,
+    "fields": {
+      "bestchange_id": 9,
+      "name": "Ереван",
+      "code": "ERVN",
+      "country_id": 126,
+      "rank": 65,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 503,
+    "fields": {
+      "bestchange_id": 503,
+      "name": "Линц",
+      "code": "LNZ",
+      "country_id": 127,
+      "rank": 409,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 181,
+    "fields": {
+      "bestchange_id": 181,
+      "name": "Вена",
+      "code": "WIEN",
+      "country_id": 127,
+      "rank": 110,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 482,
+    "fields": {
+      "bestchange_id": 482,
+      "name": "Дуррес",
+      "code": "DRRS",
+      "country_id": 128,
+      "rank": 339,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 483,
+    "fields": {
+      "bestchange_id": 483,
+      "name": "Саранда",
+      "code": "SRND",
+      "country_id": 128,
+      "rank": 452,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 139,
+    "fields": {
+      "bestchange_id": 139,
+      "name": "Тирана",
+      "code": "TIRAN",
+      "country_id": 128,
+      "rank": 243,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 481,
+    "fields": {
+      "bestchange_id": 481,
+      "name": "Влёра",
+      "code": "VLR",
+      "country_id": 128,
+      "rank": 408,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 289,
+    "fields": {
+      "bestchange_id": 289,
+      "name": "Любляна",
+      "code": "LJBLJ",
+      "country_id": 129,
+      "rank": 257,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 210,
+    "fields": {
+      "bestchange_id": 210,
+      "name": "Панама",
+      "code": "PNM",
+      "country_id": 130,
+      "rank": 195,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 277,
+    "fields": {
+      "bestchange_id": 277,
+      "name": "Бар",
+      "code": "BAR",
+      "country_id": 133,
+      "rank": 309,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 162,
+    "fields": {
+      "bestchange_id": 162,
+      "name": "Будва",
+      "code": "BUDVA",
+      "country_id": 133,
+      "rank": 141,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 488,
+    "fields": {
+      "bestchange_id": 488,
+      "name": "Котор",
+      "code": "KOTOR",
+      "country_id": 133,
+      "rank": 429,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 487,
+    "fields": {
+      "bestchange_id": 487,
+      "name": "Петровац",
+      "code": "PTRVC",
+      "country_id": 133,
+      "rank": 531,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 225,
+    "fields": {
+      "bestchange_id": 225,
+      "name": "Подгорица",
+      "code": "PDGR",
+      "country_id": 133,
+      "rank": 220,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 486,
+    "fields": {
+      "bestchange_id": 486,
+      "name": "Сутоморе",
+      "code": "STMR",
+      "country_id": 133,
+      "rank": 530,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 347,
+    "fields": {
+      "bestchange_id": 347,
+      "name": "Тиват",
+      "code": "TVT",
+      "country_id": 133,
+      "rank": 358,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 485,
+    "fields": {
+      "bestchange_id": 485,
+      "name": "Улцинь",
+      "code": "ULCN",
+      "country_id": 133,
+      "rank": 529,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 278,
+    "fields": {
+      "bestchange_id": 278,
+      "name": "Душанбе",
+      "code": "DUSH",
+      "country_id": 135,
+      "rank": 171,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 285,
+    "fields": {
+      "bestchange_id": 285,
+      "name": "Бейрут",
+      "code": "BRT",
+      "country_id": 137,
+      "rank": 336,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 51,
+    "fields": {
+      "bestchange_id": 51,
+      "name": "Кишинев",
+      "code": "KISH",
+      "country_id": 138,
+      "rank": 46,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 179,
+    "fields": {
+      "bestchange_id": 179,
+      "name": "Тирасполь",
+      "code": "TRSPL",
+      "country_id": 138,
+      "rank": 163,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 291,
+    "fields": {
+      "bestchange_id": 291,
+      "name": "Хельсинки",
+      "code": "HLSNK",
+      "country_id": 139,
+      "rank": 191,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 79,
+    "fields": {
+      "bestchange_id": 79,
+      "name": "Таллин",
+      "code": "TALLN",
+      "country_id": 140,
+      "rank": 123,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 505,
+    "fields": {
+      "bestchange_id": 505,
+      "name": "Баня-Лука",
+      "code": "BNLK",
+      "country_id": 141,
+      "rank": 535,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 490,
+    "fields": {
+      "bestchange_id": 490,
+      "name": "Мостар",
+      "code": "MSTR",
+      "country_id": 141,
+      "rank": 454,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 489,
+    "fields": {
+      "bestchange_id": 489,
+      "name": "Сараево",
+      "code": "SARJV",
+      "country_id": 141,
+      "rank": 362,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 221,
+    "fields": {
+      "bestchange_id": 221,
+      "name": "Каунас",
+      "code": "KAUN",
+      "country_id": 144,
+      "rank": 278,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 348,
+    "fields": {
+      "bestchange_id": 348,
+      "name": "Мариямполе",
+      "code": "MRJMP",
+      "country_id": 144,
+      "rank": 388,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 349,
+    "fields": {
+      "bestchange_id": 349,
+      "name": "Паневежис",
+      "code": "PNVZS",
+      "country_id": 144,
+      "rank": 405,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 96,
+    "fields": {
+      "bestchange_id": 96,
+      "name": "Вильнюс",
+      "code": "VILN",
+      "country_id": 144,
+      "rank": 112,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 290,
+    "fields": {
+      "bestchange_id": 290,
+      "name": "Люксембург",
+      "code": "LXMBR",
+      "country_id": 145,
+      "rank": 178,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 281,
+    "fields": {
+      "bestchange_id": 281,
+      "name": "Скопье",
+      "code": "SKPJ",
+      "country_id": 147,
+      "rank": 372,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 280,
+    "fields": {
+      "bestchange_id": 280,
+      "name": "Валлетта",
+      "code": "VLLTT",
+      "country_id": 149,
+      "rank": 285,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 55,
+    "fields": {
+      "bestchange_id": 55,
+      "name": "Манама",
+      "code": "MANAM",
+      "country_id": 151,
+      "rank": 342,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 82,
+    "fields": {
+      "bestchange_id": 82,
+      "name": "Ташкент",
+      "code": "TASHK",
+      "country_id": 152,
+      "rank": 85,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 77,
+    "fields": {
+      "bestchange_id": 77,
+      "name": "Баку",
+      "code": "BAKU",
+      "country_id": 153,
+      "rank": 84,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 160,
+    "fields": {
+      "bestchange_id": 160,
+      "name": "Монако",
+      "code": "MON",
+      "country_id": 154,
+      "rank": 270,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 153,
+    "fields": {
+      "bestchange_id": 153,
+      "name": "Гуаякиль",
+      "code": "GUAQ",
+      "country_id": 160,
+      "rank": 414,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 187,
+    "fields": {
+      "bestchange_id": 187,
+      "name": "Кито",
+      "code": "QUITO",
+      "country_id": 160,
+      "rank": 365,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 213,
+    "fields": {
+      "bestchange_id": 213,
+      "name": "Лима",
+      "code": "LIMA",
+      "country_id": 161,
+      "rank": 416,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 211,
+    "fields": {
+      "bestchange_id": 211,
+      "name": "Богота",
+      "code": "BGT",
+      "country_id": 163,
+      "rank": 297,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 212,
+    "fields": {
+      "bestchange_id": 212,
+      "name": "Медельин",
+      "code": "MDL",
+      "country_id": 163,
+      "rank": 397,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 154,
+    "fields": {
+      "bestchange_id": 154,
+      "name": "Сантьяго",
+      "code": "SANTG",
+      "country_id": 170,
+      "rank": 415,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 155,
+    "fields": {
+      "bestchange_id": 155,
+      "name": "Санто-Доминго",
+      "code": "SANTD",
+      "country_id": 170,
+      "rank": 382,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 274,
+    "fields": {
+      "bestchange_id": 274,
+      "name": "Сан-Хосе",
+      "code": "SNJS",
+      "country_id": 173,
+      "rank": 401,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 287,
+    "fields": {
+      "bestchange_id": 287,
+      "name": "Доха",
+      "code": "DOH",
+      "country_id": 190,
+      "rank": 289,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 279,
+    "fields": {
+      "bestchange_id": 279,
+      "name": "Загреб",
+      "code": "ZGRB",
+      "country_id": 202,
+      "rank": 250,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 170,
+    "fields": {
+      "bestchange_id": 170,
+      "name": "Бишкек",
+      "code": "BSHK",
+      "country_id": 210,
+      "rank": 74,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 327,
+    "fields": {
+      "bestchange_id": 327,
+      "name": "Аддис-Абеба",
+      "code": "ADSBB",
+      "country_id": 215,
+      "rank": 326,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 379,
+    "fields": {
+      "bestchange_id": 379,
+      "name": "Бисау",
+      "code": "BSS",
+      "country_id": 222,
+      "rank": 501,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 373,
+    "fields": {
+      "bestchange_id": 373,
+      "name": "Асмэра",
+      "code": "ASMR",
+      "country_id": 223,
+      "rank": 496,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 371,
+    "fields": {
+      "bestchange_id": 371,
+      "name": "Асэб",
+      "code": "SSB",
+      "country_id": 223,
+      "rank": 494,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 372,
+    "fields": {
+      "bestchange_id": 372,
+      "name": "Массауа",
+      "code": "MSSW",
+      "country_id": 223,
+      "rank": 495,
+      "is_active": false
+    }
+  },
+  {
+    "model": "app_main.city",
+    "pk": 308,
+    "fields": {
+      "bestchange_id": 308,
+      "name": "Абиджан",
+      "code": "ABDJN",
+      "country_id": 239,
+      "rank": 479,
+      "is_active": false
+    }
+  }
+]
