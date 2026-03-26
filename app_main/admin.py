@@ -96,10 +96,6 @@ class Moneyadmin(admin.ModelAdmin):
             'classes': ('collapse',),
             'fields': ('icon_file', 'icon_url')
         }),
-        ("Интеграция с BestChange", {
-            'classes': ('collapse',),
-            'fields': ('best_num', 'best_id')
-        }),
         ("Доступность", {
             'classes': ('collapse',),
             'fields': (('deposit', 'withdraw'), ('adeposit', 'awithdraw'), ('stablecoin', 'memo'))

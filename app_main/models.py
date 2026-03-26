@@ -291,15 +291,12 @@ class Money(models.Model):
     name_long = models.CharField('Длинное название', max_length=100, default='', help_text='Длинное название монеты: Bitcoin')
     chain_short = models.CharField('Блокчейн', max_length=100, blank=True, null=True, help_text='Короткое название сети: ETH')
     chain_long = models.CharField('Блокчейн', max_length=100, blank=True, null=True, help_text='Длинное название сети: ERC20')
-    api_format = models.CharField('Название для API', max_length=100, blank=True, null=True, help_text='Как монета будет отображаться в api')
+    api_format = models.CharField('Название для Bestchange', max_length=100, blank=True, null=True, help_text='Как монета будет отображаться в XML. Если пусто - значит обмен не пойдём в XML')
     nominal = models.PositiveIntegerField('Номинал', default=1, help_text='')
     reserv = models.DecimalField('Текущие резервы', default=1000000, decimal_places=DECIMAL_PLACES, max_digits=MAX_DIGITS, help_text='')
     money_digits = models.PositiveIntegerField('Точность монеты', default=8, help_text='')
     icon_file = models.ImageField(upload_to='money_icons/', blank=True, null=True, validators=[validate_image_size], )
     icon_url = models.URLField("URL иконки", blank=True, null=True)
-
-    best_num = models.PositiveIntegerField('Номер на бесте', default=0, blank=True, help_text='')
-    best_id = models.CharField('Название на бесте', max_length=10, default='', blank=True, help_text='')
 
     deposit = models.BooleanField(verbose_name='D', default=False, help_text='Монету можно получить')
     withdraw = models.BooleanField(verbose_name='W', default=False, help_text='Монету можно отдать')
