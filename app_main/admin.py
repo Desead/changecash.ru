@@ -132,16 +132,14 @@ class Moneyadmin(admin.ModelAdmin):
     )
 
 
-
-
 @admin.register(City)
 class CityAdmin(admin.ModelAdmin):
     save_on_top = True
     search_fields = ('name', 'code')
     list_display = ('name', 'code', 'is_active')
-    list_filter = ('is_active', )
+    list_filter = ('is_active',)
     list_editable = ('is_active',)
-    ordering = ('-is_active','name',)
+    ordering = ('-is_active', 'name',)
 
 
 @admin.register(SiteSetup)
