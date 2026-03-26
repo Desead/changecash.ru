@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from app_main.models import Merchant, Money, SiteSetup, RateMoney, Order, PartnerAccrual, SiteDocument, UserProfile
+from app_main.models import Merchant, Money, SiteSetup, RateMoney, Order, PartnerAccrual, SiteDocument, UserProfile, City
 from lp.getmoney import GetMoney
 
 admin.site.site_title = 'Настройки'
@@ -96,6 +96,7 @@ class Moneyadmin(admin.ModelAdmin):
                 'https://www.bestchange.ru/wiki/rates.html',
             )
         return form
+
     fieldsets = (
         ("Основная информация", {
             'fields': (
@@ -262,3 +263,13 @@ class OrderAdmin(admin.ModelAdmin):
 class SiteDocumentAdmin(admin.ModelAdmin):
     save_on_top = True
     list_display = ('doc_type',)
+
+
+@admin.register(City)
+class CityAdmin(admin.ModelAdmin):
+    save_on_top = True
+    search_fields = ('name', 'code')
+    list_display = ('name', 'code', 'is_active')
+    list_filter = ('is_active',)
+    list_editable = ('is_active',)
+    ordering = ('-is_active', 'name',)
