@@ -27,6 +27,23 @@ def validate_image_size(image):
 User = get_user_model()
 
 
+class City(models.Model):
+    bestchange_id = models.PositiveIntegerField('ID города в BestChange', unique=True)
+    name = models.CharField('Город', max_length=200)
+    code = models.CharField('Код города', max_length=32, unique=True, help_text='Код города из BestChange, например ADLD')
+    country_id = models.PositiveIntegerField('ID страны в BestChange', default=0)
+    rank = models.PositiveIntegerField('Ранг', default=0, help_text='Ранг сортировки из BestChange')
+    is_active = models.BooleanField('Активен', default=True)
+
+    class Meta:
+        verbose_name = 'Город'
+        verbose_name_plural = '9. Города'
+        ordering = ('rank', 'name', 'code')
+
+    def __str__(self):
+        return f"{self.name} ({self.code})"
+
+
 def generate_referral_code(length=10):
     alphabet = string.ascii_uppercase + string.digits
     while True:

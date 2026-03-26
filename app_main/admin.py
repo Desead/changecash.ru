@@ -1,5 +1,5 @@
 from django.contrib import admin
-from app_main.models import Merchant, Money, SiteSetup, RateMoney, Order, PartnerAccrual, SiteDocument, UserProfile
+from app_main.models import City, Merchant, Money, SiteSetup, RateMoney, Order, PartnerAccrual, SiteDocument, UserProfile
 from lp.getmoney import GetMoney
 
 admin.site.site_title = 'Настройки'
@@ -248,6 +248,16 @@ class OrderAdmin(admin.ModelAdmin):
         elif len(s.split('.')[-1]) == 1:
             s += '0'
         return s
+
+
+@admin.register(City)
+class CityAdmin(admin.ModelAdmin):
+    save_on_top = True
+    list_display = ('name', 'code', 'is_active',)
+    list_filter = ('is_active', 'country_id')
+    search_fields = ('name', 'code', 'bestchange_id')
+    list_editable = ('is_active',)
+    ordering = ('name',)
 
 
 @admin.register(SiteDocument)
