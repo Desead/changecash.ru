@@ -1,5 +1,6 @@
 from django.contrib import admin
-from app_main.models import City, Merchant, Money, SiteSetup, RateMoney, Order, PartnerAccrual, SiteDocument, UserProfile
+from django.utils.html import format_html
+from app_main.models import Merchant, Money, SiteSetup, RateMoney, Order, PartnerAccrual, SiteDocument, UserProfile
 from lp.getmoney import GetMoney
 
 admin.site.site_title = 'Настройки'
@@ -84,6 +85,17 @@ class Moneyadmin(admin.ModelAdmin):
         self.message_user(request, f"Выбранные монеты нельзя отправлять")
 
     readonly_fields = ('adeposit', 'awithdraw')
+
+    def get_form(self, request, obj=None, **kwargs):
+        form = super().get_form(request, obj, **kwargs)
+        field = form.base_fields.get('api_format')
+        if field:
+            field.help_text = format_html(
+                'Код валюты для XML/API BestChange. Список кодов смотрите на странице '
+                '<a href="{}" target="_blank" rel="noopener noreferrer">BestChange — описание формата и коды валют</a>.',
+                'https://www.bestchange.ru/wiki/rates.html',
+            )
+        return form
     fieldsets = (
         ("Основная информация", {
             'fields': (
@@ -126,16 +138,6 @@ class Moneyadmin(admin.ModelAdmin):
             'fields': (('confirm_deposit', 'confirm_withdraw'),)
         }),
     )
-
-
-@admin.register(City)
-class CityAdmin(admin.ModelAdmin):
-    save_on_top = True
-    search_fields = ('name', 'code')
-    list_display = ('name', 'code', 'is_active')
-    list_filter = ('is_active',)
-    list_editable = ('is_active',)
-    ordering = ('-is_active', 'name',)
 
 
 @admin.register(SiteSetup)

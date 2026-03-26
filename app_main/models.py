@@ -291,7 +291,13 @@ class Money(models.Model):
     name_long = models.CharField('Длинное название', max_length=100, default='', help_text='Длинное название монеты: Bitcoin')
     chain_short = models.CharField('Блокчейн', max_length=100, blank=True, null=True, help_text='Короткое название сети: ETH')
     chain_long = models.CharField('Блокчейн', max_length=100, blank=True, null=True, help_text='Длинное название сети: ERC20')
-    api_format = models.CharField('Название для Bestchange', max_length=100, blank=True, null=True, help_text='Как монета будет отображаться в XML. Если пусто - значит обмен не пойдём в XML')
+    api_format = models.CharField(
+        'Название для API',
+        max_length=100,
+        blank=True,
+        null=True,
+        help_text='Код валюты для XML/API BestChange. Список кодов: https://www.bestchange.ru/wiki/rates.html',
+    )
     nominal = models.PositiveIntegerField('Номинал', default=1, help_text='')
     reserv = models.DecimalField('Текущие резервы', default=1000000, decimal_places=DECIMAL_PLACES, max_digits=MAX_DIGITS, help_text='')
     money_digits = models.PositiveIntegerField('Точность монеты', default=8, help_text='')
